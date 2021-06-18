@@ -1,3 +1,6 @@
-SuperSonic Audiobook Player
+#SuperSonic Audiobook Player
 
-This is a minimalist audiobook player built on the fantastic library sonic, portAudio, and libsndfile.
+SuperSonic Audiobook Player (SAP) is a minimalist audiobook player built on the fantastic library sonic, portAudio, and libsndfile.
+This is the minimal command line version. You simply give it a file to play, -s <speed> specifies the playback speed, and that's the gist of it. 
+I'm currently working on a more fully featured audiobook player and audiobook manager built on curses, and another version that will be built into
+an apk, both of which will also go in this repo.
