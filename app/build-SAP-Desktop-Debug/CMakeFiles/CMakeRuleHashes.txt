@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+58504ffb74027cd276164f938dc8cde6 CMakeFiles/SonicPlaceholder_autogen
+667dd82af2f8b0c9e40472cd63c8124b SonicPlaceholder_autogen/EWIEGA46WW/qrc_main.cpp

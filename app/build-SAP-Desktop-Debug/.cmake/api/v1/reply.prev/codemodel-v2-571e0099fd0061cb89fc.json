@@ -1,0 +1,68 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "SonicPlaceholder",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "SonicPlaceholder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SonicPlaceholder-Debug-fbdd6c41059729a84218.json",
+					"name" : "SonicPlaceholder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "SonicPlaceholder_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SonicPlaceholder_autogen-Debug-5b78230555389e06201c.json",
+					"name" : "SonicPlaceholder_autogen",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/rebecca/hello/C++/SAP/build-SAP-Desktop-Debug",
+		"source" : "/home/rebecca/hello/C++/SAP"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

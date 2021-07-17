@@ -1,0 +1,1 @@
+/home/rebecca/hello/C/Cope/cope.h

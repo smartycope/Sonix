@@ -1,0 +1,4 @@
+/home/rebecca/hello/C++/SAP/build/CMakeFiles/rebuild_cache.dir
+/home/rebecca/hello/C++/SAP/build/CMakeFiles/edit_cache.dir
+/home/rebecca/hello/C++/SAP/build/CMakeFiles/SonicPlaceholder.dir
+/home/rebecca/hello/C++/SAP/build/CMakeFiles/SonicPlaceholder_autogen.dir
