@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/marvin/hello/C/SAP/Curses/build",
+  "command": "clang  -I/home/marvin/hello/C/SAP/Curses/lib -g -Wno-comment -o CMakeFiles/sap.dir/src/main.c.o -c /home/marvin/hello/C/SAP/Curses/src/main.c",
+  "file": "/home/marvin/hello/C/SAP/Curses/src/main.c"
+},
+{
+  "directory": "/home/marvin/hello/C/SAP/Curses/build",
+  "command": "clang  -I/home/marvin/hello/C/SAP/Curses/lib -g -Wno-comment -o CMakeFiles/sap.dir/src/sonic.c.o -c /home/marvin/hello/C/SAP/Curses/src/sonic.c",
+  "file": "/home/marvin/hello/C/SAP/Curses/src/sonic.c"
+}
+]

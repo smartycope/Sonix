@@ -1,13 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <curses.h>
 #include "sndfile.h"
 #include "sonic.h"
 #include "portaudio.h"
 
 
+WINDOW* win;
+int oldcur;
+
 #define FRAMES_PER_BUFFER paFramesPerBufferUnspecified
 #define debug(var) printf("%s = %d\n", #var, var);
+
+#define SKIP_SECONDS 20
+#define SKIP_SAMPLES (data->sfInfo.samplerate * SKIP_SECONDS)
 
 sonicStream sStream;
 
@@ -109,6 +116,51 @@ static void usage() {
 }
 
 
+void flushStream(OurData* data){
+    data->sonicPosition = data->outputPosition;
+}
+
+void skip(OurData* data, int amount){
+    if (data->outputPosition + (amount * data->sfInfo.channels) < 0)
+        data->outputPosition = 0;
+    else if (data->outputPosition + (amount * data->sfInfo.channels) > data->sfInfo.frames)
+        data->outputPosition = data->sfInfo.frames;
+    else
+        data->outputPosition += amount * data->sfInfo.channels;
+
+    data->filePosition = (int)(data->outputPosition / data->sfInfo.channels);
+    flushStream(data);
+}
+
+void mainLoop(OurData* data, PaStream* stream){
+    char c = 0, paused = 0;
+
+    while(c != 'q'){
+        c = getchar();
+        if (c == ' '){
+            if (paused)
+                error_check(Pa_StartStream(stream));
+            else
+                error_check(Pa_StopStream(stream));
+
+            paused = !paused;
+        }
+        else if (c == ',' || c == '<'){
+            skip(data, -SKIP_SAMPLES);
+        }
+        else if (c == '.' || c == '>'){
+            skip(data, SKIP_SAMPLES);
+        }
+        else if (c == 's'){
+            double spd;
+            scanf("%lf", &spd);
+            sonicSetSpeed(sStream, (float)spd);
+            // printf("Enter a speed:\n");
+        }
+    }
+
+}
+
 int main(int argc, char** argv) {
     char* inFileName;
     float speed = 1.0f;
@@ -121,8 +173,11 @@ int main(int argc, char** argv) {
     int xArg = 1;
     int enableNonlinearSpeedup = 0;
     int numRows = 0, numCols = 0;
+    PaStream *stream;
+    PaError error;
+    PaStreamParameters outputParameters;
 
-    // Parse args
+    //* Parse args
     while (xArg < argc && *(argv[xArg]) == '-') {
         if (!strcmp(argv[xArg], "-c")) {
             emulateChordPitch = 1;
@@ -172,20 +227,15 @@ int main(int argc, char** argv) {
     if (argc - xArg != 1) {
         usage();
     }
-
     inFileName = argv[xArg];
 
-    OurData *data = (OurData *)malloc(sizeof(OurData));
-    PaStream *stream;
-    PaError error;
-    PaStreamParameters outputParameters;
-
     //* Construct the Struct
+    OurData *data = (OurData *)malloc(sizeof(OurData));
     data->filePosition = 0;
     data->sonicPosition = 0;
     data->outputPosition = 0;
     data->sfInfo.format = 0;
-    // try to open the file
+    //* Open the file
     data->sndFile = sf_open(inFileName, SFM_READ, &data->sfInfo);
     data->sonicBuffer = (float*)malloc(sizeof(float) * data->sfInfo.frames);
 
@@ -194,19 +244,20 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    // start portaudio
+    if (outputSampleRate != 0)
+        data->sfInfo.samplerate = outputSampleRate;
+
+    //* Initialize PortAudio
     error_check(Pa_Initialize());
 
-    // set the output parameters
+    // Set the output parameters
     outputParameters.device = Pa_GetDefaultOutputDevice(); // use the default device
     outputParameters.channelCount = data->sfInfo.channels; // use the same number of channels as our sound file
     outputParameters.sampleFormat = paFloat32; // 32bit int format
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
     outputParameters.hostApiSpecificStreamInfo = NULL; // no api specific data
 
-    if (outputSampleRate != 0)
-        data->sfInfo.samplerate = outputSampleRate;
-
+    //* Initialize Sonic
     sStream = sonicCreateStream(data->sfInfo.samplerate, data->sfInfo.channels);
     sonicSetSpeed(sStream, speed);
     sonicSetPitch(sStream, pitch);
@@ -218,11 +269,12 @@ int main(int argc, char** argv) {
     error_check(Pa_OpenStream(&stream, NULL, &outputParameters, data->sfInfo.samplerate, FRAMES_PER_BUFFER, paClipOff, audioCallback, data));
     error_check(Pa_StartStream(stream));
 
-    //TODO This will give an error (not sure which) once it reaches the end. Add simple input like pausing and rewinding and such.
-    while(1);
+    printf("Welcome to SuperSonic Audiobook Player! Press q to quit, </> to skip back/forward, space to pause, and s to change the speed.\n");
+    mainLoop(data, &stream);
 
-    error_check(Pa_StopStream(stream)); // stop the stream
-    error_check(Pa_Terminate()); // and shut down portaudio
+    //* Shut everything down and clean up
+    error_check(Pa_StopStream(stream));
+    error_check(Pa_Terminate());
     sonicDestroyStream(sStream);
     free(data->sonicBuffer);
     free(data);

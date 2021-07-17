@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "attach",
+            "name": "LLDB by PID",
+            "pid": "${command:pickMyProcess}" // use ${command:pickProcess} to pick other users' processes
+        },
+
+        {
+            "type": "lldb",
+            "request": "custom",
+            "name": "Custom LLDB",
+            "targetCreateCommands": [
+                "target create ${workspaceFolder}/Curses/sap"
+            ],
+            "processCreateCommands": [
+                "settings set target.run-args \"/home/marvin/Media/Audiobooks/Snapshot.wav\"",
+                "process launch"
+            ]
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "LLDB",
+            "program": "${workspaceFolder}/Curses/sap",
+            "args": ["/home/marvin/Media/Audiobooks/Snapshot.wav"],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

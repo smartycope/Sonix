@@ -1,0 +1,1 @@
+gcc -g CMakeFiles/sap.dir/src/main.c.o CMakeFiles/sap.dir/src/sonic.c.o -o ../sap  -Wl,-rpath,/home/marvin/hello/C/SAP/Curses/lib ../lib/libsonic.so ../lib/libportaudio.so ../lib/libsndfile.so -ldl 

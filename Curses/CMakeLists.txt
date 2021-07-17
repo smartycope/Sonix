@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.12)
 
 project(sap)
 
-set(CMAKE_C_COMPILER gcc)
+set(CMAKE_C_COMPILER clang)
 
 # list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
@@ -33,32 +33,40 @@ set(CMAKE_USE_PTHREADS_INIT 1)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 
+find_package(Curses REQUIRED)
+# find_package(SndFile REQUIRED)
+# include(AndroidApk)
+
+
 
 set(SRC_LIST
     ${CMAKE_SOURCE_DIR}/src/main.c
     ${CMAKE_SOURCE_DIR}/src/sonic.c
+    # ${CMAKE_SOURCE_DIR}/src/cope.c
 )
 
-set(DEP_LIST
-    ${CMAKE_SOURCE_DIR}/src/portaudio.h
-    ${CMAKE_SOURCE_DIR}/src/sndfile.h
-    ${CMAKE_SOURCE_DIR}/include/pa_asio.h
-    ${CMAKE_SOURCE_DIR}/include/pa_jack.h
-    ${CMAKE_SOURCE_DIR}/include/pa_linux_alsa.h
-)
+# set(DEP_LIST
+#     ${CMAKE_SOURCE_DIR}/src/portaudio.h
+#     ${CMAKE_SOURCE_DIR}/src/sndfile.h
+#     ${CMAKE_SOURCE_DIR}/include/pa_asio.h
+#     ${CMAKE_SOURCE_DIR}/include/pa_jack.h
+#     ${CMAKE_SOURCE_DIR}/include/pa_linux_alsa.h
+# )
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/lib
+    ${CURSES_INCLUDE_DIR}
 )
 
 set(LIB_LIST
     ${CMAKE_SOURCE_DIR}/lib/libsonic.so
     ${CMAKE_SOURCE_DIR}/lib/libportaudio.so
     ${CMAKE_SOURCE_DIR}/lib/libsndfile.so
+    ${CURSES_LIBRARIES}
 )
 
 set(BINARY_NAME "${PROJECT_NAME}")
 
-add_executable(${BINARY_NAME} ${SRC_LIST} ${DEP_LIST})
+add_executable(${BINARY_NAME} ${SRC_LIST}) # ${DEP_LIST})
 
-target_link_libraries(${BINARY_NAME} ${LIB_LIST} m dl)
+target_link_libraries(${BINARY_NAME} ${LIB_LIST} dl)
