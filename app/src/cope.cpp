@@ -1,1 +1,1 @@
-/home/rebecca/hello/C/Cope/cope.c
+/home/rebecca/hello/C/SuperSonic-Audiobook-Player/app/src/cope.c
