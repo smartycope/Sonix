@@ -1,0 +1,3 @@
+/home/marvin/hello/C/SAP/Server/build/CMakeFiles/rebuild_cache.dir
+/home/marvin/hello/C/SAP/Server/build/CMakeFiles/edit_cache.dir
+/home/marvin/hello/C/SAP/Server/build/CMakeFiles/sap.dir

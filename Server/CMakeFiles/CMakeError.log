@@ -1,0 +1,210 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/gmake cmTC_3329c/fast && /bin/gmake  -f CMakeFiles/cmTC_3329c.dir/build.make CMakeFiles/cmTC_3329c.dir/build
+gmake[1]: Entering directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3329c.dir/src.c.o
+/usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_3329c.dir/src.c.o -c /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_3329c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3329c.dir/link.txt --verbose=1
+/usr/bin/gcc CMakeFiles/cmTC_3329c.dir/src.c.o -o cmTC_3329c 
+/bin/ld: CMakeFiles/cmTC_3329c.dir/src.c.o: in function `main':
+src.c:(.text+0x34): undefined reference to `pthread_create'
+/bin/ld: src.c:(.text+0x3c): undefined reference to `pthread_detach'
+/bin/ld: src.c:(.text+0x44): undefined reference to `pthread_cancel'
+/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_3329c.dir/build.make:106: cmTC_3329c] Error 1
+gmake[1]: Leaving directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:140: cmTC_3329c/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/gmake cmTC_32066/fast && /bin/gmake  -f CMakeFiles/cmTC_32066.dir/build.make CMakeFiles/cmTC_32066.dir/build
+gmake[1]: Entering directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_32066.dir/src.c.o
+/usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_32066.dir/src.c.o -c /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_32066
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32066.dir/link.txt --verbose=1
+/usr/bin/gcc CMakeFiles/cmTC_32066.dir/src.c.o -o cmTC_32066 
+/bin/ld: CMakeFiles/cmTC_32066.dir/src.c.o: in function `main':
+src.c:(.text+0x34): undefined reference to `pthread_create'
+/bin/ld: src.c:(.text+0x3c): undefined reference to `pthread_detach'
+/bin/ld: src.c:(.text+0x44): undefined reference to `pthread_cancel'
+/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_32066.dir/build.make:106: cmTC_32066] Error 1
+gmake[1]: Leaving directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:140: cmTC_32066/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/gmake cmTC_e9daf/fast && /bin/gmake  -f CMakeFiles/cmTC_e9daf.dir/build.make CMakeFiles/cmTC_e9daf.dir/build
+gmake[1]: Entering directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e9daf.dir/src.c.o
+/usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_e9daf.dir/src.c.o -c /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e9daf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9daf.dir/link.txt --verbose=1
+/usr/bin/gcc CMakeFiles/cmTC_e9daf.dir/src.c.o -o cmTC_e9daf 
+/bin/ld: CMakeFiles/cmTC_e9daf.dir/src.c.o: in function `main':
+src.c:(.text+0x34): undefined reference to `pthread_create'
+/bin/ld: src.c:(.text+0x3c): undefined reference to `pthread_detach'
+/bin/ld: src.c:(.text+0x44): undefined reference to `pthread_cancel'
+/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_e9daf.dir/build.make:106: cmTC_e9daf] Error 1
+gmake[1]: Leaving directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:140: cmTC_e9daf/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/gmake cmTC_733a3/fast && /bin/gmake  -f CMakeFiles/cmTC_733a3.dir/build.make CMakeFiles/cmTC_733a3.dir/build
+gmake[1]: Entering directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_733a3.dir/src.c.o
+/usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_733a3.dir/src.c.o -c /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_733a3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_733a3.dir/link.txt --verbose=1
+/usr/bin/gcc CMakeFiles/cmTC_733a3.dir/src.c.o -o cmTC_733a3 
+/bin/ld: CMakeFiles/cmTC_733a3.dir/src.c.o: in function `main':
+src.c:(.text+0x34): undefined reference to `pthread_create'
+/bin/ld: src.c:(.text+0x3c): undefined reference to `pthread_detach'
+/bin/ld: src.c:(.text+0x44): undefined reference to `pthread_cancel'
+/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_733a3.dir/build.make:106: cmTC_733a3] Error 1
+gmake[1]: Leaving directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:140: cmTC_733a3/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/gmake cmTC_ec941/fast && /bin/gmake  -f CMakeFiles/cmTC_ec941.dir/build.make CMakeFiles/cmTC_ec941.dir/build
+gmake[1]: Entering directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ec941.dir/src.c.o
+/usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_ec941.dir/src.c.o -c /home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ec941
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec941.dir/link.txt --verbose=1
+/usr/bin/gcc CMakeFiles/cmTC_ec941.dir/src.c.o -o cmTC_ec941 
+/bin/ld: CMakeFiles/cmTC_ec941.dir/src.c.o: in function `main':
+src.c:(.text+0x34): undefined reference to `pthread_create'
+/bin/ld: src.c:(.text+0x3c): undefined reference to `pthread_detach'
+/bin/ld: src.c:(.text+0x44): undefined reference to `pthread_cancel'
+/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_ec941.dir/build.make:106: cmTC_ec941] Error 1
+gmake[1]: Leaving directory '/home/marvin/hello/C/SAP/Server/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:140: cmTC_ec941/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+

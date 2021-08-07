@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/marvin/hello/C/SAP/Server/build",
+  "command": "/usr/bin/g++ -DCPPHTTPLIB_BROTLI_SUPPORT -DCPPHTTPLIB_OPENSSL_SUPPORT -DCPPHTTPLIB_ZLIB_SUPPORT -I/home/marvin/hello/C/SAP/Server/lib -g -Wno-comment -Wno-write-strings -pthread -o CMakeFiles/sap.dir/src/wave.cpp.o -c /home/marvin/hello/C/SAP/Server/src/wave.cpp",
+  "file": "/home/marvin/hello/C/SAP/Server/src/wave.cpp"
+},
+{
+  "directory": "/home/marvin/hello/C/SAP/Server/build",
+  "command": "/usr/bin/g++ -DCPPHTTPLIB_BROTLI_SUPPORT -DCPPHTTPLIB_OPENSSL_SUPPORT -DCPPHTTPLIB_ZLIB_SUPPORT -I/home/marvin/hello/C/SAP/Server/lib -g -Wno-comment -Wno-write-strings -pthread -o CMakeFiles/sap.dir/src/main.cpp.o -c /home/marvin/hello/C/SAP/Server/src/main.cpp",
+  "file": "/home/marvin/hello/C/SAP/Server/src/main.cpp"
+}
+]

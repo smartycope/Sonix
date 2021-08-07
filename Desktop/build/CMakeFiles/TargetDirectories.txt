@@ -1,0 +1,4 @@
+/home/marvin/hello/C/SAP/Desktop/build/CMakeFiles/rebuild_cache.dir
+/home/marvin/hello/C/SAP/Desktop/build/CMakeFiles/edit_cache.dir
+/home/marvin/hello/C/SAP/Desktop/build/CMakeFiles/sap.dir
+/home/marvin/hello/C/SAP/Desktop/build/CMakeFiles/sap_autogen.dir

@@ -16,10 +16,10 @@
             "request": "custom",
             "name": "Custom LLDB",
             "targetCreateCommands": [
-                "target create ${workspaceFolder}/Curses/sap"
+                "target create ${workspaceFolder}/Desktop/sap"
             ],
             "processCreateCommands": [
-                "settings set target.run-args \"/home/marvin/Media/Audiobooks/Snapshot.wav\"",
+                "settings set target.run-args",
                 "process launch"
             ]
         },
@@ -27,8 +27,8 @@
             "type": "lldb",
             "request": "launch",
             "name": "LLDB",
-            "program": "${workspaceFolder}/Curses/sap",
-            "args": ["/home/marvin/Media/Audiobooks/Snapshot.wav"],
+            "program": "${workspaceFolder}/Desktop/sap",
+            "args": [],
             "cwd": "${workspaceFolder}"
         }
     ]
