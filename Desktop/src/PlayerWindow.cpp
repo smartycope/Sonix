@@ -1,6 +1,5 @@
 #include "PlayerWindow.h"
-#include "./ui_PlayerWindow.h"
-#include "src/portaudio.h"
+
 
 PlayerWindow::PlayerWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::PlayerWindow){
     ui->setupUi(this);
@@ -16,12 +15,15 @@ PlayerWindow::PlayerWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::Pla
     sonicPosition = 0;
 
     //* The raspberry pi zero literally doesn't have this much RAM.
-    // sonicBuffer = (float*)malloc(sizeof(float) * book->frames * book->channels);
-    sonicBuffer = (float*)malloc(sizeof(float) * SONIC_BUFFER_SIZE);
+    sonicBuffer = (SampleType*)malloc(sizeof(SampleType) * SONIC_BUFFER_SIZE);
     outputPosition = 0;
 
     Book* b = new Book(TEST_PATH);
     setBook(b);
+
+    QTimer* sampleTimer = new QTimer(this);
+    connect(sampleTimer, SIGNAL(timeout()), this, SLOT(requestSamples()));
+    sampleTimer->start(50);
 
     updateAll();
 }
@@ -37,18 +39,29 @@ PlayerWindow::~PlayerWindow(){
     free(sonicBuffer);
     delete book;
     delete ui;
+    delete sampleTimer;
 }
 
 void PlayerWindow::updateAll(){
     updateUI();
     updateSonic();
     updatePortaudio();
+    updateSampleProvider();
+}
+
+void PlayerWindow::updateSampleProvider(){
+    if (book){
+        if (not sampleProviderInitalized)
+            sampleProvider = SampleProvider(book->filepath, book->startSec);
+        else
+            sampleProvider.updateFile(book->filepath, book->startSec);
+    }
 }
 
 void PlayerWindow::updateSonic(){
     if (book){
         if (not sonicInitalized){
-            sStream = sonicCreateStream(book->samplerate, book->channels);
+            sStream = sonicCreateStream(SAMPLERATE, CHANNELS);
             // _debug(sonicGetSpeed(sStream));
             sonicSetSpeed(sStream, speed);
             sonicSetPitch(sStream, pitch);
@@ -60,8 +73,8 @@ void PlayerWindow::updateSonic(){
             sonicInitalized = true;
         }
         else{
-            sonicSetNumChannels(sStream, book->channels);
-            sonicSetSampleRate(sStream, book->samplerate);
+            sonicSetNumChannels(sStream, CHANNELS);
+            sonicSetSampleRate(sStream, SAMPLERATE);
 
             // sonicSetSpeed(sStream, speed);
             // sonicSetPitch(sStream, pitch);
@@ -81,13 +94,13 @@ void PlayerWindow::updatePortaudio(){
             error_check(Pa_Initialize());
 
             //* Set the output parameters
-            paStreamParams.device = Pa_GetDefaultOutputDevice(); // use the default device
-            paStreamParams.channelCount = book->channels; // use the same number of channels as our sound file
-            paStreamParams.sampleFormat = paFloat32;
+            paStreamParams.device = Pa_GetDefaultOutputDevice();
+            paStreamParams.channelCount = CHANNELS;
+            paStreamParams.sampleFormat = paInt8; //* Remember to update this upon changing "SampleType"
             paStreamParams.suggestedLatency = Pa_GetDeviceInfo(paStreamParams.device)->defaultLowOutputLatency;
             paStreamParams.hostApiSpecificStreamInfo = NULL;
 
-            error_check(Pa_OpenStream(&paStream, NULL, &paStreamParams, book->samplerate, FRAMES_PER_BUFFER, paClipOff, audioCallback, this));
+            error_check(Pa_OpenStream(&paStream, NULL, &paStreamParams, SAMPLERATE, FRAMES_PER_BUFFER, paClipOff, audioCallback, &this->sampleProvider));
             error_check(Pa_StartStream(paStream));
 
             portaudioInitalized = true;
@@ -95,7 +108,7 @@ void PlayerWindow::updatePortaudio(){
         //* If it is initialized, but we've changed to a book with a different samplerate or number of channels,
         //      then terminate the current portaudio stream and make a new one (I can't find a way to update it on the fly)
         //*                                                  This should be portaudio.getChannels() or something, but I can't find a way to do that.
-        else if ((Pa_GetStreamInfo(paStream)->sampleRate != book->samplerate) or (book->channels != book->channels)){
+        else if ((Pa_GetStreamInfo(paStream)->sampleRate != SAMPLERATE)){
             if (not paused)
                 error_check(Pa_StopStream(paStream));
 
@@ -109,9 +122,10 @@ void PlayerWindow::updatePortaudio(){
 
 void PlayerWindow::updateUI(){
     if (book){
-        if (book->coverpath)
-            ui->cover->setPixmap(QPixmap(book->coverpath));
-        else
+
+        // if (book->coverpath)
+            // ui->cover->setPixmap(QPixmap(book->coverpath));
+        // else
             ui->cover->setPixmap(QPixmap(UNSPECIFIED_COVER_PATH));
 
         _debug(book->title.c_str())
@@ -148,7 +162,8 @@ void PlayerWindow::updateUI(){
         connect(ui->actionJumpForward, SIGNAL(triggered()), this, SLOT(jumpForward()));
         connect(ui->actionJumpBack,    SIGNAL(triggered()), this, SLOT(jumpBackward()));
 
-        connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(open()));
+        connect(ui->actionOpen,  SIGNAL(triggered()), this, SLOT(open()));
+        connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 
         uiInitalized = true;
     }
@@ -161,6 +176,10 @@ void PlayerWindow::setBook(Book* book){
     updateAll();
 }
 
+void PlayerWindow::requestSamples(){
+    sampleProvider.requestSamples();
+}
+
 void PlayerWindow::open(){
     QString path = QFileDialog::getOpenFileName(this, tr("Audio File"));
     if (path.isNull() == false){
@@ -169,12 +188,17 @@ void PlayerWindow::open(){
     }
 }
 
+void PlayerWindow::about(){
+    QMessageBox msgBox;
+    msgBox.setText(ABOUT_MSG);
+    msgBox.exec();
+}
+
 void PlayerWindow::setPaused(bool wantPaused){
-    note();
     if (book){
         error_check(wantPaused ? Pa_StopStream(paStream) : Pa_StartStream(paStream));
         paused = wantPaused;
-        _debug(paused)
+        _debug(paused);
     }
 }
 
@@ -199,7 +223,7 @@ void PlayerWindow::setRate(float to){
 void PlayerWindow::setVolume(int percentage){
     note();
     if (book){
-        sonicSetVolume(sStream, 5 / percentage);
+        sonicSetVolume(sStream, 5.0 / percentage);
         ui->volumeControl->setValue(percentage);
     }
 
@@ -232,26 +256,28 @@ void PlayerWindow::error_check(PaError err) {
 }
 
 void PlayerWindow::flushStream(){
-    sonicPosition = outputPosition;
+    // sonicPosition = outputPosition;
+    sampleProvider.flush();
 }
 
 void PlayerWindow::skip(int amount){
-    note();
     if (book){
-        if (outputPosition + (amount * book->channels) < 0)
-            outputPosition = 0;
-        else if (outputPosition + (amount * book->channels) > book->frames)
-            outputPosition = book->frames;
-        else
-            outputPosition += amount * book->channels;
+        // if (outputPosition + (amount * CHANNELS) < 0)
+        //     outputPosition = 0;
+        // else if (outputPosition + (amount * CHANNELS) > book->frames)
+        //     outputPosition = book->frames;
+        // else
+        //     outputPosition += amount * CHANNELS;
 
-        book->pos = (int)(outputPosition / book->channels);
-        flushStream();
+        // // book->pos = (int)(outputPosition / CHANNELS);
+        // book->sampleProvider.pos += amount;
+        // flushStream();
+        sampleProvider.skip(amount);
     }
 }
 
 void PlayerWindow::jump(int chapters){
-    note();
+    // sampleProvider.jump()
 }
 
 bool PlayerWindow::togglePaused(){
@@ -298,32 +324,86 @@ void PlayerWindow::decrementVolume(){
 }
 
 void PlayerWindow::skipForward(){
-    note();
     if (book)
-        skip(SKIP_SAMPLES);
+        skip(SKIP_SECONDS);
 }
 
 void PlayerWindow::skipBackward(){
-    note();
     if (book)
-        skip(-SKIP_SAMPLES);
+        skip(-SKIP_SECONDS);
 }
 
 void PlayerWindow::jumpForward(){
-    note();
     if (book)
         jump(1);
 }
 
 void PlayerWindow::jumpBackward(){
-    note();
     if (book)
         jump(-1);
 }
 
 
-
 // Callback function for audio output
+#ifdef USE_SNDFILE
+    int audioCallback(const void* input,
+                    void* output,
+                    const unsigned long samplesNeeded,
+                    const PaStreamCallbackTimeInfo* paTimeInfo,
+                    PaStreamCallbackFlags statusFlags,
+                    void* self){
+
+        PlayerWindow* player = reinterpret_cast<PlayerWindow*>(self); // Cast our data to be usable
+        SampleType* out = (SampleType*)output;
+        int currentSamples, samplesRead, samplesReadFromFile, samplesWritten;
+        SampleType transportBuffer[samplesNeeded * player->CHANNELS];
+
+        do{
+            //* seek to our current file position
+            sf_seek(player->book->file, player->book->pos, SEEK_SET);
+
+            //* are we going to read past the end of the file?
+            if (samplesNeeded > (player->book->frames - player->book->pos)){
+                //* if we are, only read to the end of the file
+                currentSamples = player->book->frames - player->book->pos;
+                player->finished();
+                // return paAbort;
+            }
+            else{
+                //* otherwise, we'll just fill up the rest of the output buffer
+                currentSamples = samplesNeeded;
+                //* and increment the file position
+                player->book->pos += currentSamples;
+            }
+
+            //* Read from file to sonic stream
+            samplesReadFromFile = sf_readf_short(player->book->file, transportBuffer, currentSamples);
+            samplesWritten = sonicWriteFloatToStream(player->sStream, transportBuffer, samplesReadFromFile);
+
+            //* Read from sonic stream to player->sonicBuffer
+            do{
+                // samplesRead = sonicReadFloatFromStream(player->sStream, player->sonicBuffer + player->sonicPosition, currentSamples);
+                samplesRead = sonicReadShortFromStream(player->sStream, player->sonicBuffer + (player->sonicPosition % SONIC_BUFFER_SIZE), currentSamples);
+                player->sonicPosition += samplesRead * player->CHANNELS;
+
+            //* While there's still stuff to be read
+            } while (samplesRead > 0);
+
+        //* Just keep calling it until we have enough
+        } while ((player->outputPosition + (samplesNeeded * player->CHANNELS) + 1) > player->sonicPosition);
+
+        //* Read from player->sonicBuffer to audio output
+        int prevPos = player->outputPosition;
+        for(int i = 0; i < samplesNeeded * player->CHANNELS; i++){
+            out[i] = player->sonicBuffer[player->outputPosition % SONIC_BUFFER_SIZE];
+            ++player->outputPosition;
+        }
+
+        return paContinue;
+    }
+#endif
+
+
 int audioCallback(const void* input,
                   void* output,
                   const unsigned long samplesNeeded,
@@ -331,51 +411,10 @@ int audioCallback(const void* input,
                   PaStreamCallbackFlags statusFlags,
                   void* self){
 
-    PlayerWindow* player = reinterpret_cast<PlayerWindow*>(self); // Cast our data to be usable
-    float* out = (float*)output;
-    int currentSamples, samplesRead, samplesReadFromFile, samplesWritten;
-    float transportBuffer[samplesNeeded * player->book->channels];
+    SampleProvider* sampleProvider = reinterpret_cast<SampleProvider*>(self); // Cast our data to be usable
+    SampleType* out = (SampleType*)output;
 
-    do{
-        //* seek to our current file position
-        sf_seek(player->book->file, player->book->pos, SEEK_SET);
-
-        //* are we going to read past the end of the file?
-        if (samplesNeeded > (player->book->frames - player->book->pos)){
-            //* if we are, only read to the end of the file
-            currentSamples = player->book->frames - player->book->pos;
-            player->finished();
-            // return paAbort;
-        }
-        else{
-            //* otherwise, we'll just fill up the rest of the output buffer
-            currentSamples = samplesNeeded;
-            //* and increment the file position
-            player->book->pos += currentSamples;
-        }
-
-        //* Read from file to sonic stream
-        samplesReadFromFile = sf_readf_float(player->book->file, transportBuffer, currentSamples);
-        samplesWritten = sonicWriteFloatToStream(player->sStream, transportBuffer, samplesReadFromFile);
-
-        //* Read from sonic stream to player->sonicBuffer
-        do{
-            // samplesRead = sonicReadFloatFromStream(player->sStream, player->sonicBuffer + player->sonicPosition, currentSamples);
-            samplesRead = sonicReadFloatFromStream(player->sStream, player->sonicBuffer + (player->sonicPosition % SONIC_BUFFER_SIZE), currentSamples);
-            player->sonicPosition += samplesRead * player->book->channels;
-
-        //* While there's still stuff to be read
-        } while (samplesRead > 0);
-
-    //* Just keep calling it until we have enough
-    } while ((player->outputPosition + (samplesNeeded * player->book->channels) + 1) > player->sonicPosition);
-
-    //* Read from player->sonicBuffer to audio output
-    int prevPos = player->outputPosition;
-    for(int i = 0; i < samplesNeeded * player->book->channels; i++){
-        out[i] = player->sonicBuffer[player->outputPosition % SONIC_BUFFER_SIZE];
-        ++player->outputPosition;
-    }
+    out = sampleProvider->getSamples(samplesNeeded).data();
 
     return paContinue;
 }

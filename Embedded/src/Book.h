@@ -3,7 +3,7 @@
 #include <string>
 #include "sndfile.h"
 // #include <mp4v2/mp4v2.h>
-#include "cope.cpp"
+// #include "cope.cpp"
 
 using namespace std;
 

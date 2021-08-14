@@ -41,6 +41,7 @@ public:
     QAction *actionFaster;
     QAction *actionSlower;
     QAction *actionQuit;
+    QAction *actionAbout;
     QWidget *centralwidget;
     QWidget *horizontalLayoutWidget_2;
     QHBoxLayout *horizontalLayout_2;
@@ -94,6 +95,9 @@ public:
         actionSlower->setObjectName(QString::fromUtf8("actionSlower"));
         actionQuit = new QAction(PlayerWindow);
         actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
+        actionAbout = new QAction(PlayerWindow);
+        actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
+        actionAbout->setMenuRole(QAction::AboutRole);
         centralwidget = new QWidget(PlayerWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayoutWidget_2 = new QWidget(centralwidget);
@@ -250,6 +254,9 @@ public:
         menuControls->addAction(actionFaster);
         menuControls->addAction(actionSlower);
         menuFile->addAction(actionOpen);
+        menuFile->addSeparator();
+        menuFile->addAction(actionAbout);
+        menuFile->addSeparator();
         menuFile->addAction(actionQuit);
 
         retranslateUi(PlayerWindow);
@@ -341,6 +348,7 @@ public:
 #if QT_CONFIG(tooltip)
         actionQuit->setToolTip(QCoreApplication::translate("PlayerWindow", "Close the program", nullptr));
 #endif // QT_CONFIG(tooltip)
+        actionAbout->setText(QCoreApplication::translate("PlayerWindow", "About...", nullptr));
         cover->setText(QString());
         titleLabel->setText(QCoreApplication::translate("PlayerWindow", "Title", nullptr));
         authorLabel->setText(QCoreApplication::translate("PlayerWindow", "Author", nullptr));

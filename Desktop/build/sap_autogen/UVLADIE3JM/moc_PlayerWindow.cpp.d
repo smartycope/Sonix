@@ -1,32 +1,69 @@
 /home/marvin/hello/C/SAP/Desktop/build/sap_autogen/UVLADIE3JM/moc_PlayerWindow.cpp: /home/marvin/hello/C/SAP/Desktop/src/PlayerWindow.h \
   /home/marvin/hello/C/SAP/Desktop/build/sap_autogen/moc_predefs.h \
   /home/marvin/hello/C/SAP/Desktop/src/Book.h \
-  /home/marvin/hello/C/SAP/Desktop/src/cope.cpp \
-  /home/marvin/hello/C/SAP/Desktop/src/cope.h \
+  /home/marvin/hello/C/SAP/Desktop/src/SampleProvider.hpp \
+  /home/marvin/hello/C/SAP/Desktop/src/cope.hpp \
+  /home/marvin/hello/C/SAP/Desktop/src/defs.h \
   /home/marvin/hello/C/SAP/Desktop/src/portaudio.h \
   /home/marvin/hello/C/SAP/Desktop/src/sndfile.h \
   /home/marvin/hello/C/SAP/Desktop/src/sonic.h \
+  /usr/include/alloca.h \
+  /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/int-ll64.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/asm-generic/types.h \
+  /usr/include/asm/bitsperlong.h \
   /usr/include/asm/errno.h \
+  /usr/include/asm/posix_types.h \
+  /usr/include/asm/sigcontext.h \
+  /usr/include/asm/sve_context.h \
+  /usr/include/asm/types.h \
   /usr/include/assert.h \
   /usr/include/bits/byteswap.h \
+  /usr/include/bits/confname.h \
   /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
+  /usr/include/bits/environments.h \
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
+  /usr/include/bits/getopt_core.h \
+  /usr/include/bits/getopt_posix.h \
   /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
+  /usr/include/bits/posix_opt.h \
+  /usr/include/bits/procfs-extra.h \
+  /usr/include/bits/procfs-id.h \
+  /usr/include/bits/procfs-prregset.h \
+  /usr/include/bits/procfs.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/sched.h \
   /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
+  /usr/include/bits/sigaction.h \
+  /usr/include/bits/sigcontext.h \
+  /usr/include/bits/sigevent-consts.h \
+  /usr/include/bits/siginfo-arch.h \
+  /usr/include/bits/siginfo-consts-arch.h \
+  /usr/include/bits/siginfo-consts.h \
+  /usr/include/bits/signal_ext.h \
+  /usr/include/bits/signum-arch.h \
+  /usr/include/bits/signum-generic.h \
+  /usr/include/bits/sigstack.h \
+  /usr/include/bits/sigthread.h \
+  /usr/include/bits/ss_flags.h \
   /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
   /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
   /usr/include/bits/thread-shared-types.h \
@@ -42,16 +79,23 @@
   /usr/include/bits/types/__locale_t.h \
   /usr/include/bits/types/__mbstate_t.h \
   /usr/include/bits/types/__sigset_t.h \
+  /usr/include/bits/types/__sigval_t.h \
   /usr/include/bits/types/clock_t.h \
   /usr/include/bits/types/clockid_t.h \
   /usr/include/bits/types/cookie_io_functions_t.h \
   /usr/include/bits/types/error_t.h \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
+  /usr/include/bits/types/sig_atomic_t.h \
+  /usr/include/bits/types/sigevent_t.h \
+  /usr/include/bits/types/siginfo_t.h \
   /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/sigval_t.h \
+  /usr/include/bits/types/stack_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct_itimerspec.h \
   /usr/include/bits/types/struct_sched_param.h \
+  /usr/include/bits/types/struct_sigstack.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
   /usr/include/bits/types/struct_tm.h \
@@ -60,9 +104,14 @@
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/uio_lim.h \
+  /usr/include/bits/unistd_ext.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/bits/xopen_lim.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/atomic_word.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/basic_file.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/c++allocator.h \
@@ -99,6 +148,7 @@
   /usr/include/c++/10/bits/cpp_type_traits.h \
   /usr/include/c++/10/bits/cxxabi_forced.h \
   /usr/include/c++/10/bits/cxxabi_init_exception.h \
+  /usr/include/c++/10/bits/deque.tcc \
   /usr/include/c++/10/bits/enable_special_members.h \
   /usr/include/c++/10/bits/erase_if.h \
   /usr/include/c++/10/bits/exception.h \
@@ -107,7 +157,10 @@
   /usr/include/c++/10/bits/fstream.tcc \
   /usr/include/c++/10/bits/functexcept.h \
   /usr/include/c++/10/bits/functional_hash.h \
+  /usr/include/c++/10/bits/gslice.h \
+  /usr/include/c++/10/bits/gslice_array.h \
   /usr/include/c++/10/bits/hash_bytes.h \
+  /usr/include/c++/10/bits/indirect_array.h \
   /usr/include/c++/10/bits/invoke.h \
   /usr/include/c++/10/bits/ios_base.h \
   /usr/include/c++/10/bits/istream.tcc \
@@ -118,6 +171,7 @@
   /usr/include/c++/10/bits/locale_facets.h \
   /usr/include/c++/10/bits/locale_facets.tcc \
   /usr/include/c++/10/bits/localefwd.h \
+  /usr/include/c++/10/bits/mask_array.h \
   /usr/include/c++/10/bits/memoryfwd.h \
   /usr/include/c++/10/bits/move.h \
   /usr/include/c++/10/bits/nested_exception.h \
@@ -136,12 +190,16 @@
   /usr/include/c++/10/bits/shared_ptr.h \
   /usr/include/c++/10/bits/shared_ptr_atomic.h \
   /usr/include/c++/10/bits/shared_ptr_base.h \
+  /usr/include/c++/10/bits/slice_array.h \
+  /usr/include/c++/10/bits/specfun.h \
+  /usr/include/c++/10/bits/sstream.tcc \
   /usr/include/c++/10/bits/std_abs.h \
   /usr/include/c++/10/bits/std_function.h \
   /usr/include/c++/10/bits/stl_algo.h \
   /usr/include/c++/10/bits/stl_algobase.h \
   /usr/include/c++/10/bits/stl_bvector.h \
   /usr/include/c++/10/bits/stl_construct.h \
+  /usr/include/c++/10/bits/stl_deque.h \
   /usr/include/c++/10/bits/stl_function.h \
   /usr/include/c++/10/bits/stl_heap.h \
   /usr/include/c++/10/bits/stl_iterator.h \
@@ -152,6 +210,7 @@
   /usr/include/c++/10/bits/stl_multimap.h \
   /usr/include/c++/10/bits/stl_numeric.h \
   /usr/include/c++/10/bits/stl_pair.h \
+  /usr/include/c++/10/bits/stl_queue.h \
   /usr/include/c++/10/bits/stl_raw_storage_iter.h \
   /usr/include/c++/10/bits/stl_relops.h \
   /usr/include/c++/10/bits/stl_tempbuf.h \
@@ -166,21 +225,28 @@
   /usr/include/c++/10/bits/uniform_int_dist.h \
   /usr/include/c++/10/bits/unique_ptr.h \
   /usr/include/c++/10/bits/uses_allocator.h \
+  /usr/include/c++/10/bits/valarray_after.h \
+  /usr/include/c++/10/bits/valarray_array.h \
+  /usr/include/c++/10/bits/valarray_array.tcc \
+  /usr/include/c++/10/bits/valarray_before.h \
   /usr/include/c++/10/bits/vector.tcc \
   /usr/include/c++/10/cassert \
   /usr/include/c++/10/cctype \
   /usr/include/c++/10/cerrno \
   /usr/include/c++/10/clocale \
+  /usr/include/c++/10/cmath \
   /usr/include/c++/10/compare \
   /usr/include/c++/10/concepts \
   /usr/include/c++/10/cstddef \
   /usr/include/c++/10/cstdint \
   /usr/include/c++/10/cstdio \
   /usr/include/c++/10/cstdlib \
+  /usr/include/c++/10/cstring \
   /usr/include/c++/10/cwchar \
   /usr/include/c++/10/cwctype \
   /usr/include/c++/10/debug/assertions.h \
   /usr/include/c++/10/debug/debug.h \
+  /usr/include/c++/10/deque \
   /usr/include/c++/10/exception \
   /usr/include/c++/10/ext/aligned_buffer.h \
   /usr/include/c++/10/ext/alloc_traits.h \
@@ -190,6 +256,7 @@
   /usr/include/c++/10/ext/numeric_traits.h \
   /usr/include/c++/10/ext/string_conversions.h \
   /usr/include/c++/10/ext/type_traits.h \
+  /usr/include/c++/10/forward_list \
   /usr/include/c++/10/fstream \
   /usr/include/c++/10/functional \
   /usr/include/c++/10/initializer_list \
@@ -210,17 +277,31 @@
   /usr/include/c++/10/pstl/glue_algorithm_defs.h \
   /usr/include/c++/10/pstl/glue_memory_defs.h \
   /usr/include/c++/10/pstl/glue_numeric_defs.h \
+  /usr/include/c++/10/queue \
   /usr/include/c++/10/ranges \
+  /usr/include/c++/10/sstream \
   /usr/include/c++/10/stdexcept \
-  /usr/include/c++/10/stdlib.h \
   /usr/include/c++/10/streambuf \
   /usr/include/c++/10/string \
   /usr/include/c++/10/string_view \
+  /usr/include/c++/10/tr1/bessel_function.tcc \
+  /usr/include/c++/10/tr1/beta_function.tcc \
+  /usr/include/c++/10/tr1/ell_integral.tcc \
+  /usr/include/c++/10/tr1/exp_integral.tcc \
+  /usr/include/c++/10/tr1/gamma.tcc \
+  /usr/include/c++/10/tr1/hypergeometric.tcc \
+  /usr/include/c++/10/tr1/legendre_function.tcc \
+  /usr/include/c++/10/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/10/tr1/poly_hermite.tcc \
+  /usr/include/c++/10/tr1/poly_laguerre.tcc \
+  /usr/include/c++/10/tr1/riemann_zeta.tcc \
+  /usr/include/c++/10/tr1/special_function_util.h \
   /usr/include/c++/10/tuple \
   /usr/include/c++/10/type_traits \
   /usr/include/c++/10/typeinfo \
   /usr/include/c++/10/unordered_map \
   /usr/include/c++/10/utility \
+  /usr/include/c++/10/valarray \
   /usr/include/c++/10/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
@@ -228,14 +309,21 @@
   /usr/include/features.h \
   /usr/include/gnu/stubs-lp64.h \
   /usr/include/gnu/stubs.h \
+  /usr/include/limits.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
+  /usr/include/linux/types.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
+  /usr/include/qt5/QtCore/QTimer \
   /usr/include/qt5/QtCore/qalgorithms.h \
   /usr/include/qt5/QtCore/qarraydata.h \
   /usr/include/qt5/QtCore/qatomic.h \
   /usr/include/qt5/QtCore/qatomic_cxx11.h \
   /usr/include/qt5/QtCore/qbasicatomic.h \
+  /usr/include/qt5/QtCore/qbasictimer.h \
   /usr/include/qt5/QtCore/qbytearray.h \
   /usr/include/qt5/QtCore/qbytearraylist.h \
   /usr/include/qt5/QtCore/qchar.h \
@@ -258,7 +346,9 @@
   /usr/include/qt5/QtCore/qiterator.h \
   /usr/include/qt5/QtCore/qline.h \
   /usr/include/qt5/QtCore/qlist.h \
+  /usr/include/qt5/QtCore/qlocale.h \
   /usr/include/qt5/QtCore/qlogging.h \
+  /usr/include/qt5/QtCore/qmap.h \
   /usr/include/qt5/QtCore/qmargins.h \
   /usr/include/qt5/QtCore/qmetatype.h \
   /usr/include/qt5/QtCore/qnamespace.h \
@@ -287,11 +377,14 @@
   /usr/include/qt5/QtCore/qsysinfo.h \
   /usr/include/qt5/QtCore/qsystemdetection.h \
   /usr/include/qt5/QtCore/qtcore-config.h \
+  /usr/include/qt5/QtCore/qtimer.h \
   /usr/include/qt5/QtCore/qtypeinfo.h \
   /usr/include/qt5/QtCore/qurl.h \
+  /usr/include/qt5/QtCore/qvariant.h \
   /usr/include/qt5/QtCore/qvarlengtharray.h \
   /usr/include/qt5/QtCore/qvector.h \
   /usr/include/qt5/QtCore/qversiontagging.h \
+  /usr/include/qt5/QtGui/QPixmap \
   /usr/include/qt5/QtGui/qbrush.h \
   /usr/include/qt5/QtGui/qcolor.h \
   /usr/include/qt5/QtGui/qcursor.h \
@@ -316,27 +409,36 @@
   /usr/include/qt5/QtGui/qwindowdefs.h \
   /usr/include/qt5/QtWidgets/QFileDialog \
   /usr/include/qt5/QtWidgets/QMainWindow \
+  /usr/include/qt5/QtWidgets/QMessageBox \
   /usr/include/qt5/QtWidgets/qdialog.h \
   /usr/include/qt5/QtWidgets/qfiledialog.h \
   /usr/include/qt5/QtWidgets/qmainwindow.h \
+  /usr/include/qt5/QtWidgets/qmessagebox.h \
   /usr/include/qt5/QtWidgets/qsizepolicy.h \
   /usr/include/qt5/QtWidgets/qtabwidget.h \
   /usr/include/qt5/QtWidgets/qtwidgets-config.h \
   /usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
   /usr/include/qt5/QtWidgets/qwidget.h \
   /usr/include/sched.h \
+  /usr/include/signal.h \
   /usr/include/stdc-predef.h \
+  /usr/include/stdint.h \
   /usr/include/stdio.h \
+  /usr/include/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
   /usr/include/sys/cdefs.h \
+  /usr/include/sys/procfs.h \
   /usr/include/sys/select.h \
+  /usr/include/sys/time.h \
   /usr/include/sys/types.h \
+  /usr/include/sys/ucontext.h \
+  /usr/include/sys/user.h \
+  /usr/include/sys/wait.h \
   /usr/include/time.h \
+  /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
-  /usr/lib/gcc/aarch64-redhat-linux/10/include/limits.h \
   /usr/lib/gcc/aarch64-redhat-linux/10/include/stdarg.h \
   /usr/lib/gcc/aarch64-redhat-linux/10/include/stddef.h \
-  /usr/lib/gcc/aarch64-redhat-linux/10/include/stdint.h \
-  /usr/lib/gcc/aarch64-redhat-linux/10/include/syslimits.h
+  /usr/local/include/nlohmann/json.hpp

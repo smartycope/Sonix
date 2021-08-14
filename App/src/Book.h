@@ -5,7 +5,7 @@
 #include <QObject>
 #include <QtQml/qqml.h>
 #include <iostream>
-#include "cope.cpp"
+// #include "cope.cpp"
 #include "sndfile.h"
 
 #define FILENAME "/home/rebecca/Downloads/art_of_war_librivox_64kb_mp3/art_of_war_01-02_sun_tzu_64kb.wav"

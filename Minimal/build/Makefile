@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/marvin/hello/C/SAP/Curses
+CMAKE_SOURCE_DIR = /home/marvin/hello/C/SAP/Minimal
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/marvin/hello/C/SAP/Curses/build
+CMAKE_BINARY_DIR = /home/marvin/hello/C/SAP/Minimal/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marvin/hello/C/SAP/Curses/build/CMakeFiles /home/marvin/hello/C/SAP/Curses/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marvin/hello/C/SAP/Minimal/build/CMakeFiles /home/marvin/hello/C/SAP/Minimal/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marvin/hello/C/SAP/Curses/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/marvin/hello/C/SAP/Minimal/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,32 +142,99 @@ sap/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/build
 .PHONY : sap/fast
 
-src/main.o: src/main.c.o
+#=============================================================================
+# Target rules for targets named sap_autogen
+
+# Build rule for target.
+sap_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sap_autogen
+.PHONY : sap_autogen
+
+# fast build rule for target.
+sap_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap_autogen.dir/build.make CMakeFiles/sap_autogen.dir/build
+.PHONY : sap_autogen/fast
+
+sap_autogen/mocs_compilation.o: sap_autogen/mocs_compilation.cpp.o
+
+.PHONY : sap_autogen/mocs_compilation.o
+
+# target to build an object file
+sap_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o
+.PHONY : sap_autogen/mocs_compilation.cpp.o
+
+sap_autogen/mocs_compilation.i: sap_autogen/mocs_compilation.cpp.i
+
+.PHONY : sap_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+sap_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.i
+.PHONY : sap_autogen/mocs_compilation.cpp.i
+
+sap_autogen/mocs_compilation.s: sap_autogen/mocs_compilation.cpp.s
+
+.PHONY : sap_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+sap_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.s
+.PHONY : sap_autogen/mocs_compilation.cpp.s
+
+src/audiooutput.o: src/audiooutput.cpp.o
+
+.PHONY : src/audiooutput.o
+
+# target to build an object file
+src/audiooutput.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/audiooutput.cpp.o
+.PHONY : src/audiooutput.cpp.o
+
+src/audiooutput.i: src/audiooutput.cpp.i
+
+.PHONY : src/audiooutput.i
+
+# target to preprocess a source file
+src/audiooutput.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/audiooutput.cpp.i
+.PHONY : src/audiooutput.cpp.i
+
+src/audiooutput.s: src/audiooutput.cpp.s
+
+.PHONY : src/audiooutput.s
+
+# target to generate assembly for a file
+src/audiooutput.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/audiooutput.cpp.s
+.PHONY : src/audiooutput.cpp.s
+
+src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/main.c.o
-.PHONY : src/main.c.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-src/main.i: src/main.c.i
+src/main.i: src/main.cpp.i
 
 .PHONY : src/main.i
 
 # target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/main.c.i
-.PHONY : src/main.c.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-src/main.s: src/main.c.s
+src/main.s: src/main.cpp.s
 
 .PHONY : src/main.s
 
 # target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/main.c.s
-.PHONY : src/main.c.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 src/sonic.o: src/sonic.c.o
 
@@ -204,7 +271,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... sap_autogen"
 	@echo "... sap"
+	@echo "... sap_autogen/mocs_compilation.o"
+	@echo "... sap_autogen/mocs_compilation.i"
+	@echo "... sap_autogen/mocs_compilation.s"
+	@echo "... src/audiooutput.o"
+	@echo "... src/audiooutput.i"
+	@echo "... src/audiooutput.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

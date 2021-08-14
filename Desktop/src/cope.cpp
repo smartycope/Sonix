@@ -1,7 +1,7 @@
 #ifndef __COPE__
 #define __COPE__
 
-#include "cope.h"
+#include "cope.hpp"
 
 // #ifdef __cplusplus
 //     extern "C"{
@@ -124,6 +124,52 @@ static std::string fmt(std::string str, ...){
     vsnprintf(tmp, str.size(), str.c_str(), args);
     va_end(args);
     return tmp;
+}
+
+static void leave(int status, std::string msg){
+    debugf("Exiting with code %d: %s", status, msg.c_str());
+    exit(status);
+}
+
+static void leave(int status){
+    leave(status, "");
+}
+
+std::vector<char> getCmdOutV(const std::string command){
+    FILE* pipe;
+    const char* cmd = command.c_str();
+    std::vector<char> out;
+    char* transportBuffer;
+
+    printf("Executing command: \"%s\"\n", cmd);
+
+    pipe = popen(cmd, "r");
+    if (pipe == NULL) { _debug("Error: Failed to open pipe", 5); }
+
+    int rtn = pclose(pipe);
+    if (rtn) leave(rtn, fmt("\"%s\" returned error: %d", cmd, rtn));
+
+    long read = fread(transportBuffer, sizeof(char), ftell(pipe), pipe);
+    out.assign(transportBuffer, transportBuffer + read);
+    return out;
+}
+
+static std::string getCmdOutS(const std::string command){
+    FILE* pipe;
+    const char* cmd = command.c_str();
+    std::string out;
+    char* transportBuffer;
+
+    printf("Executing command: \"%s\"\n", cmd);
+
+    pipe = popen(cmd, "r");
+    if (pipe == NULL) { _debug("Error: Failed to open pipe", 5); }
+
+    int rtn = pclose(pipe);
+    if (rtn) leave(rtn, fmt("\"%s\" returned error: %d", cmd, rtn));
+
+    long read = fread(transportBuffer, sizeof(char), ftell(pipe), pipe);
+    return std::string(transportBuffer, read);
 }
 
 // #ifdef __cplusplus

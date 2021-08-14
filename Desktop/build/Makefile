@@ -236,32 +236,32 @@ src/PlayerWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/PlayerWindow.cpp.s
 .PHONY : src/PlayerWindow.cpp.s
 
-src/cope.o: src/cope.cpp.o
+src/SampleProvider.o: src/SampleProvider.cpp.o
 
-.PHONY : src/cope.o
+.PHONY : src/SampleProvider.o
 
 # target to build an object file
-src/cope.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/cope.cpp.o
-.PHONY : src/cope.cpp.o
+src/SampleProvider.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/SampleProvider.cpp.o
+.PHONY : src/SampleProvider.cpp.o
 
-src/cope.i: src/cope.cpp.i
+src/SampleProvider.i: src/SampleProvider.cpp.i
 
-.PHONY : src/cope.i
+.PHONY : src/SampleProvider.i
 
 # target to preprocess a source file
-src/cope.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/cope.cpp.i
-.PHONY : src/cope.cpp.i
+src/SampleProvider.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/SampleProvider.cpp.i
+.PHONY : src/SampleProvider.cpp.i
 
-src/cope.s: src/cope.cpp.s
+src/SampleProvider.s: src/SampleProvider.cpp.s
 
-.PHONY : src/cope.s
+.PHONY : src/SampleProvider.s
 
 # target to generate assembly for a file
-src/cope.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/cope.cpp.s
-.PHONY : src/cope.cpp.s
+src/SampleProvider.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/SampleProvider.cpp.s
+.PHONY : src/SampleProvider.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -290,6 +290,33 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/sonic.o: src/sonic.c.o
+
+.PHONY : src/sonic.o
+
+# target to build an object file
+src/sonic.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/sonic.c.o
+.PHONY : src/sonic.c.o
+
+src/sonic.i: src/sonic.c.i
+
+.PHONY : src/sonic.i
+
+# target to preprocess a source file
+src/sonic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/sonic.c.i
+.PHONY : src/sonic.c.i
+
+src/sonic.s: src/sonic.c.s
+
+.PHONY : src/sonic.s
+
+# target to generate assembly for a file
+src/sonic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/sonic.c.s
+.PHONY : src/sonic.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -309,12 +336,15 @@ help:
 	@echo "... src/PlayerWindow.o"
 	@echo "... src/PlayerWindow.i"
 	@echo "... src/PlayerWindow.s"
-	@echo "... src/cope.o"
-	@echo "... src/cope.i"
-	@echo "... src/cope.s"
+	@echo "... src/SampleProvider.o"
+	@echo "... src/SampleProvider.i"
+	@echo "... src/SampleProvider.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/sonic.o"
+	@echo "... src/sonic.i"
+	@echo "... src/sonic.s"
 .PHONY : help
 
 

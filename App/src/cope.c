@@ -1,7 +1,7 @@
 #ifndef __COPE__
 #define __COPE__
 
-#include "cope.h"
+#include "cope.hpp"
 
 static void _printMetaData(int line, char* func, char* file){
     printsl(METADATA_COLOR);

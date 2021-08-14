@@ -9,7 +9,8 @@
 #include <QDataStream>
 #include <qqml.h>
 // #include "Book.h"
-#include "cope.cpp"
+// #include "cope.cpp"
+
 #include "sndfile.h"
 #include "sonic.h"
 #include <QAudioOutput>

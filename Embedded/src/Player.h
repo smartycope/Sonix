@@ -4,7 +4,7 @@
 #include "sndfile.h"
 #include "sonic.h"
 #include "portaudio.h"
-#include "cope.h"
+#include "cope.hpp"
 #include <cassert>
 
 #define SKIP_SECONDS 20

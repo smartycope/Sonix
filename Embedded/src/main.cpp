@@ -7,7 +7,7 @@
 #include "sndfile.h"
 #include "sonic.h"
 #include "portaudio.h"
-#include "cope.cpp"
+// #include "cope.cpp"
 #include "Book.h"
 #include "Player.h"
 #include "Menu.h"

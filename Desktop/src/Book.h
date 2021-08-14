@@ -1,35 +1,44 @@
 #pragma once
 
+#include <qpixmap.h>
 #include <string>
+#include <sstream>
 #include "sndfile.h"
-// #include <mp4v2/mp4v2.h>
-#include "cope.cpp"
+#include "defs.h"
+// #include "cope.cpp"
+#include "SampleProvider.hpp"
+#include <iostream>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <QPixmap>
 
 using namespace std;
 
-
-
 class Book{
 public:
-    SNDFILE* file;
     string filepath;
-    char* coverpath = nullptr;
 
-    int channels;
-    int format;
-    long frames;
-    int samplerate;
-    int sections;
-    int seekable;
+    QPixmap cover;
+    json chapters;
 
-    int pos;
-    string title;
-    string author;
-    string narrator;
+    unsigned long long size, frames;
+    float  startSec;
+    float  duration;
+    int    bitrate;
+
+    string albumArtist;
+    string copyright;
     string description;
-    string releaseDate;
-    string copyrightNotice;
+    string artist, author;
+    string album;
+    int    releaseDate;
+    string genre;
+    string title;
+    string composer, narrator;
 
     Book(string filepath);
     ~Book();
+
+private:
 };

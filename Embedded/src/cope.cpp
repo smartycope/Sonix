@@ -1,7 +1,7 @@
 #ifndef __COPE__
 #define __COPE__
 
-#include "cope.h"
+#include "cope.hpp"
 
 // #ifdef __cplusplus
 //     extern "C"{

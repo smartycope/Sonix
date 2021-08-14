@@ -426,6 +426,27 @@ static int addUnsignedCharSamplesToInputBuffer(sonicStream stream,
   return 1;
 }
 
+/* Add the input samples to the input buffer. */
+static int addCharSamplesToInputBuffer(sonicStream stream,
+                                       unsigned char* samples,
+                                       int numSamples) {
+  short* buffer;
+  int count = numSamples * stream->numChannels;
+
+  if (numSamples == 0) {
+    return 1;
+  }
+  if (!enlargeInputBufferIfNeeded(stream, numSamples)) {
+    return 0;
+  }
+  buffer = stream->inputBuffer + stream->numInputSamples * stream->numChannels;
+  while (count--) {
+    *buffer++ = *samples++;
+  }
+  stream->numInputSamples += numSamples;
+  return 1;
+}
+
 /* Remove input samples that we have already processed. */
 static void removeInputSamples(sonicStream stream, int position) {
   int remainingSamples = stream->numInputSamples - position;
@@ -541,6 +562,35 @@ int sonicReadUnsignedCharFromStream(sonicStream stream, unsigned char* samples,
   count = numSamples * stream->numChannels;
   while (count--) {
     *samples++ = (char)((*buffer++) >> 8) + 128;
+  }
+  if (remainingSamples > 0) {
+    memmove(stream->outputBuffer,
+            stream->outputBuffer + numSamples * stream->numChannels,
+            remainingSamples * sizeof(short) * stream->numChannels);
+  }
+  stream->numOutputSamples = remainingSamples;
+  return numSamples;
+}
+
+/* Use this to read 8-bit signed data out of the stream.  Sometimes no data
+   will be available, and zero is returned, which is not an error condition. */
+int sonicReadCharFromStream(sonicStream stream, char* samples, int maxSamples){
+  int numSamples = stream->numOutputSamples;
+  int remainingSamples = 0;
+  short* buffer;
+  int count;
+
+  if (numSamples == 0) {
+    return 0;
+  }
+  if (numSamples > maxSamples) {
+    remainingSamples = numSamples - maxSamples;
+    numSamples = maxSamples;
+  }
+  buffer = stream->outputBuffer;
+  count = numSamples * stream->numChannels;
+  while (count--) {
+    *samples++ = (char)(*buffer++);
   }
   if (remainingSamples > 0) {
     memmove(stream->outputBuffer,
@@ -1127,6 +1177,15 @@ int sonicWriteShortToStream(sonicStream stream, short* samples,
 int sonicWriteUnsignedCharToStream(sonicStream stream, unsigned char* samples,
                                    int numSamples) {
   if (!addUnsignedCharSamplesToInputBuffer(stream, samples, numSamples)) {
+    return 0;
+  }
+  return processStreamInput(stream);
+}
+
+/* Use this to write 8-bit signed data to be speed up or down into the stream.
+   Return 0 if memory realloc failed, otherwise 1 */
+int sonicWriteCharToStream(sonicStream stream, char* samples, int numSamples){
+  if (!addCharSamplesToInputBuffer(stream, samples, numSamples)) {
     return 0;
   }
   return processStreamInput(stream);

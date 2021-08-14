@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/marvin/hello/C/SAP/Curses
+CMAKE_SOURCE_DIR = /home/marvin/hello/C/SAP/Minimal
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/marvin/hello/C/SAP/Curses/build
+CMAKE_BINARY_DIR = /home/marvin/hello/C/SAP/Minimal/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sap.dir/depend.make
@@ -76,48 +76,85 @@ include CMakeFiles/sap.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/sap.dir/flags.make
 
-CMakeFiles/sap.dir/src/main.c.o: CMakeFiles/sap.dir/flags.make
-CMakeFiles/sap.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Curses/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sap.dir/src/main.c.o"
-	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/src/main.c.o -c /home/marvin/hello/C/SAP/Curses/src/main.c
+CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: sap_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Minimal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o -c /home/marvin/hello/C/SAP/Minimal/build/sap_autogen/mocs_compilation.cpp
 
-CMakeFiles/sap.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sap.dir/src/main.c.i"
-	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Curses/src/main.c > CMakeFiles/sap.dir/src/main.c.i
+CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marvin/hello/C/SAP/Minimal/build/sap_autogen/mocs_compilation.cpp > CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.i
 
-CMakeFiles/sap.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sap.dir/src/main.c.s"
-	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Curses/src/main.c -o CMakeFiles/sap.dir/src/main.c.s
+CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marvin/hello/C/SAP/Minimal/build/sap_autogen/mocs_compilation.cpp -o CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.s
+
+CMakeFiles/sap.dir/src/main.cpp.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Minimal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sap.dir/src/main.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sap.dir/src/main.cpp.o -c /home/marvin/hello/C/SAP/Minimal/src/main.cpp
+
+CMakeFiles/sap.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sap.dir/src/main.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marvin/hello/C/SAP/Minimal/src/main.cpp > CMakeFiles/sap.dir/src/main.cpp.i
+
+CMakeFiles/sap.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sap.dir/src/main.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marvin/hello/C/SAP/Minimal/src/main.cpp -o CMakeFiles/sap.dir/src/main.cpp.s
 
 CMakeFiles/sap.dir/src/sonic.c.o: CMakeFiles/sap.dir/flags.make
 CMakeFiles/sap.dir/src/sonic.c.o: ../src/sonic.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Curses/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sap.dir/src/sonic.c.o"
-	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/src/sonic.c.o -c /home/marvin/hello/C/SAP/Curses/src/sonic.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Minimal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/sap.dir/src/sonic.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/src/sonic.c.o -c /home/marvin/hello/C/SAP/Minimal/src/sonic.c
 
 CMakeFiles/sap.dir/src/sonic.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sap.dir/src/sonic.c.i"
-	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Curses/src/sonic.c > CMakeFiles/sap.dir/src/sonic.c.i
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Minimal/src/sonic.c > CMakeFiles/sap.dir/src/sonic.c.i
 
 CMakeFiles/sap.dir/src/sonic.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sap.dir/src/sonic.c.s"
-	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Curses/src/sonic.c -o CMakeFiles/sap.dir/src/sonic.c.s
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Minimal/src/sonic.c -o CMakeFiles/sap.dir/src/sonic.c.s
+
+CMakeFiles/sap.dir/src/audiooutput.cpp.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/src/audiooutput.cpp.o: ../src/audiooutput.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Minimal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sap.dir/src/audiooutput.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sap.dir/src/audiooutput.cpp.o -c /home/marvin/hello/C/SAP/Minimal/src/audiooutput.cpp
+
+CMakeFiles/sap.dir/src/audiooutput.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sap.dir/src/audiooutput.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marvin/hello/C/SAP/Minimal/src/audiooutput.cpp > CMakeFiles/sap.dir/src/audiooutput.cpp.i
+
+CMakeFiles/sap.dir/src/audiooutput.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sap.dir/src/audiooutput.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marvin/hello/C/SAP/Minimal/src/audiooutput.cpp -o CMakeFiles/sap.dir/src/audiooutput.cpp.s
 
 # Object files for target sap
 sap_OBJECTS = \
-"CMakeFiles/sap.dir/src/main.c.o" \
-"CMakeFiles/sap.dir/src/sonic.c.o"
+"CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o" \
+"CMakeFiles/sap.dir/src/main.cpp.o" \
+"CMakeFiles/sap.dir/src/sonic.c.o" \
+"CMakeFiles/sap.dir/src/audiooutput.cpp.o"
 
 # External object files for target sap
 sap_EXTERNAL_OBJECTS =
 
-../sap: CMakeFiles/sap.dir/src/main.c.o
+../sap: CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o
+../sap: CMakeFiles/sap.dir/src/main.cpp.o
 ../sap: CMakeFiles/sap.dir/src/sonic.c.o
+../sap: CMakeFiles/sap.dir/src/audiooutput.cpp.o
 ../sap: CMakeFiles/sap.dir/build.make
-../sap: ../lib/libsonic.so
 ../sap: ../lib/libportaudio.so
 ../sap: ../lib/libsndfile.so
+../sap: /usr/lib64/libQt5Quick.so.5.15.2
+../sap: /usr/lib64/libQt5Multimedia.so.5.15.2
+../sap: /usr/lib64/libQt5Widgets.so.5.15.2
+../sap: /usr/lib64/libQt5QmlModels.so.5.15.2
+../sap: /usr/lib64/libQt5Qml.so.5.15.2
+../sap: /usr/lib64/libQt5Network.so.5.15.2
+../sap: /usr/lib64/libQt5Gui.so.5.15.2
+../sap: /usr/lib64/libQt5Core.so.5.15.2
 ../sap: CMakeFiles/sap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/marvin/hello/C/SAP/Curses/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable ../sap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/marvin/hello/C/SAP/Minimal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../sap"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -130,6 +167,6 @@ CMakeFiles/sap.dir/clean:
 .PHONY : CMakeFiles/sap.dir/clean
 
 CMakeFiles/sap.dir/depend:
-	cd /home/marvin/hello/C/SAP/Curses/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/marvin/hello/C/SAP/Curses /home/marvin/hello/C/SAP/Curses /home/marvin/hello/C/SAP/Curses/build /home/marvin/hello/C/SAP/Curses/build /home/marvin/hello/C/SAP/Curses/build/CMakeFiles/sap.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/marvin/hello/C/SAP/Minimal/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/marvin/hello/C/SAP/Minimal /home/marvin/hello/C/SAP/Minimal /home/marvin/hello/C/SAP/Minimal/build /home/marvin/hello/C/SAP/Minimal/build /home/marvin/hello/C/SAP/Minimal/build/CMakeFiles/sap.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sap.dir/depend
 

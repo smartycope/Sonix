@@ -6,11 +6,26 @@
     "configurations": [
         {
             "type": "lldb",
+            "request": "launch",
+            "name": "LLDB Minimal",
+            "program": "${workspaceFolder}/Minimal/sap",
+            "args": ["/home/marvin/Media/Audiobooks/Snapshot.wav"],
+            "cwd": "${workspaceFolder}"
+        },
+
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "lldb",
             "request": "attach",
             "name": "LLDB by PID",
             "pid": "${command:pickMyProcess}" // use ${command:pickProcess} to pick other users' processes
         },
-
         {
             "type": "lldb",
             "request": "custom",
@@ -28,7 +43,10 @@
             "request": "launch",
             "name": "LLDB",
             "program": "${workspaceFolder}/Desktop/sap",
-            "args": [],
+            "args": [
+                "/home/marvin/Media/Audiobooks/Snapshot.wav",
+                "/home/marvin/Media/Audiobooks/Snapshot2.mp3"
+            ],
             "cwd": "${workspaceFolder}"
         }
     ]

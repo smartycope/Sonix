@@ -7,11 +7,21 @@
 #include "sndfile.h"
 #include "sonic.h"
 #include "portaudio.h"
-#include "cope.h"
+#include "cope.hpp"
+#include "defs.h"
 #include <cassert>
+#include <functional>
 #include <iostream>
+#include <qtimer.h>
 #include <string>
 #include <QFileDialog>
+#include <QTimer>
+#include "./ui_PlayerWindow.h"
+#include "src/portaudio.h"
+#include "src/sndfile.h"
+#include <qlocale.h>
+#include <qwindowdefs.h>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui{ class PlayerWindow; }
@@ -19,18 +29,20 @@ QT_END_NAMESPACE
 
 
 #define SKIP_SECONDS 20
-#define SKIP_SAMPLES (book->samplerate * SKIP_SECONDS)
+#define SKIP_SAMPLES (SAMPLERATE * SKIP_SECONDS)
 #define SPEED_INCREMENT .25f
 #define VOLUME_INCREMENT 2.0f
 
 #define FRAMES_PER_BUFFER paFramesPerBufferUnspecified
 
-//* Optimally, this would be (sizeof(float) * book->frames * book->channels), but
+//* Optimally, this would be (sizeof(SampleType) * book->frames * CHANNELS), but
 //      the Raspberry Pi I'm using doesn't have enough ram for that.
 #define SONIC_BUFFER_SIZE 524288
 #define UNSPECIFIED_COVER_PATH "/home/marvin/hello/C/SAP/Desktop/assets/defaultBookCover.png"
 
-#define TEST_PATH "/home/marvin/Media/Audiobooks/Snapshot.wav"
+// #define TEST_PATH "/home/marvin/Media/Audiobooks/Snapshot.wav"
+// #define TEST_PATH "/run/media/marvin/0702af25-08c4-4c27-b07d-194cb371fd4e/All mp3 Books/The Final Empire Mistborn Book 1.mp3"
+#define TEST_PATH "/home/marvin/Media/Audiobooks/Dragons Egg-Cheela, Book 1.m4b"
 
 
 class PlayerWindow: public QMainWindow{
@@ -57,7 +69,7 @@ public:
     sonicStream sStream;
     int sonicPosition;
     int outputPosition;
-    float* sonicBuffer;
+    SampleType* sonicBuffer;
 
 public slots:
     bool togglePaused(); // Returns what the new current paused value is
@@ -84,7 +96,10 @@ public slots:
     void setQuality(int to);
     void setEnableNonlinearSpeedup(bool to);
 
+    void requestSamples();
+
     void open();
+    void about();
 
 private:
     Ui::PlayerWindow *ui;
@@ -92,6 +107,11 @@ private:
     PaStream* paStream = nullptr;
     PaError error;
     PaStreamParameters paStreamParams;
+
+    SampleProvider sampleProvider;
+
+    // TODO Actually implement this
+    char authcode[9] = TMP_ACTIVATION_BYTES;
 
     bool paused;
     float speed;
@@ -105,11 +125,15 @@ private:
     void updateSonic();
     void updatePortaudio();
     void updateUI();
+    void updateSampleProvider();
     void updateAll();
 
     bool sonicInitalized = false;
     bool portaudioInitalized = false;
     bool uiInitalized = false;
+    bool sampleProviderInitalized = false;
+
+    QTimer* sampleTimer;
 
 };
 

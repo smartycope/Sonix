@@ -7,11 +7,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o"
   "CMakeFiles/sap.dir/src/Book.cpp.o"
   "CMakeFiles/sap.dir/src/PlayerWindow.cpp.o"
-  "CMakeFiles/sap.dir/src/cope.cpp.o"
+  "CMakeFiles/sap.dir/src/SampleProvider.cpp.o"
   "CMakeFiles/sap.dir/src/main.cpp.o"
+  "CMakeFiles/sap.dir/src/sonic.c.o"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang C CXX)
   include(CMakeFiles/sap.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

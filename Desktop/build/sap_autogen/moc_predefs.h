@@ -8,6 +8,7 @@
 #define __FLT128_MAX_10_EXP__ 4932
 #define __FLT_MIN__ 1.17549435082228750796873653722224568e-38F
 #define __GCC_IEC_559_COMPLEX 2
+#define CPPHTTPLIB_OPENSSL_SUPPORT 1
 #define __cpp_aggregate_nsdmi 201304L
 #define __UINT_LEAST8_TYPE__ unsigned char
 #define __FLT128_DIG__ 33
@@ -25,6 +26,7 @@
 #define __FLT32X_DECIMAL_DIG__ 17
 #define __FLT_EVAL_METHOD__ 0
 #define __cpp_binary_literals 201304L
+#define JSON_USE_IMPLICIT_CONVERSIONS 1
 #define __FLT64_DECIMAL_DIG__ 17
 #define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
 #define __cpp_variadic_templates 200704L
@@ -89,6 +91,7 @@
 #define __FLT32_DIG__ 6
 #define __FLT_EPSILON__ 1.19209289550781250000000000000000000e-7F
 #define __GXX_WEAK__ 1
+#define JSON_DIAGNOSTICS 0
 #define __SHRT_WIDTH__ 16
 #define __LDBL_MIN__ 3.36210314311209350626267781732175260e-4932L
 #define __FLT16_HAS_QUIET_NAN__ 1
@@ -125,6 +128,7 @@
 #define __FLT64_MAX_10_EXP__ 308
 #define __FLT16_MAX_10_EXP__ 4
 #define __FLT32_HAS_INFINITY__ 1
+#define CPPHTTPLIB_ZLIB_SUPPORT 1
 #define __cpp_raw_strings 200710L
 #define __INT_FAST32_MAX__ 0x7fffffffffffffffL
 #define __DBL_HAS_INFINITY__ 1
@@ -350,6 +354,7 @@
 #define __UINT32_C(c) c ## U
 #define __FLT_DENORM_MIN__ 1.40129846432481707092372958328991613e-45F
 #define __WINT_MIN__ 0U
+#define CPPHTTPLIB_BROTLI_SUPPORT 1
 #define __INT8_MAX__ 0x7f
 #define __LONG_WIDTH__ 64
 #define __FLT32X_NORM_MAX__ 1.79769313486231570814527423731704357e+308F32x
