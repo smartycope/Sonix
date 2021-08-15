@@ -7,6 +7,7 @@ CMakeFiles/sap.dir/src/sonic.c.o: ../src/sonic.h
 CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: sap_autogen/UVLADIE3JM/moc_audiooutput.cpp
 CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: sap_autogen/mocs_compilation.cpp
 CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: ../src/audiooutput.h
+CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: ../src/cope.hpp
 CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: ../src/sonic.h
 CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: /usr/include/qt5/QtCore/QByteArray
 CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: /usr/include/qt5/QtCore/QFile
@@ -86,6 +87,7 @@ CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o: /usr/include/qt5/QtMultim
 
 CMakeFiles/sap.dir/src/audiooutput.cpp.o: ../src/audiooutput.cpp
 CMakeFiles/sap.dir/src/audiooutput.cpp.o: ../src/audiooutput.h
+CMakeFiles/sap.dir/src/audiooutput.cpp.o: ../src/cope.hpp
 CMakeFiles/sap.dir/src/audiooutput.cpp.o: ../src/sonic.h
 CMakeFiles/sap.dir/src/audiooutput.cpp.o: /usr/include/qt5/QtCore/QByteArray
 CMakeFiles/sap.dir/src/audiooutput.cpp.o: /usr/include/qt5/QtCore/QDebug
@@ -177,7 +179,9 @@ CMakeFiles/sap.dir/src/audiooutput.cpp.o: /usr/include/qt5/QtMultimedia/qmultime
 CMakeFiles/sap.dir/src/audiooutput.cpp.o: /usr/include/qt5/QtMultimedia/qtmultimedia-config.h
 CMakeFiles/sap.dir/src/audiooutput.cpp.o: /usr/include/qt5/QtMultimedia/qtmultimediaglobal.h
 
+CMakeFiles/sap.dir/src/main.cpp.o: ../src/argparse.hpp
 CMakeFiles/sap.dir/src/main.cpp.o: ../src/audiooutput.h
+CMakeFiles/sap.dir/src/main.cpp.o: ../src/cope.hpp
 CMakeFiles/sap.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/sap.dir/src/main.cpp.o: ../src/sonic.h
 CMakeFiles/sap.dir/src/main.cpp.o: /usr/include/qt5/QtCore/QBuffer

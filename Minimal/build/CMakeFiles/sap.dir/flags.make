@@ -3,15 +3,15 @@
 
 # compile C with /usr/bin/gcc
 # compile CXX with /usr/bin/g++
-C_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_DEBUG -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WIDGETS_LIB
+C_DEFINES = -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_DEBUG -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WIDGETS_LIB
 
 C_INCLUDES = -I/home/marvin/hello/C/SAP/Minimal/build -I/home/marvin/hello/C/SAP/Minimal -I/home/marvin/hello/C/SAP/Minimal/build/sap_autogen/include -I/home/marvin/hello/C/SAP/Minimal/lib -isystem /usr/include/qt5 -isystem /usr/include/qt5/QtCore -isystem /usr/lib64/qt5/mkspecs/linux-g++ -isystem /usr/include/qt5/QtQuick -isystem /usr/include/qt5/QtQmlModels -isystem /usr/include/qt5/QtQml -isystem /usr/include/qt5/QtNetwork -isystem /usr/include/qt5/QtGui -isystem /usr/include/qt5/QtMultimedia -isystem /usr/include/qt5/QtWidgets
 
 C_FLAGS = -g -Wno-comment -fPIC
 
-CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_DEBUG -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WIDGETS_LIB
+CXX_DEFINES = -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_DEBUG -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WIDGETS_LIB
 
 CXX_INCLUDES = -I/home/marvin/hello/C/SAP/Minimal/build -I/home/marvin/hello/C/SAP/Minimal -I/home/marvin/hello/C/SAP/Minimal/build/sap_autogen/include -I/home/marvin/hello/C/SAP/Minimal/lib -isystem /usr/include/qt5 -isystem /usr/include/qt5/QtCore -isystem /usr/lib64/qt5/mkspecs/linux-g++ -isystem /usr/include/qt5/QtQuick -isystem /usr/include/qt5/QtQmlModels -isystem /usr/include/qt5/QtQml -isystem /usr/include/qt5/QtNetwork -isystem /usr/include/qt5/QtGui -isystem /usr/include/qt5/QtMultimedia -isystem /usr/include/qt5/QtWidgets
 
-CXX_FLAGS = -g -Wno-comment -fPIC -std=gnu++11
+CXX_FLAGS = -g -Wno-comment -fPIC -std=gnu++17
 

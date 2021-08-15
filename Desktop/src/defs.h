@@ -2,20 +2,6 @@
 
 #include <stdint.h>
 
-// #define USE_SERVER
-#define USE_FFMPEG
-
-#define SERVER_URL "http://localhost:8080"
-
-#define SampleType uint8_t
-#define FFMPEG_TYPE "u8"
-#define CHANNELS 2
-#define SAMPLERATE 44100
-
-#define TEST_PATH "/home/marvin/Media/Audiobooks/Dragons Egg-Cheela, Book 1.m4b"
-// #define TMP_ACTIVATION_BYTES "3100e20a"
-#define TMP_ACTIVATION_BYTES "3100e20a"
-
 #define ABOUT_MSG "This is the SuperSonic Audiobook player! It allows you to listen to any audiobook, in any format, at any speed.\n"\
                   "This program is free software (free as in freedom, not free beer). It lets you listen to YOUR books how YOU like.\n"\
                   "To listen to audible books, you can download them*, and either convert them to a 'normal' file format**, or you can\n"\
@@ -33,3 +19,36 @@
                   "Either way, feel free to reach out to me at smartycope@gmail.com.\n"\
                   "\n"\
                   "NOT-copyright 2021, Copeland Carter. No rights reserved."
+
+bool verbose;
+
+typedef struct{
+    ulong hour;
+    ulong min;
+    ulong sec;
+}PrettyTime;
+
+
+static PrettyTime getPrettyTime(const ulong& secs){
+    PrettyTime t;
+    t.hour = secs / 3600;
+    t.min  = (secs % 3600) / 60;
+    t.sec  = (secs % 3600) % 60;
+    return t;
+}
+
+
+static void addAuthcode(const string& file, stringstream& stream, const string& authcode){
+    int len = file.length() - 1;
+    if (file[len - 2] == 'a' and file[len - 1] == 'a' and file[len] == 'x'){
+        if (not authcode.empty()){
+            stream << " -activation_bytes " << authcode;
+            if (verbose)
+                printf("The file ends in .aax, using activation bytes: %s\n", authcode.c_str());
+        }
+        else{
+            printf("Can't play .aax files without an authcode.");
+            exit(2);
+        }
+    }
+}

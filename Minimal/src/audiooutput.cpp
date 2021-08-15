@@ -8,15 +8,18 @@
 
 
 
-const int AudioPlayer::samplerate = 44100;
-const int AudioPlayer::channels = 2;
+int AudioPlayer::samplerate = 44100;
+int AudioPlayer::channels = 2;
 
+int   AudioPlayer::volume = 99;
 float AudioPlayer::speed = 3.0f;
 float AudioPlayer::pitch = 1.0f;
 float AudioPlayer::rate = 1.0f;
-int   AudioPlayer::emulateChordPitch = 0;
+bool  AudioPlayer::emulateChordPitch = 0;
+bool  AudioPlayer::enableNonlinearSpeedup = 0;
 int   AudioPlayer::quality = 0;
-int   AudioPlayer::enableNonlinearSpeedup = 0;
+
+ulong AudioPlayer::bytesRead = 0;
 
 const std::string AudioPlayer::printQAudioError(QAudio::Error err){
     switch(err){
@@ -62,6 +65,14 @@ const std::string AudioPlayer::printQAudioState(QAudio::State state){
     }
 }
 
+void AudioPlayer::setVolume(int value){
+    qreal linearVolume = QAudio::convertVolume(value / qreal(100),
+                                               QAudio::LogarithmicVolumeScale,
+                                               QAudio::LinearVolumeScale);
+
+    volume = linearVolume;
+}
+
 AudioPlayer::AudioPlayer(FILE* pipeFile): callbackTimer(new QTimer(this)){
     const QAudioDeviceInfo deviceInfo = QAudioDeviceInfo::defaultOutputDevice();
     QAudioFormat format;
@@ -90,11 +101,6 @@ AudioPlayer::AudioPlayer(FILE* pipeFile): callbackTimer(new QTimer(this)){
     audioOut.reset(new QAudioOutput(deviceInfo, format));
     pipe->open(pipeFile, QIODevice::ReadOnly);
 
-    qreal initialVolume = QAudio::convertVolume(audioOut->volume(),
-                                                QAudio::LinearVolumeScale,
-                                                QAudio::LogarithmicVolumeScale);
-    volume = qRound(initialVolume * 100);
-
     auto io = audioOut->start();
 
     // connect(this, SIGNAL(stateChanged(QAudio::State)), this, SLOT(AudioPlayer::audioStateChanged(QAudio::State)));
@@ -108,9 +114,11 @@ AudioPlayer::AudioPlayer(FILE* pipeFile): callbackTimer(new QTimer(this)){
         QByteArray sonicBuffer(32768, 0);
         int chunks = audioOut->bytesFree() / audioOut->periodSize();
         while (chunks) {
+            // reads and readp are in bytes
             int reads = 0;
             do{
                 int readp = pipe->read(pipeBuffer.data(), audioOut->periodSize() - reads);
+                AudioPlayer::bytesRead += readp;
 
                 //* Remember, sonic takes the count in samples, not bytes
                 assert(sonicWriteCharToStream(sStream, pipeBuffer.data(), readp / channels));
@@ -127,14 +135,6 @@ AudioPlayer::AudioPlayer(FILE* pipeFile): callbackTimer(new QTimer(this)){
 AudioPlayer::~AudioPlayer(){
     callbackTimer->stop();
     sonicDestroyStream(sStream);
-}
-
-void AudioPlayer::setVolume(int value){
-    qreal linearVolume = QAudio::convertVolume(value / qreal(100),
-                                               QAudio::LogarithmicVolumeScale,
-                                               QAudio::LinearVolumeScale);
-
-    volume = linearVolume;
 }
 
 void AudioPlayer::togglePause(){

@@ -25,6 +25,7 @@
 #define __FLT32X_DECIMAL_DIG__ 17
 #define __FLT_EVAL_METHOD__ 0
 #define __cpp_binary_literals 201304L
+#define JSON_USE_IMPLICIT_CONVERSIONS 1
 #define __FLT64_DECIMAL_DIG__ 17
 #define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
 #define __cpp_variadic_templates 200704L
@@ -90,6 +91,7 @@
 #define __FLT32_DIG__ 6
 #define __FLT_EPSILON__ 1.19209289550781250000000000000000000e-7F
 #define __GXX_WEAK__ 1
+#define JSON_DIAGNOSTICS 0
 #define __SHRT_WIDTH__ 16
 #define __LDBL_MIN__ 3.36210314311209350626267781732175260e-4932L
 #define __FLT16_HAS_QUIET_NAN__ 1

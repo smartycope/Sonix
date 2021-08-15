@@ -1,44 +1,58 @@
 #pragma once
 
-#include <qpixmap.h>
-#include <string>
-#include <sstream>
-#include "sndfile.h"
-#include "defs.h"
-// #include "cope.cpp"
-#include "SampleProvider.hpp"
-#include <iostream>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string>
+#include <iostream>
+
+// #include <qpixmap.h>
 #include <QPixmap>
+
+#include "cope.hpp"
+#include "defs.h"
 
 using namespace std;
 
+
+typedef struct{
+    int    num;
+    string title;
+    ulong  start;
+    double startTime;
+    ulong  end;
+    double endTime;
+}Chapter;
+
+
 class Book{
 public:
-    string filepath;
+    Book(string filepath);
 
     QPixmap cover;
-    json chapters;
+    string file;
+    vector<Chapter> chapters;
 
-    unsigned long long size, frames;
-    float  startSec;
-    float  duration;
-    int    bitrate;
-
-    string albumArtist;
-    string copyright;
+    //* Metadata
+    float startSec;
+    float duration;
+    ulong size;
     string description;
-    string artist, author;
-    string album;
-    int    releaseDate;
-    string genre;
+    string author;
+    string releaseDate;
     string title;
-    string composer, narrator;
+    string narrator;
+    string publisher;
 
-    Book(string filepath);
-    ~Book();
+    static string authcode;
+
+    void printIntro();
+    ulong getPosition(int outputSamplerate, int outputChannels);
+    void  setPosition(int secs);
+    void printChaptersAndExit(vector<Chapter> chapters);
 
 private:
+    void loadCover();
+    void loadMetadata();
+    vector<Chapter> loadChapters();
 };

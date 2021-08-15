@@ -12,11 +12,12 @@
 #include <QFile>
 
 #include "sonic.h"
+#include "cope.hpp"
 
-#define _debug(var)  printf("%s = %d\n", #var, var);
-#define _debugs(str) printf("%s\n", str);
+// #define _debug(var)  printf("%s = %d\n", #var, var);
+// #define _debugs(str) printf("%s\n", str);
 
-#define UPDATE_MS 20
+#define UPDATE_MS 2
 
 #define SKIP_SECONDS 20
 #define SKIP_SAMPLES (samplerate * SKIP_SECONDS)
@@ -29,9 +30,21 @@ public:
     AudioPlayer(FILE* pipeFile);
     ~AudioPlayer();
 
+    static int samplerate;
+    static int channels;
+
+    static float speed;
+    static float pitch;
+    static float rate;
+    static bool emulateChordPitch;
+    static bool enableNonlinearSpeedup;
+    static int quality;
+
+    static ulong bytesRead;
+
 public slots:
     void togglePause();
-    void setVolume(int);
+    static void setVolume(int);
 
 private:
     QScopedPointer<QAudioOutput> audioOut;
@@ -39,17 +52,8 @@ private:
     sonicStream sStream;
 
     QTimer* callbackTimer;
-    qreal volume;
 
-    const static int samplerate;
-    const static int channels;
-
-    static float speed;
-    static float pitch;
-    static float rate;
-    static int emulateChordPitch;
-    static int quality;
-    static int enableNonlinearSpeedup;
+    static int volume;
 
     const static std::string printQAudioError(QAudio::Error err);
     const static std::string printQAudioState(QAudio::State state);

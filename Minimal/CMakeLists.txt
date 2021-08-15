@@ -16,7 +16,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
@@ -47,6 +47,7 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Gui Multimedia Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Gui Multimedia Widgets REQUIRED)
+find_package(nlohmann_json REQUIRED)
 
 
 set(SRC_LIST
@@ -81,6 +82,7 @@ set(LIB_LIST
     ${CMAKE_SOURCE_DIR}/lib/libportaudio.so
     ${CMAKE_SOURCE_DIR}/lib/libsndfile.so
     ${QT_LIBS}
+    nlohmann_json::nlohmann_json
 )
 
 set(BINARY_NAME "${PROJECT_NAME}")

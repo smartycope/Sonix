@@ -1,10 +1,15 @@
 /home/marvin/hello/C/SAP/Minimal/build/sap_autogen/UVLADIE3JM/moc_audiooutput.cpp: /home/marvin/hello/C/SAP/Minimal/src/audiooutput.h \
   /home/marvin/hello/C/SAP/Minimal/build/sap_autogen/moc_predefs.h \
+  /home/marvin/hello/C/SAP/Minimal/src/cope.hpp \
   /home/marvin/hello/C/SAP/Minimal/src/sonic.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm/errno.h \
   /usr/include/assert.h \
   /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
+  /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
   /usr/include/bits/libc-header-start.h \
@@ -33,6 +38,7 @@
   /usr/include/bits/types/clock_t.h \
   /usr/include/bits/types/clockid_t.h \
   /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/error_t.h \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/struct_FILE.h \
@@ -46,12 +52,17 @@
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/wchar.h \
+  /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/atomic_word.h \
+  /usr/include/c++/10/aarch64-redhat-linux/bits/basic_file.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/c++allocator.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/c++config.h \
+  /usr/include/c++/10/aarch64-redhat-linux/bits/c++io.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/c++locale.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/cpu_defines.h \
+  /usr/include/c++/10/aarch64-redhat-linux/bits/ctype_base.h \
+  /usr/include/c++/10/aarch64-redhat-linux/bits/ctype_inline.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/gthr-default.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/gthr.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/os_defines.h \
@@ -63,11 +74,14 @@
   /usr/include/c++/10/bits/alloc_traits.h \
   /usr/include/c++/10/bits/allocated_ptr.h \
   /usr/include/c++/10/bits/allocator.h \
+  /usr/include/c++/10/bits/basic_ios.h \
+  /usr/include/c++/10/bits/basic_ios.tcc \
   /usr/include/c++/10/bits/basic_string.h \
   /usr/include/c++/10/bits/basic_string.tcc \
   /usr/include/c++/10/bits/c++0x_warning.h \
   /usr/include/c++/10/bits/char_traits.h \
   /usr/include/c++/10/bits/charconv.h \
+  /usr/include/c++/10/bits/codecvt.h \
   /usr/include/c++/10/bits/concept_check.h \
   /usr/include/c++/10/bits/cpp_type_traits.h \
   /usr/include/c++/10/bits/cxxabi_forced.h \
@@ -77,20 +91,25 @@
   /usr/include/c++/10/bits/exception.h \
   /usr/include/c++/10/bits/exception_defines.h \
   /usr/include/c++/10/bits/exception_ptr.h \
+  /usr/include/c++/10/bits/fstream.tcc \
   /usr/include/c++/10/bits/functexcept.h \
   /usr/include/c++/10/bits/functional_hash.h \
   /usr/include/c++/10/bits/hash_bytes.h \
   /usr/include/c++/10/bits/invoke.h \
   /usr/include/c++/10/bits/ios_base.h \
+  /usr/include/c++/10/bits/istream.tcc \
   /usr/include/c++/10/bits/iterator_concepts.h \
   /usr/include/c++/10/bits/list.tcc \
   /usr/include/c++/10/bits/locale_classes.h \
   /usr/include/c++/10/bits/locale_classes.tcc \
+  /usr/include/c++/10/bits/locale_facets.h \
+  /usr/include/c++/10/bits/locale_facets.tcc \
   /usr/include/c++/10/bits/localefwd.h \
   /usr/include/c++/10/bits/memoryfwd.h \
   /usr/include/c++/10/bits/move.h \
   /usr/include/c++/10/bits/nested_exception.h \
   /usr/include/c++/10/bits/node_handle.h \
+  /usr/include/c++/10/bits/ostream.tcc \
   /usr/include/c++/10/bits/ostream_insert.h \
   /usr/include/c++/10/bits/postypes.h \
   /usr/include/c++/10/bits/predefined_ops.h \
@@ -101,6 +120,7 @@
   /usr/include/c++/10/bits/ranges_algobase.h \
   /usr/include/c++/10/bits/refwrap.h \
   /usr/include/c++/10/bits/specfun.h \
+  /usr/include/c++/10/bits/sstream.tcc \
   /usr/include/c++/10/bits/std_abs.h \
   /usr/include/c++/10/bits/std_function.h \
   /usr/include/c++/10/bits/stl_algo.h \
@@ -130,14 +150,17 @@
   /usr/include/c++/10/bits/uniform_int_dist.h \
   /usr/include/c++/10/bits/vector.tcc \
   /usr/include/c++/10/cctype \
+  /usr/include/c++/10/cerrno \
   /usr/include/c++/10/clocale \
   /usr/include/c++/10/cmath \
   /usr/include/c++/10/compare \
   /usr/include/c++/10/concepts \
   /usr/include/c++/10/cstddef \
   /usr/include/c++/10/cstdint \
+  /usr/include/c++/10/cstdio \
   /usr/include/c++/10/cstdlib \
   /usr/include/c++/10/cwchar \
+  /usr/include/c++/10/cwctype \
   /usr/include/c++/10/debug/assertions.h \
   /usr/include/c++/10/debug/debug.h \
   /usr/include/c++/10/exception \
@@ -148,9 +171,13 @@
   /usr/include/c++/10/ext/numeric_traits.h \
   /usr/include/c++/10/ext/string_conversions.h \
   /usr/include/c++/10/ext/type_traits.h \
+  /usr/include/c++/10/fstream \
   /usr/include/c++/10/functional \
   /usr/include/c++/10/initializer_list \
+  /usr/include/c++/10/ios \
   /usr/include/c++/10/iosfwd \
+  /usr/include/c++/10/iostream \
+  /usr/include/c++/10/istream \
   /usr/include/c++/10/iterator \
   /usr/include/c++/10/limits \
   /usr/include/c++/10/list \
@@ -159,10 +186,12 @@
   /usr/include/c++/10/new \
   /usr/include/c++/10/numeric \
   /usr/include/c++/10/optional \
+  /usr/include/c++/10/ostream \
   /usr/include/c++/10/pstl/execution_defs.h \
   /usr/include/c++/10/pstl/glue_algorithm_defs.h \
   /usr/include/c++/10/pstl/glue_numeric_defs.h \
   /usr/include/c++/10/ranges \
+  /usr/include/c++/10/sstream \
   /usr/include/c++/10/stdexcept \
   /usr/include/c++/10/stdlib.h \
   /usr/include/c++/10/streambuf \
@@ -187,9 +216,11 @@
   /usr/include/c++/10/utility \
   /usr/include/c++/10/vector \
   /usr/include/ctype.h \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/gnu/stubs-lp64.h \
   /usr/include/gnu/stubs.h \
+  /usr/include/linux/errno.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
   /usr/include/qt5/QtCore/QByteArray \
@@ -268,7 +299,9 @@
   /usr/include/sys/cdefs.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
+  /usr/include/wctype.h \
   /usr/lib/gcc/aarch64-redhat-linux/10/include/limits.h \
   /usr/lib/gcc/aarch64-redhat-linux/10/include/stdarg.h \
   /usr/lib/gcc/aarch64-redhat-linux/10/include/stddef.h \
+  /usr/lib/gcc/aarch64-redhat-linux/10/include/stdint.h \
   /usr/lib/gcc/aarch64-redhat-linux/10/include/syslimits.h

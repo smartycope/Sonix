@@ -124,7 +124,12 @@
 		"/lib64/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
 		"/lib64/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
 		"/lib64/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
-		"/usr/share/cmake/Modules/CMakeParseArguments.cmake"
+		"/usr/share/cmake/Modules/CMakeParseArguments.cmake",
+		"/usr/local/lib64/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake",
+		"/usr/local/lib64/cmake/nlohmann_json/nlohmann_jsonConfig.cmake",
+		"/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake/Modules/FindPackageMessage.cmake",
+		"/usr/local/lib64/cmake/nlohmann_json/nlohmann_jsonTargets.cmake"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/marvin/hello/C/SAP/Minimal",
 	"DEP_FILE" : "",
@@ -172,6 +177,8 @@
 	"MOC_COMPILATION_FILE" : "/home/marvin/hello/C/SAP/Minimal/build/sap_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
+		"JSON_DIAGNOSTICS=0",
+		"JSON_USE_IMPLICIT_CONVERSIONS=1",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_MULTIMEDIA_LIB",
@@ -204,11 +211,11 @@
 		"/usr/include/qt5/QtGui",
 		"/usr/include/qt5/QtMultimedia",
 		"/usr/include/qt5/QtWidgets",
+		"/usr/local/include",
 		"/usr/include/c++/10",
 		"/usr/include/c++/10/aarch64-redhat-linux",
 		"/usr/include/c++/10/backward",
 		"/usr/lib/gcc/aarch64-redhat-linux/10/include",
-		"/usr/local/include",
 		"/usr/include"
 	],
 	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],

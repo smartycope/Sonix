@@ -29,30 +29,19 @@ PlayerWindow::PlayerWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::Pla
 }
 
 PlayerWindow::~PlayerWindow(){
-    if (not paused)
-        error_check(Pa_StopStream(paStream));
-
-    error_check(Pa_Terminate());
-    sonicDestroyStream(sStream);
-    // note(Player destructor called!)
-    // delete paStream;
-    free(sonicBuffer);
     delete book;
     delete ui;
-    delete sampleTimer;
 }
 
 void PlayerWindow::updateAll(){
     updateUI();
-    updateSonic();
-    updatePortaudio();
     updateSampleProvider();
 }
 
-void PlayerWindow::updateSampleProvider(){
+void PlayerWindow::updateAudioPlayer(){
     if (book){
-        if (not sampleProviderInitalized)
-            sampleProvider = SampleProvider(book->filepath, book->startSec);
+        if (not audioPlayerInit)
+            player = AudioPlayer(book->filepath, book->startSec);
         else
             sampleProvider.updateFile(book->filepath, book->startSec);
     }
@@ -341,80 +330,4 @@ void PlayerWindow::jumpForward(){
 void PlayerWindow::jumpBackward(){
     if (book)
         jump(-1);
-}
-
-
-// Callback function for audio output
-#ifdef USE_SNDFILE
-    int audioCallback(const void* input,
-                    void* output,
-                    const unsigned long samplesNeeded,
-                    const PaStreamCallbackTimeInfo* paTimeInfo,
-                    PaStreamCallbackFlags statusFlags,
-                    void* self){
-
-        PlayerWindow* player = reinterpret_cast<PlayerWindow*>(self); // Cast our data to be usable
-        SampleType* out = (SampleType*)output;
-        int currentSamples, samplesRead, samplesReadFromFile, samplesWritten;
-        SampleType transportBuffer[samplesNeeded * player->CHANNELS];
-
-        do{
-            //* seek to our current file position
-            sf_seek(player->book->file, player->book->pos, SEEK_SET);
-
-            //* are we going to read past the end of the file?
-            if (samplesNeeded > (player->book->frames - player->book->pos)){
-                //* if we are, only read to the end of the file
-                currentSamples = player->book->frames - player->book->pos;
-                player->finished();
-                // return paAbort;
-            }
-            else{
-                //* otherwise, we'll just fill up the rest of the output buffer
-                currentSamples = samplesNeeded;
-                //* and increment the file position
-                player->book->pos += currentSamples;
-            }
-
-            //* Read from file to sonic stream
-            samplesReadFromFile = sf_readf_short(player->book->file, transportBuffer, currentSamples);
-            samplesWritten = sonicWriteFloatToStream(player->sStream, transportBuffer, samplesReadFromFile);
-
-            //* Read from sonic stream to player->sonicBuffer
-            do{
-                // samplesRead = sonicReadFloatFromStream(player->sStream, player->sonicBuffer + player->sonicPosition, currentSamples);
-                samplesRead = sonicReadShortFromStream(player->sStream, player->sonicBuffer + (player->sonicPosition % SONIC_BUFFER_SIZE), currentSamples);
-                player->sonicPosition += samplesRead * player->CHANNELS;
-
-            //* While there's still stuff to be read
-            } while (samplesRead > 0);
-
-        //* Just keep calling it until we have enough
-        } while ((player->outputPosition + (samplesNeeded * player->CHANNELS) + 1) > player->sonicPosition);
-
-        //* Read from player->sonicBuffer to audio output
-        int prevPos = player->outputPosition;
-        for(int i = 0; i < samplesNeeded * player->CHANNELS; i++){
-            out[i] = player->sonicBuffer[player->outputPosition % SONIC_BUFFER_SIZE];
-            ++player->outputPosition;
-        }
-
-        return paContinue;
-    }
-#endif
-
-
-int audioCallback(const void* input,
-                  void* output,
-                  const unsigned long samplesNeeded,
-                  const PaStreamCallbackTimeInfo* paTimeInfo,
-                  PaStreamCallbackFlags statusFlags,
-                  void* self){
-
-    SampleProvider* sampleProvider = reinterpret_cast<SampleProvider*>(self); // Cast our data to be usable
-    SampleType* out = (SampleType*)output;
-
-    out = sampleProvider->getSamples(samplesNeeded).data();
-
-    return paContinue;
 }

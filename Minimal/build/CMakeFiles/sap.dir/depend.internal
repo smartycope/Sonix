@@ -8,6 +8,7 @@ CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o
  /home/marvin/hello/C/SAP/Minimal/build/sap_autogen/UVLADIE3JM/moc_audiooutput.cpp
  /home/marvin/hello/C/SAP/Minimal/build/sap_autogen/mocs_compilation.cpp
  /home/marvin/hello/C/SAP/Minimal/src/audiooutput.h
+ /home/marvin/hello/C/SAP/Minimal/src/cope.hpp
  /home/marvin/hello/C/SAP/Minimal/src/sonic.h
  /usr/include/qt5/QtCore/QByteArray
  /usr/include/qt5/QtCore/QFile
@@ -87,6 +88,7 @@ CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o
 CMakeFiles/sap.dir/src/audiooutput.cpp.o
  /home/marvin/hello/C/SAP/Minimal/src/audiooutput.cpp
  /home/marvin/hello/C/SAP/Minimal/src/audiooutput.h
+ /home/marvin/hello/C/SAP/Minimal/src/cope.hpp
  /home/marvin/hello/C/SAP/Minimal/src/sonic.h
  /usr/include/qt5/QtCore/QByteArray
  /usr/include/qt5/QtCore/QDebug
@@ -178,7 +180,9 @@ CMakeFiles/sap.dir/src/audiooutput.cpp.o
  /usr/include/qt5/QtMultimedia/qtmultimedia-config.h
  /usr/include/qt5/QtMultimedia/qtmultimediaglobal.h
 CMakeFiles/sap.dir/src/main.cpp.o
+ /home/marvin/hello/C/SAP/Minimal/src/argparse.hpp
  /home/marvin/hello/C/SAP/Minimal/src/audiooutput.h
+ /home/marvin/hello/C/SAP/Minimal/src/cope.hpp
  /home/marvin/hello/C/SAP/Minimal/src/main.cpp
  /home/marvin/hello/C/SAP/Minimal/src/sonic.h
  /usr/include/qt5/QtCore/QBuffer
