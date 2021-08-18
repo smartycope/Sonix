@@ -1,25 +1,31 @@
-#include "audiooutput.h"
+#include "AudioPlayer.hpp"
 
 #include <QAudioDeviceInfo>
 #include <QAudioOutput>
+#include <QByteArray>
 #include <QDebug>
-#include <qmath.h>
-#include <qendian.h>
+#include "defs.h"
+extern bool verbose;
+// #include <qmath.h>
+// #include <qendian.h>
 
 int AudioPlayer::samplerate = 44100;
 int AudioPlayer::channels = 2;
 
-int   AudioPlayer::volume = 99;
-float AudioPlayer::speed = 3.0f;
+double AudioPlayer::speed = 1.0;
+int   AudioPlayer::linVolume = 99;
 float AudioPlayer::pitch = 1.0f;
 float AudioPlayer::rate = 1.0f;
 bool  AudioPlayer::emulateChordPitch = 0;
 bool  AudioPlayer::enableNonlinearSpeedup = 0;
-int   AudioPlayer::quality = 0;
+bool  AudioPlayer::highQuality = 0;
+float AudioPlayer::speedIncrement = 0.25f;
+float AudioPlayer::volumeIncrement = 5;
+int   AudioPlayer::skipSeconds = 15;
 
 ulong AudioPlayer::bytesRead = 0;
 const int AudioPlayer::updateMS = 5;
-int AudioPlayer::authcode = string()
+
 
 const std::string AudioPlayer::printQAudioError(QAudio::Error err){
     switch(err){
@@ -65,28 +71,37 @@ const std::string AudioPlayer::printQAudioState(QAudio::State state){
     }
 }
 
-void AudioPlayer::setVolume(int value){
-    qreal linearVolume = QAudio::convertVolume(value / qreal(100),
-                                               QAudio::LogarithmicVolumeScale,
-                                               QAudio::LinearVolumeScale);
-
-    volume = linearVolume;
+void AudioPlayer::setVolume(int to){
+    linVolume = to;
+    logVolume = QAudio::convertVolume(qreal(to) / qreal(100.0), QAudio::LogarithmicVolumeScale, QAudio::LinearVolumeScale);
+    audioOut->setVolume(logVolume);
 }
 
-AudioPlayer::AudioPlayer(FILE* pipeFile): callbackTimer(new QTimer(this)){
+int AudioPlayer::getVolume(){
+    return linVolume;
+}
+
+
+AudioPlayer::AudioPlayer(Book* book): callbackTimer(new QTimer(this)){
     const QAudioDeviceInfo deviceInfo = QAudioDeviceInfo::defaultOutputDevice();
     QAudioFormat format;
-    format.setSampleRate(44100);
-    format.setChannelCount(2);
+    format.setSampleRate(samplerate);
+    format.setChannelCount(channels);
     format.setSampleSize(8);
     format.setCodec("audio/pcm");
     format.setByteOrder(QAudioFormat::LittleEndian);
     format.setSampleType(QAudioFormat::UnSignedInt);
 
     if (!deviceInfo.isFormatSupported(format)) {
-        qWarning() << "Default format not supported - trying to use nearest";
+        if (verbose)
+            qWarning() << "Default format not supported - trying to use nearest";
         format = deviceInfo.nearestFormat(format);
     }
+
+    audioOut.reset(new QAudioOutput(deviceInfo, format));
+    pipe.reset(new QFile);
+
+    setVolume(linVolume);
 
     sStream = sonicCreateStream(samplerate, channels);
     sonicSetSpeed(sStream, speed);
@@ -94,18 +109,19 @@ AudioPlayer::AudioPlayer(FILE* pipeFile): callbackTimer(new QTimer(this)){
     sonicSetRate(sStream, rate);
     // sonicSetVolume(sStream, getVolume();
     sonicSetChordPitch(sStream, emulateChordPitch);
-    sonicSetQuality(sStream, quality);
+    sonicSetQuality(sStream, highQuality);
 
-    // pipe.reset(new QFile("/home/marvin/hello/test.wav"));
-    pipe.reset(new QFile);
-    audioOut.reset(new QAudioOutput(deviceInfo, format));
-    pipe->open(pipeFile, QIODevice::ReadOnly);
+    if (book)
+        pipe->open(book->open(), QIODevice::ReadOnly);
 
     auto io = audioOut->start();
 
-    connect(&audioOut, SIGNAL(stateChanged(QAudio::State)), this, SLOT(audioStateChanged(QAudio::State)));
-    // connect(&QAudioOutput::stateChanged, audioStateChanged);
+    if (not book)
+        audioOut->stop();
 
+    // connect(&audioOut, SIGNAL(stateChanged(QAudio::State)), this, SLOT(audioStateChanged(QAudio::State)));
+
+    //* This is the main callback function. This does all the heavy lifting
     connect(callbackTimer, &QTimer::timeout, [this, io] {
         if (audioOut->state() == QAudio::StoppedState)
             return;
@@ -122,14 +138,23 @@ AudioPlayer::AudioPlayer(FILE* pipeFile): callbackTimer(new QTimer(this)){
 
                 //* Remember, sonic takes the count in samples, not bytes
                 assert(sonicWriteCharToStream(sStream, pipeBuffer.data(), readp / channels));
-                reads += sonicReadCharFromStream(sStream, sonicBuffer.data() + reads, audioOut->periodSize() - reads) * channels;
+                reads += sonicReadCharFromStream(sStream, sonicBuffer.data() + reads, (audioOut->periodSize() - reads) / channels) * channels;
             } while(reads < audioOut->periodSize());
-            io->write(sonicBuffer.data(), reads);
+            io->write(sonicBuffer.data(), audioOut->periodSize());
             --chunks;
         }
     });
 
-    callbackTimer->start(AudioPlayer::updateMS);
+    if (book)
+        callbackTimer->start(updateMS);
+}
+
+void AudioPlayer::updateBook(Book* book){
+    assert(book);
+
+    pipe->open(book->open(), QIODevice::ReadOnly);
+    callbackTimer->start(updateMS);
+    audioOut->resume();
 }
 
 AudioPlayer::~AudioPlayer(){
@@ -137,13 +162,17 @@ AudioPlayer::~AudioPlayer(){
     sonicDestroyStream(sStream);
 }
 
-void AudioPlayer::togglePause(){
-    if (audioOut->state() == QAudio::SuspendedState || audioOut->state() == QAudio::StoppedState) {
+void AudioPlayer::finished(){
+    pass
+}
+
+void AudioPlayer::togglePause(bool dummyparam){
+    if (audioOut->state() == QAudio::SuspendedState or audioOut->state() == QAudio::StoppedState) {
         audioOut->resume();
     } else if (audioOut->state() == QAudio::ActiveState) {
         audioOut->suspend();
     } else if (audioOut->state() == QAudio::IdleState) {
-        // no-op
+        pass
     }
 }
 
@@ -152,33 +181,106 @@ void AudioPlayer::audioStateChanged(QAudio::State state){
         _debugs(printQAudioError(audioOut->error()).c_str());
         _debugs(printQAudioState(state).c_str());
     }
+
     switch(state) {
         case QAudio::IdleState:
-            // Finished playing (no more data)
-            _debug("eof reached!");
-            // if (book_finished)
-            //     audioOut->stop();
-            // else{
-            //     if (audioOutDevice and audioOut->error()){
-            //         _debugs(color("resetting audio...", COLOR_RESET).c_str())
-            //         audioOutDevice->reset();
-            //         audioOutDevice = audioOut->start();
-            //     }
-            // }
-
-            // updateSonic();
-            // sourceFile.close();
-            // TODO consider closing the file here
+            if (verbose)
+                _debugs("eof reached!");
+            finished();
             break;
-
         case QAudio::StoppedState: break;
         case QAudio::SuspendedState: break;
         case QAudio::ActiveState: break;
         case QAudio::InterruptedState: break;
-
         default:
             _debugs("Something has gone horribly wrong");
             exit(99);
             break;
     }
+}
+
+void AudioPlayer::setSpeed(double to){
+    speed = to;
+    sonicSetSpeed(sStream, to);
+}
+
+void AudioPlayer::setPitch(float to){
+    pitch = to;
+    sonicSetPitch(sStream, to);
+}
+
+void AudioPlayer::setRate(float to){
+    rate = to;
+    sonicSetRate(sStream, to);
+}
+
+void AudioPlayer::setEmulateChordPitch(bool to){
+    emulateChordPitch = to;
+    sonicSetChordPitch(sStream, to);
+}
+
+void AudioPlayer::setHighQuality(bool to){
+    highQuality = to;
+    sonicSetQuality(sStream, to);
+}
+
+void AudioPlayer::setEnableNonlinearSpeedup(bool to){
+    enableNonlinearSpeedup = to;
+    if (verbose)
+        todo("enableNonlinearSpeedup");
+}
+
+void AudioPlayer::flushStream(){
+    if (verbose)
+        todo("Flush audio player");
+}
+
+void AudioPlayer::skip(int amount){
+    todo("skip");
+    // if (outputPosition + (amount * CHANNELS) < 0)
+    //     outputPosition = 0;
+    // else if (outputPosition + (amount * CHANNELS) > book->frames)
+    //     outputPosition = book->frames;
+    // else
+    //     outputPosition += amount * CHANNELS;
+
+    // // book->pos = (int)(outputPosition / CHANNELS);
+    // book->sampleProvider.pos += amount;
+    // flushStream();
+}
+
+void AudioPlayer::jump(int chapters){
+    todo("jump");
+}
+
+void AudioPlayer::incrementSpeed(){
+    setSpeed(speed + speedIncrement);
+}
+
+void AudioPlayer::incrementVolume(){
+    setVolume(getVolume() + volumeIncrement);
+}
+
+void AudioPlayer::decrementSpeed(){
+    setSpeed(speed - speedIncrement);
+}
+
+void AudioPlayer::decrementVolume(){
+    setVolume(getVolume() - volumeIncrement);
+}
+
+void AudioPlayer::skipForward(){
+    skip(skipSeconds);
+}
+
+void AudioPlayer::skipBackward(){
+    skip(-skipSeconds);
+}
+
+void AudioPlayer::jumpForward(){
+    jump(1);
+}
+
+void AudioPlayer::jumpBackward(){
+    jump(-1);
 }

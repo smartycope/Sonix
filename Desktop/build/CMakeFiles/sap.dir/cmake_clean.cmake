@@ -5,9 +5,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/sap_autogen.dir/ParseCache.txt"
   "sap_autogen"
   "CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/sap.dir/src/AudioPlayer.cpp.o"
   "CMakeFiles/sap.dir/src/Book.cpp.o"
   "CMakeFiles/sap.dir/src/PlayerWindow.cpp.o"
-  "CMakeFiles/sap.dir/src/SampleProvider.cpp.o"
   "CMakeFiles/sap.dir/src/main.cpp.o"
   "CMakeFiles/sap.dir/src/sonic.c.o"
 )

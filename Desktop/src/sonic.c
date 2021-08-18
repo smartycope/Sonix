@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 /*
     The following code was used to generate the following sinc lookup table.
 
@@ -427,8 +428,7 @@ static int addUnsignedCharSamplesToInputBuffer(sonicStream stream,
 }
 
 /* Add the input samples to the input buffer. */
-static int addCharSamplesToInputBuffer(sonicStream stream,
-                                       unsigned char* samples,
+static int addCharSamplesToInputBuffer(sonicStream stream, char* samples,
                                        int numSamples) {
   short* buffer;
   int count = numSamples * stream->numChannels;
@@ -600,8 +600,6 @@ int sonicReadCharFromStream(sonicStream stream, char* samples, int maxSamples){
   stream->numOutputSamples = remainingSamples;
   return numSamples;
 }
-
-
 
 /* Force the sonic stream to generate output using whatever data it currently
    has.  No extra delay will be added to the output, but flushing in the middle
@@ -1187,7 +1185,7 @@ int sonicWriteUnsignedCharToStream(sonicStream stream, unsigned char* samples,
 /* Use this to write 8-bit signed data to be speed up or down into the stream.
    Return 0 if memory realloc failed, otherwise 1 */
 int sonicWriteCharToStream(sonicStream stream, char* samples, int numSamples){
-  if (!addUnsignedCharSamplesToInputBuffer(stream, samples, numSamples)) {
+  if (!addCharSamplesToInputBuffer(stream, samples, numSamples)) {
     return 0;
   }
   return processStreamInput(stream);

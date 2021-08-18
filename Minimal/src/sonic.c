@@ -427,8 +427,7 @@ static int addUnsignedCharSamplesToInputBuffer(sonicStream stream,
 }
 
 /* Add the input samples to the input buffer. */
-static int addCharSamplesToInputBuffer(sonicStream stream,
-                                       unsigned char* samples,
+static int addCharSamplesToInputBuffer(sonicStream stream, char* samples,
                                        int numSamples) {
   short* buffer;
   int count = numSamples * stream->numChannels;

@@ -12,7 +12,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(BINARY_NAME "${PROJECT_NAME}")
@@ -51,7 +51,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 # To make everything fully multithreaded compliant
 set(CMAKE_THREAD_LIBS_INIT "-lpthread")
-#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 set(CMAKE_HAVE_THREADS_LIBRARY 1)
 set(CMAKE_USE_WIN32_THREADS_INIT 0)
 set(CMAKE_USE_PTHREADS_INIT 1)
@@ -60,9 +60,8 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 
 # Find dependancies
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
-find_package(httplib REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Gui Multimedia Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Gui Multimedia Widgets REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
 
@@ -90,30 +89,31 @@ find_package(nlohmann_json REQUIRED)
 # find_package(Boost REQUIRED)
 # find_package (LibAO REQUIRED)
 
+set(QT_LIBS
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Quick
+    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::Multimedia
+    Qt${QT_VERSION_MAJOR}::Widgets
+)
 
 # Define source files
 set(SRC_LIST
-    ${CMAKE_SOURCE_DIR}/src/cope.hpp
-    ${CMAKE_SOURCE_DIR}/src/main.cpp
-
-    ${CMAKE_SOURCE_DIR}/src/PlayerWindow.cpp
     ${CMAKE_SOURCE_DIR}/src/PlayerWindow.ui
+    ${CMAKE_SOURCE_DIR}/src/cope.hpp
+    ${CMAKE_SOURCE_DIR}/src/PlayerWindow.cpp
     ${CMAKE_SOURCE_DIR}/src/Book.cpp
-    ${CMAKE_SOURCE_DIR}/src/SampleProvider.cpp
-
+    ${CMAKE_SOURCE_DIR}/src/AudioPlayer.cpp
     ${CMAKE_SOURCE_DIR}/src/sonic.c
-    ${CMAKE_SOURCE_DIR}/src/portaudio.h
-    ${CMAKE_SOURCE_DIR}/src/sndfile.h
-    ${CMAKE_SOURCE_DIR}/include/pa_asio.h
-    ${CMAKE_SOURCE_DIR}/include/pa_jack.h
-    ${CMAKE_SOURCE_DIR}/include/pa_linux_alsa.h
+
+    ${CMAKE_SOURCE_DIR}/src/main.cpp
 )
 
 # Define linked libraries
 set(LIB_LIST
     pthread
-    ${CMAKE_SOURCE_DIR}/lib/libsonic.so
-    ${CMAKE_SOURCE_DIR}/lib/libportaudio.so
+    # ${CMAKE_SOURCE_DIR}/lib/libsonic.so
+    # ${CMAKE_SOURCE_DIR}/lib/libportaudio.so
     # /usr/lib64/libmp4v2.so
     # /usr/lib64/libfaad.so.2
 
@@ -122,8 +122,7 @@ set(LIB_LIST
     # ${CMAKE_SOURCE_DIR}/lib/libsndfile.so
     # ${CMAKE_SOURCE_DIR}/lib/libaudiostream.a
 
-    Qt${QT_VERSION_MAJOR}::Widgets
-
+    ${QT_LIBS}
     # ${LIBAVCODEC_LIBRARY}
     # ${LIBAVFORMAT_LIBRARY}
     # ${LIBAVUTIL_LIBRARY}
@@ -131,7 +130,7 @@ set(LIB_LIST
     # ${LIBAVFORMAT_LIBRARIES}
     # ${LIBAVUTIL_LIBRARIES}
 
-    httplib::httplib
+    # httplib::httplib
     nlohmann_json::nlohmann_json
     # ${BOOST_LIBRARIES}
     # ${LIBAO_LIBRARIES}

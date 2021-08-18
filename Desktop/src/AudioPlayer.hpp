@@ -1,77 +1,80 @@
 #ifndef AUDIOOUTPUT_H
 #define AUDIOOUTPUT_H
 
-#include <math.h>
+// #include <math.h>
 
-#include <QAudioOutput>
-#include <QByteArray>
-#include <QIODevice>
+// #include <QIODevice>
 #include <QObject>
+#include <QAudioOutput>
 #include <QTimer>
 #include <QScopedPointer>
 #include <QFile>
 
+#include "Book.hpp"
 #include "sonic.h"
 #include "cope.hpp"
-
-// #define _debug(var)  printf("%s = %d\n", #var, var);
-// #define _debugs(str) printf("%s\n", str);
-
-#define SKIP_SECONDS 20
-#define SKIP_SAMPLES (samplerate * SKIP_SECONDS)
-
 
 class AudioPlayer: public QObject{
     Q_OBJECT
 
 public:
-    AudioPlayer(FILE* pipeFile);
+    AudioPlayer(Book* book = nullptr);
     ~AudioPlayer();
 
     static int samplerate;
     static int channels;
 
-    static float speed;
+    static double speed;
+    static int   linVolume;
     static float pitch;
     static float rate;
-    static bool emulateChordPitch;
-    static bool enableNonlinearSpeedup;
-    static int quality;
+    static bool  emulateChordPitch;
+    static bool  enableNonlinearSpeedup;
+    static bool  highQuality;
+    static float speedIncrement;
+    static float volumeIncrement;
+    static int   skipSeconds;
 
     static ulong bytesRead;
     static const int updateMS;
 
+    int getVolume();
+    void updateBook(Book* book);
+
 public slots:
-    void togglePause();
-    static void setVolume(int);
+    void togglePause(bool dummyparam = false);
+    void setVolume(int to);
+    void setSpeed(double to);
+    void setPitch(float to);
+    void setRate(float to);
+    void setEmulateChordPitch(bool to);
+    void setHighQuality(bool to);
+    void setEnableNonlinearSpeedup(bool to);
+
+    void skip(int amount);
+    void jump(int chapters);
+    void incrementSpeed();
+    void incrementVolume();
+    void decrementSpeed();
+    void decrementVolume();
+    void skipForward();
+    void skipBackward();
+    void jumpForward();
+    void jumpBackward();
 
 private:
     QScopedPointer<QAudioOutput> audioOut;
     QScopedPointer<QFile> pipe;
     sonicStream sStream;
-
     QTimer* callbackTimer;
 
-    static int volume;
+    qreal logVolume;
 
+    void flushStream();
+    void finished();
+    void audioStateChanged(QAudio::State state);
     const static std::string printQAudioError(QAudio::Error err);
     const static std::string printQAudioState(QAudio::State state);
-
-    void audioStateChanged(QAudio::State state);
 };
-
-/*
-void skip(OurData* data, int amount){
-    if (data->outputPosition + (amount * CHANNELS) < 0)
-        data->outputPosition = 0;
-    else if (data->outputPosition + (amount * CHANNELS) > data->frames)
-        data->outputPosition = data->frames;
-    else
-        data->outputPosition += amount * CHANNELS;
-
-    data->filePosition = (int)(data->outputPosition / CHANNELS);
-    flushStream(data);
-}
-*/
 
 #endif // AUDIOOUTPUT_H

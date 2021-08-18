@@ -1,77 +1,22 @@
-#include "PlayerWindow.h"
+#include "PlayerWindow.hpp"
 
 #include <QApplication>
 #include "defs.h"
+extern bool verbose;
 
-
-int main(int argc, char **argv){
-    QApplication a(argc, argv);
-    PlayerWindow w;
-    w.show();
-    return a.exec();
-}
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
-#include <string>
-#include <sstream>
-#include <vector>
-#include <iomanip>
-#include <iostream>
-
-#include <qt5/QtCore/qobject.h>
-#include <QThread>
-#include <QApplication>
-#include <QObject>
-#include <QString>
-#include <QtCore/qglobal.h>
-#include <QIODevice>
-#include <QDataStream>
-#include <QAudioOutput>
-#include <QAudio>
-#include <QFile>
-#include <QBuffer>
-#include <QAudioOutput>
-#include <QByteArray>
-
-#include <nlohmann/json.hpp>
-#include "audiooutput.h"
-#include "sonic.h"
 #define ARGPARSE_LONG_VERSION_ARG_ONLY
 #include "argparse.hpp"
 #include "cope.hpp"
 
-using json = nlohmann::json;
-using std::string;
-using std::stringstream;
-using std::vector;
-
-FILE* ffmpeg;
-
-
-
-void shutDown(int signum){
-    int rtn = pclose(ffmpeg);
-    if (rtn) {
-        printf("ffmpeg pipe returned: %d\n", rtn);
-        exit(rtn);
-    }
-    exit(1);
-}
-
-
-
 
 argparse::ArgumentParser parseArgs(int argc, char* argv[]){
     argparse::ArgumentParser args("SAP", "0.1.3");
-    args.add_description("Listen to audiobooks!");
+    args.add_description(ABOUT_MSG);
 
     args.add_argument("audioFile")
         // .required()
-        .optional()
-        .help("The file path of the audiobook to play (NOTE: Spaces in the filepath are not currently supported. You have to rename the file)");
+        .help("The file path of the audiobook to play (NOTE: Spaces in the filepath are not currently supported. Please open it via the GUI.)")
+        .default_value(string());
 
     args.add_argument("--verbose")
         .default_value(false)
@@ -144,7 +89,7 @@ argparse::ArgumentParser parseArgs(int argc, char* argv[]){
     args.add_argument("-sc", "--startChapter")
         .help("Start playing at chapter x")
         .action([](const std::string& value) { return std::stoi(value); })
-        .default_value(0);
+        .default_value(1);
 
     args.add_argument("--listChapters")
         .help("Print the chapters in the book (if available) and exit")
@@ -233,96 +178,43 @@ int main(int argc, char* argv[]) {
     //* Parse args
     argparse::ArgumentParser args = parseArgs(argc, argv);
 
-    file = args.get<string>("audioFile");
-    AudioPlayer::setVolume(args.get<int>("--volume"));
+    QApplication app(argc, argv);
+    app.setApplicationName("SuperSonic Audiobook Player");
+
+    //* These are book-independant. Set these even if no filepath was provided
+    AudioPlayer::linVolume = args.get<int>("--volume");
     AudioPlayer::speed = args.get<float>("--speed");
     AudioPlayer::rate = args.get<float>("--rate");
     AudioPlayer::pitch = args.get<float>("--pitch");
     AudioPlayer::emulateChordPitch = args.get<bool>("--emulateChordPitch");
     AudioPlayer::enableNonlinearSpeedup = args.get<bool>("--enableNonlinearSpeedup");
-    AudioPlayer::quality = args.get<bool>("--increaseQuality");
+    AudioPlayer::highQuality = args.get<bool>("--increaseQuality");
     AudioPlayer::samplerate = args.get<int>("--samplerate");
     AudioPlayer::channels = args.get<int>("--channels");
-    AudioPlayer::string authcode = args.get<string>("--authcode");
+    verbose = args.get<bool>("--verbose");
 
-    PlayerWindow::verbose = args.get<bool>("--verbose");
-    PlayerWindow::sleepTimer = args.get<int>("--sleepTimer") * 60;
-    if (not args.get<bool>("--noStartSaved"))
-        PlayerWindow::startSec = startSec;
-    if (args.get<int>("--startSec") or args.get<int>("--startMin") or args.get<int>("--startHour"))
-        PlayerWindow::startSec = args.get<int>("--startSec") + (args.get<int>("--startMin") * 60) + (args.get<int>("--startHour") * 3600);
+    string file = args.get<string>("audioFile");
+    Book* book;
+    if (not file.empty())
+        book = new Book(file, &args);
+    else
+        book = nullptr;
 
-    if (args.get<bool>("--savePosition") and verbose)
-        todo("Save metadata position on close");
-
-    if ((args.get<int>("--acclimateTo") or args.get<int>("--acclimateIncrease")) and verbose)
-        todo("Acclimation");
-
-    if (args.get<bool>("--cli"))
-        todo("Cli only version");
-
-
-
-    int chap = args.get<int>("--startChapter");
-    if (chap){
-        assert(chapters[chap].num == chap + 1);
-        ss += chapters[chap].startTime;
-    }
-
-    if (args.get<bool>("--listChapters"))
-        printChaptersAndExit(chapters);
-
-    if (args.get<bool>("--description")){
-        std::cout << description << '\n';
-        return 0;
-    }
-    if (args.get<bool>("--publisher")){
-        std::cout << publisher << '\n';
-        return 0;
-    }
-    if (args.get<bool>("--released")){
-        std::cout << releaseDate << '\n';
-        return 0;
-    }
-
-    QApplication app(argc, argv);
-    app.setApplicationName("SuperSonic Audiobook Player");
-
-    //* Generate the command
-    std::stringstream command;
-    command << "ffmpeg -hide_banner -loglevel error " << " -ss " << ss;
-
-    // If it's a .aax file and we are given an authcode, tell ffmpeg so it can decrypt it
-    addAuthcode(command, authcode);
-
-    command <<" -i \"" << file << "\" -codec pcm_u8 -vn -f u8"
-            << " -ac " << AudioPlayer::channels
-            << " -ar " << AudioPlayer::samplerate;
-
-    if (ts)
-        command << " -t "  << ts;
-
-    command << " -";
-
-    //* Open the file
-    if (verbose)
-        printf("Executing command: \"%s\"\n", command.str().c_str());
-
-    ffmpeg = popen(command.str().c_str(), "r");
-    if (ffmpeg == NULL) { printf("Error: Failed to open pipe"); return 5; }
-
-    signal(SIGINT, shutDown);
-
-    //* Main loop
-    AudioPlayer player(ffmpeg);
-    app.exec();
-
-    //* Close up and exit
-    int rtn = pclose(ffmpeg);
-    if (rtn) { printf("\"%s\" returned error: %d\n", command.str().c_str(), rtn); return rtn; }
-
-    return 0;
+    auto win = PlayerWindow(book);
+    if (not args.get<bool>("--cli"))
+        win.show();
+    return app.exec();
 }
+
+
+
+
+
+
+
+
+
+
 
 
 /*

@@ -97,8 +97,8 @@ static void printfclrsl(const char*, const char*, ...);
 static void printclrsl(const char*, const char*);
 static void leave(int status, std::string msg);
 static void leave(int status);
-std::vector<char> getCmdOutV(const std::string command);
-static std::string getCmdOutS(const std::string command);
+std::vector<char> getCmdOutV(const std::string command, bool verbose = false, bool exitOnFail = true);
+static std::string getCmdOutS(const std::string command, bool verbose = false, bool exitOnFail = true);
 
 static std::string color(std::string, std::string);
 static std::string fmt(std::string, ...);
@@ -325,6 +325,8 @@ static std::string fmt(std::string, ...);
 #define debugf(string, ...) { printDebugCount(); printMetaData(); printfclr(REGULAR_DEBUG_COLOR, string, __VA_ARGS__); printVscodeLink(); }
 #define shout               { printDebugCount(); printMetaData(); printclrsl(REGULAR_DEBUG_COLOR, (char*)"HERE! HERE!", 1); printVscodeLink(); }
 #define note(id)            debugs(#id);
+#define _debugs             debugs
+#define _debugf             debugf
 // #define debugged(type, var) __debugged<type>(var, (char*)#var, _typename(var))
 
 #define debug_X(x, var, color, FUNC, ...) FUNC
@@ -475,13 +477,14 @@ static void leave(int status){
     leave(status, "");
 }
 
-inline std::vector<char> getCmdOutV(const std::string command){
+inline std::vector<char> getCmdOutV(const std::string command, bool verbose, bool exitOnFail){
     FILE* pipe;
     const char* cmd = command.c_str();
     std::vector<char> out;
     char* transportBuffer;
 
-    printf("Executing command: \"%s\"\n", cmd);
+    if (verbose)
+        printf("Executing command: \"%s\"\n", cmd);
 
     pipe = popen(cmd, "r");
     if (pipe == NULL) { _debug("Error: Failed to open pipe", 5); }
@@ -494,20 +497,21 @@ inline std::vector<char> getCmdOutV(const std::string command){
     }
 
     int rtn = pclose(pipe);
-    if (rtn) leave(rtn, fmt("\"%s\" returned error: %d", cmd, rtn));
+    if (rtn and exitOnFail) leave(rtn, fmt("\"%s\" returned error: %d", cmd, rtn));
 
     // out.assign(transportBuffer, transportBuffer + read);
 
     return out;
 }
 
-static std::string getCmdOutS(const std::string command){
+static std::string getCmdOutS(const std::string command, bool verbose, bool exitOnFail){
     FILE* pipe;
     const char* cmd = command.c_str();
     std::string out;
     char* transportBuffer;
 
-    printf("Executing command: \"%s\"\n", cmd);
+    if (verbose)
+        printf("Executing command: \"%s\"\n", cmd);
 
     pipe = popen(cmd, "r");
     if (pipe == NULL) { _debug("Error: Failed to open pipe", 5); }
@@ -519,7 +523,7 @@ static std::string getCmdOutS(const std::string command){
     }
 
     int rtn = pclose(pipe);
-    if (rtn) leave(rtn, fmt("\"%s\" returned error: %d", cmd, rtn));
+    if (rtn and exitOnFail) leave(rtn, fmt("\"%s\" returned error: %d", cmd, rtn));
 
     out.pop_back();
 

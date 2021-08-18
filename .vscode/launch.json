@@ -7,9 +7,20 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "LLDB Minimal",
+            "name": "Minimal",
             "program": "${workspaceFolder}/Minimal/sap",
-            "args": ["/home/marvin/Media/Audiobooks/Snapshot.wav"],
+            "args": ["/home/marvin/Media/Audiobooks/Snapshot.wav", "--verbose", "-s", "2"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Desktop",
+            "program": "${workspaceFolder}/Desktop/sap",
+            "args": ["--verbose", "-s", "2"],
+            // "/home/marvin/Media/Audiobooks/DragonsEgg.m4b"
+            // "--verbose", "-s", "2"
+            // "/home/marvin/Media/Audiobooks/DragonsEggCheelaBook1_ep6.aax"
             "cwd": "${workspaceFolder}"
         },
 

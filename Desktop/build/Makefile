@@ -182,6 +182,33 @@ sap_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.s
 .PHONY : sap_autogen/mocs_compilation.cpp.s
 
+src/AudioPlayer.o: src/AudioPlayer.cpp.o
+
+.PHONY : src/AudioPlayer.o
+
+# target to build an object file
+src/AudioPlayer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/AudioPlayer.cpp.o
+.PHONY : src/AudioPlayer.cpp.o
+
+src/AudioPlayer.i: src/AudioPlayer.cpp.i
+
+.PHONY : src/AudioPlayer.i
+
+# target to preprocess a source file
+src/AudioPlayer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/AudioPlayer.cpp.i
+.PHONY : src/AudioPlayer.cpp.i
+
+src/AudioPlayer.s: src/AudioPlayer.cpp.s
+
+.PHONY : src/AudioPlayer.s
+
+# target to generate assembly for a file
+src/AudioPlayer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/AudioPlayer.cpp.s
+.PHONY : src/AudioPlayer.cpp.s
+
 src/Book.o: src/Book.cpp.o
 
 .PHONY : src/Book.o
@@ -235,33 +262,6 @@ src/PlayerWindow.s: src/PlayerWindow.cpp.s
 src/PlayerWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/PlayerWindow.cpp.s
 .PHONY : src/PlayerWindow.cpp.s
-
-src/SampleProvider.o: src/SampleProvider.cpp.o
-
-.PHONY : src/SampleProvider.o
-
-# target to build an object file
-src/SampleProvider.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/SampleProvider.cpp.o
-.PHONY : src/SampleProvider.cpp.o
-
-src/SampleProvider.i: src/SampleProvider.cpp.i
-
-.PHONY : src/SampleProvider.i
-
-# target to preprocess a source file
-src/SampleProvider.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/SampleProvider.cpp.i
-.PHONY : src/SampleProvider.cpp.i
-
-src/SampleProvider.s: src/SampleProvider.cpp.s
-
-.PHONY : src/SampleProvider.s
-
-# target to generate assembly for a file
-src/SampleProvider.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/SampleProvider.cpp.s
-.PHONY : src/SampleProvider.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -330,15 +330,15 @@ help:
 	@echo "... sap_autogen/mocs_compilation.o"
 	@echo "... sap_autogen/mocs_compilation.i"
 	@echo "... sap_autogen/mocs_compilation.s"
+	@echo "... src/AudioPlayer.o"
+	@echo "... src/AudioPlayer.i"
+	@echo "... src/AudioPlayer.s"
 	@echo "... src/Book.o"
 	@echo "... src/Book.i"
 	@echo "... src/Book.s"
 	@echo "... src/PlayerWindow.o"
 	@echo "... src/PlayerWindow.i"
 	@echo "... src/PlayerWindow.s"
-	@echo "... src/SampleProvider.o"
-	@echo "... src/SampleProvider.i"
-	@echo "... src/SampleProvider.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -8,7 +8,6 @@
 #define __FLT128_MAX_10_EXP__ 4932
 #define __FLT_MIN__ 1.17549435082228750796873653722224568e-38F
 #define __GCC_IEC_559_COMPLEX 2
-#define CPPHTTPLIB_OPENSSL_SUPPORT 1
 #define __cpp_aggregate_nsdmi 201304L
 #define __UINT_LEAST8_TYPE__ unsigned char
 #define __FLT128_DIG__ 33
@@ -60,6 +59,7 @@
 #define _STDC_PREDEF_H 1
 #define __cpp_nsdmi 200809L
 #define __linux 1
+#define QT_QMLMODELS_LIB 1
 #define __CHAR_UNSIGNED__ 1
 #define __UINT32_MAX__ 0xffffffffU
 #define __DBL_DENORM_MIN__ double(4.94065645841246544176568792868221372e-324L)
@@ -128,7 +128,6 @@
 #define __FLT64_MAX_10_EXP__ 308
 #define __FLT16_MAX_10_EXP__ 4
 #define __FLT32_HAS_INFINITY__ 1
-#define CPPHTTPLIB_ZLIB_SUPPORT 1
 #define __cpp_raw_strings 200710L
 #define __INT_FAST32_MAX__ 0x7fffffffffffffffL
 #define __DBL_HAS_INFINITY__ 1
@@ -208,6 +207,7 @@
 #define __INT_LEAST32_MAX__ 0x7fffffff
 #define __GCC_ATOMIC_INT_LOCK_FREE 2
 #define __FLT32X_MIN__ 2.22507385850720138309023271733240406e-308F32x
+#define QT_QUICK_LIB 1
 #define __FLT128_MAX_EXP__ 16384
 #define __FLT32_MANT_DIG__ 24
 #define __FLOAT_WORD_ORDER__ __ORDER_LITTLE_ENDIAN__
@@ -265,6 +265,7 @@
 #define __INT_LEAST16_MAX__ 0x7fff
 #define __FLT16_NORM_MAX__ 6.55040000000000000000000000000000000e+4F16
 #define __INT64_MAX__ 0x7fffffffffffffffL
+#define QT_NETWORK_LIB 1
 #define __FLT32_DENORM_MIN__ 1.40129846432481707092372958328991613e-45F32
 #define __INT_LEAST64_TYPE__ long int
 #define __INT16_TYPE__ short int
@@ -336,6 +337,7 @@
 #define __GNUC_STDC_INLINE__ 1
 #define __FLT64_HAS_DENORM__ 1
 #define __FLT32_EPSILON__ 1.19209289550781250000000000000000000e-7F32
+#define QT_MULTIMEDIA_LIB 1
 #define __FP_FAST_FMAF32x 1
 #define __FLT16_HAS_DENORM__ 1
 #define __STDC_UTF_32__ 1
@@ -354,7 +356,6 @@
 #define __UINT32_C(c) c ## U
 #define __FLT_DENORM_MIN__ 1.40129846432481707092372958328991613e-45F
 #define __WINT_MIN__ 0U
-#define CPPHTTPLIB_BROTLI_SUPPORT 1
 #define __INT8_MAX__ 0x7f
 #define __LONG_WIDTH__ 64
 #define __FLT32X_NORM_MAX__ 1.79769313486231570814527423731704357e+308F32x
@@ -382,6 +383,7 @@
 #define __ATOMIC_SEQ_CST 5
 #define __EXCEPTIONS 1
 #define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_16 1
+#define QT_QML_LIB 1
 #define __UINT32_TYPE__ unsigned int
 #define __FLT32X_MIN_10_EXP__ (-307)
 #define __UINTPTR_TYPE__ long unsigned int

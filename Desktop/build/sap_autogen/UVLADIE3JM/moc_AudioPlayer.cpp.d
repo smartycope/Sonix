@@ -1,6 +1,5 @@
-/home/marvin/hello/C/SAP/Desktop/build/sap_autogen/UVLADIE3JM/moc_PlayerWindow.cpp: /home/marvin/hello/C/SAP/Desktop/src/PlayerWindow.hpp \
+/home/marvin/hello/C/SAP/Desktop/build/sap_autogen/UVLADIE3JM/moc_AudioPlayer.cpp: /home/marvin/hello/C/SAP/Desktop/src/AudioPlayer.hpp \
   /home/marvin/hello/C/SAP/Desktop/build/sap_autogen/moc_predefs.h \
-  /home/marvin/hello/C/SAP/Desktop/src/AudioPlayer.hpp \
   /home/marvin/hello/C/SAP/Desktop/src/Book.hpp \
   /home/marvin/hello/C/SAP/Desktop/src/argparse.hpp \
   /home/marvin/hello/C/SAP/Desktop/src/cope.hpp \
@@ -166,7 +165,6 @@
   /usr/include/c++/10/bits/unique_ptr.h \
   /usr/include/c++/10/bits/uses_allocator.h \
   /usr/include/c++/10/bits/vector.tcc \
-  /usr/include/c++/10/cassert \
   /usr/include/c++/10/cctype \
   /usr/include/c++/10/cerrno \
   /usr/include/c++/10/charconv \
@@ -250,10 +248,8 @@
   /usr/include/qt5/QtCore/qcontainerfwd.h \
   /usr/include/qt5/QtCore/qcontainertools_impl.h \
   /usr/include/qt5/QtCore/qdatastream.h \
-  /usr/include/qt5/QtCore/qdir.h \
   /usr/include/qt5/QtCore/qfile.h \
   /usr/include/qt5/QtCore/qfiledevice.h \
-  /usr/include/qt5/QtCore/qfileinfo.h \
   /usr/include/qt5/QtCore/qflags.h \
   /usr/include/qt5/QtCore/qgenericatomic.h \
   /usr/include/qt5/QtCore/qglobal.h \
@@ -295,23 +291,14 @@
   /usr/include/qt5/QtCore/qtcore-config.h \
   /usr/include/qt5/QtCore/qtimer.h \
   /usr/include/qt5/QtCore/qtypeinfo.h \
-  /usr/include/qt5/QtCore/qurl.h \
   /usr/include/qt5/QtCore/qvarlengtharray.h \
   /usr/include/qt5/QtCore/qvector.h \
   /usr/include/qt5/QtCore/qversiontagging.h \
   /usr/include/qt5/QtGui/QPixmap \
-  /usr/include/qt5/QtGui/qbrush.h \
   /usr/include/qt5/QtGui/qcolor.h \
-  /usr/include/qt5/QtGui/qcursor.h \
-  /usr/include/qt5/QtGui/qfont.h \
-  /usr/include/qt5/QtGui/qfontinfo.h \
-  /usr/include/qt5/QtGui/qfontmetrics.h \
-  /usr/include/qt5/QtGui/qicon.h \
   /usr/include/qt5/QtGui/qimage.h \
-  /usr/include/qt5/QtGui/qkeysequence.h \
   /usr/include/qt5/QtGui/qmatrix.h \
   /usr/include/qt5/QtGui/qpaintdevice.h \
-  /usr/include/qt5/QtGui/qpalette.h \
   /usr/include/qt5/QtGui/qpixelformat.h \
   /usr/include/qt5/QtGui/qpixmap.h \
   /usr/include/qt5/QtGui/qpolygon.h \
@@ -330,16 +317,6 @@
   /usr/include/qt5/QtMultimedia/qmultimedia.h \
   /usr/include/qt5/QtMultimedia/qtmultimedia-config.h \
   /usr/include/qt5/QtMultimedia/qtmultimediaglobal.h \
-  /usr/include/qt5/QtWidgets/QFileDialog \
-  /usr/include/qt5/QtWidgets/QMainWindow \
-  /usr/include/qt5/QtWidgets/qdialog.h \
-  /usr/include/qt5/QtWidgets/qfiledialog.h \
-  /usr/include/qt5/QtWidgets/qmainwindow.h \
-  /usr/include/qt5/QtWidgets/qsizepolicy.h \
-  /usr/include/qt5/QtWidgets/qtabwidget.h \
-  /usr/include/qt5/QtWidgets/qtwidgets-config.h \
-  /usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-  /usr/include/qt5/QtWidgets/qwidget.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
