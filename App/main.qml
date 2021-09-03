@@ -10,34 +10,35 @@ Window {
     width: 640
     height: 480
     visible: true
+    property alias window: window
+    property alias chapterBox: chapterBox
+    property alias openButton: openButton
+    property alias narratorLabel: narratorLabel
+    property alias authorLabel: authorLabel
+    property alias speedControl: speedControl
+    property alias skipForwardButton: skipForwardButton
+    property alias cover: cover
+    property alias skipBackwardButton: skipBackwardButton
+    property alias jumpForwardButton: jumpForwardButton
+    property alias jumpBackwardButton: jumpBackwardButton
+    property alias titleLabel: titleLabel
+    property alias progressBar: progressBar
+    property alias pauseButton: pauseButton
     title: qsTr("SuperSonic Audiobook Player")
 
-//    Image {
-//        id: cover
-//        x: 207
-//        y: 23
-//        width: 215
-//        height: 193
-////        source: player.book.cover
-//        source: "qrc:/defaultBookCover.png"
-////        source: "/home/rebecca/hello/C++/SonicPlaceholder/assets/defaultBookCover.jpeg"
-//        fillMode: Image.PreserveAspectFit
-//    }
-
     ProgressBar {
-        id: position
+        id: progressBar
         x: 20
         y: 437
-        width: 601
+        width: 495
         height: 22
-//        value: player.book.position
         value: 0.5
     }
 
     RoundButton {
-        id: pause
+        id: pauseButton
         x: 280
-        y: 313
+        y: 309
         width: 80
         height: 80
         text: "||"
@@ -53,21 +54,21 @@ Window {
     }
 
     Label {
-        id: title
-        x: 214
-        y: 222
+        id: titleLabel
+        x: 220
+        y: 10
         width: 201
         height: 37
 //        text: player.book.title
-        text: "Hello world!"
+        text: "Title"
         horizontalAlignment: Text.AlignHCenter
         font.pointSize: 20
     }
 
     RoundButton {
-        id: jumpBackward
+        id: jumpBackwardButton
         x: 214
-        y: 323
+        y: 319
         width: 60
         height: 60
         text: "<"
@@ -77,9 +78,9 @@ Window {
     }
 
     RoundButton {
-        id: jumpForward
+        id: jumpForwardButton
         x: 366
-        y: 323
+        y: 319
         width: 60
         height: 60
         text: ">"
@@ -90,9 +91,9 @@ Window {
     }
 
     RoundButton {
-        id: skipForward
+        id: skipForwardButton
         x: 432
-        y: 333
+        y: 329
         text: ">|"
         TapHandler{
             onTapped: player.skipForward()
@@ -100,12 +101,73 @@ Window {
     }
 
     RoundButton {
-        id: skipBackward
+        id: skipBackwardButton
         x: 168
-        y: 333
+        y: 329
         text: "|<"
         TapHandler{
             onTapped: player.skipBackward()
         }
+    }
+
+    Image {
+        id: cover
+        x: 196
+        y: 53
+        width: 250
+        height: 250
+        source: "assets/defaultBookCover.png"
+        fillMode: Image.Stretch
+    }
+
+    SpinBox {
+        id: speedControl
+        x: 516
+        y: 432
+        width: 124
+        height: 32
+        wheelEnabled: false
+        stepSize: 0
+        value: 1
+        to: 20
+        from: 0
+    }
+
+    Text {
+        id: authorLabel
+        x: 20
+        y: 18
+        width: 131
+        height: 21
+        text: qsTr("Author:")
+        font.pixelSize: 12
+    }
+
+    Text {
+        id: narratorLabel
+        x: 20
+        y: 33
+        width: 135
+        height: 21
+        text: qsTr("Narrator:")
+        font.pixelSize: 12
+    }
+
+    RoundButton {
+        id: openButton
+        x: 590
+        y: 10
+        text: "+"
+        flat: false
+    }
+
+    ComboBox {
+        id: chapterBox
+        x: 156
+        y: 399
+        width: 331
+        height: 32
+        displayText: "No Chapters Provided"
+        flat: true
     }
 }

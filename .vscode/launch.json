@@ -4,6 +4,14 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    {
+        "type": "lldb",
+        "request": "launch",
+        "name": "Qml",
+        "program": "${workspaceFolder}/Qml/sap",
+        "args": ["--verbose", "/home/marvin/Media/Audiobooks/DragonsEggCheelaBook1_ep6.aax"],
+        "cwd": "${workspaceFolder}"
+    },
         {
             "type": "lldb",
             "request": "launch",
