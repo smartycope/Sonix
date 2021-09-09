@@ -10,21 +10,26 @@ To build, first install nlohmann/json to your system. Go to https://github.com/n
 Then cd into one of the project directories, make a build directory, run cmake, build with the makefile, and run the binary labeled "sap".
 Linux example:
 
-#Make and install nlohmann/json
-git clone https://github.com/nlohmann/json \n
-cd json
-mkdir build
-cd build
-cmake ..
-make -j$(nproc)
-sudo make install
+    # Make and install nlohmann/json
+        git clone https://github.com/nlohmann/json
+        cd json
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
+        sudo make install
 
-#Now build the desktop version
-git clone https://github.com/smartycope/SuperSonic-Audiobook-Player.git
-cd Desktop
-mkdir build
-cd build
-cmake ..
-make -j$(nproc)
-cd ..
-./sap
+    # Install dependancies
+        sudo dnf install ffmpeg-devel ffmpeg-libs
+        sudo apt-get install <I have no idea, apt sucks>
+
+
+    # Now build the Qml version
+        git clone https://github.com/smartycope/SuperSonic-Audiobook-Player.git
+        cd Qml
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
+        cd ..
+        ./sap
