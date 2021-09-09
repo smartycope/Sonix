@@ -130,6 +130,12 @@
 		"/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
 		"/usr/share/cmake/Modules/FindPackageMessage.cmake",
 		"/usr/local/lib64/cmake/nlohmann_json/nlohmann_jsonTargets.cmake",
+		"/home/marvin/hello/C/SAP/Qml/cmake/FindFFmpeg.cmake",
+		"/usr/share/cmake/Modules/FindPkgConfig.cmake",
+		"/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake/Modules/FindPackageMessage.cmake",
+		"/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake/Modules/FindPackageMessage.cmake",
 		"/home/marvin/hello/C/SAP/Qml/main.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/marvin/hello/C/SAP/Qml",
@@ -138,9 +144,14 @@
 	"HEADERS" : 
 	[
 		[
-			"/home/marvin/hello/C/SAP/Qml/ffmpeg/ffmpeg.h",
+			"/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/cmdutils.h",
 			"MU",
-			"ZUXGCTAMGD/moc_ffmpeg.cpp"
+			"V5AWUIWLSJ/moc_cmdutils.cpp"
+		],
+		[
+			"/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg.hpp",
+			"MU",
+			"V5AWUIWLSJ/moc_ffmpeg.cpp"
 		],
 		[
 			"/home/marvin/hello/C/SAP/Qml/src/AudioPlayer.hpp",
@@ -158,6 +169,11 @@
 			"UVLADIE3JM/moc_CoverProvider.cpp"
 		],
 		[
+			"/home/marvin/hello/C/SAP/Qml/src/Global.hpp",
+			"MU",
+			"UVLADIE3JM/moc_Global.cpp"
+		],
+		[
 			"/home/marvin/hello/C/SAP/Qml/src/PlayerWindow.hpp",
 			"MU",
 			"UVLADIE3JM/moc_PlayerWindow.cpp"
@@ -166,6 +182,11 @@
 			"/home/marvin/hello/C/SAP/Qml/src/cope.hpp",
 			"MU",
 			"UVLADIE3JM/moc_cope.cpp"
+		],
+		[
+			"/home/marvin/hello/C/SAP/Qml/src/ffmpegLiason.hpp",
+			"MU",
+			"UVLADIE3JM/moc_ffmpegLiason.cpp"
 		],
 		[
 			"/home/marvin/hello/C/SAP/Qml/src/sonic.h",
@@ -201,7 +222,9 @@
 		"/home/marvin/hello/C/SAP/Qml/build",
 		"/home/marvin/hello/C/SAP/Qml",
 		"/home/marvin/hello/C/SAP/Qml/lib",
+		"/home/marvin/hello/C/SAP/Qml/include",
 		"/home/marvin/hello/C/SAP/Qml/ffmpeg",
+		"/usr/include/ffmpeg",
 		"/usr/include/qt5",
 		"/usr/include/qt5/QtCore",
 		"/usr/lib64/qt5/mkspecs/linux-g++",
@@ -243,11 +266,18 @@
 	"SETTINGS_FILE" : "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/home/marvin/hello/C/SAP/Qml/ffmpeg/ffmpeg.c", "MU" ],
+		[ "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/cmdutils.c", "MU" ],
+		[ "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg-main.cpp", "MU" ],
+		[ "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg.c", "MU" ],
+		[ "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_filter.c", "MU" ],
+		[ "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_hw.c", "MU" ],
+		[ "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_opt.c", "MU" ],
 		[ "/home/marvin/hello/C/SAP/Qml/src/AudioPlayer.cpp", "MU" ],
 		[ "/home/marvin/hello/C/SAP/Qml/src/Book.cpp", "MU" ],
 		[ "/home/marvin/hello/C/SAP/Qml/src/CoverProvider.cpp", "MU" ],
+		[ "/home/marvin/hello/C/SAP/Qml/src/Global.cpp", "MU" ],
 		[ "/home/marvin/hello/C/SAP/Qml/src/PlayerWindow.cpp", "MU" ],
+		[ "/home/marvin/hello/C/SAP/Qml/src/ffmpegLiason.cpp", "MU" ],
 		[ "/home/marvin/hello/C/SAP/Qml/src/main.cpp", "MU" ],
 		[ "/home/marvin/hello/C/SAP/Qml/src/sonic.c", "MU" ]
 	],

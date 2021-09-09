@@ -1,61 +1,51 @@
-#include "CoverProvider.hpp"
-#include "PlayerWindow.hpp"
-#include "src/AudioPlayer.hpp"
+#include <string>
+#include <csignal>
 
-// #include <QApplication>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQuickView>
-#include <iostream>
-#include <QQuickWindow>
-#include <qmainwindow.h>
-#include <qquickwindow.h>
-
-#include "Global.hpp"
-
-#define EXAMPLE_PATH "/home/marvin/Media/Audiobooks/DragonsEgg.m4b"
-
-// #include "cope.hpp"
-
-
-#include <QObject>
-#include <QString>
 #include <qqml.h>
 
+#include "CoverProvider.hpp"
+#include "PlayerWindow.hpp"
+#include "Global.hpp"
+#include "messages.hpp"
 
-Global* Global::_instance = new Global;
-// Eventually this will be false
-bool Global::verbose = true;
-QQuickWindow* Global::ui = nullptr;
-argparse::ArgumentParser* Global::args = nullptr;
-string Global::authcode = "";
+using std::string;
 
 
 int main(int argc, char* argv[]) {
-    //* Parse args
+    // Parse args
     Global::parseArgs(argc, argv);
     Global::authcode = Global::args->get<string>("--authcode");
     Global::verbose =  Global::args->get<bool>("--verbose");
 
+    // If we close the program, we want to join the ffmpeg thread too
+    signal(SIGINT, Global::exitSigHandler);
+
+    // Initialize the Qml application
     QGuiApplication app(argc, argv);
     QGuiApplication::setOrganizationName("Beepus and Boopus Inc.");
 
-    // allocate example before the engine to ensure that it outlives it
-    // Book* book = new Book(EXAMPLE_PATH);
+    // Allocate player1 before the engine to ensure that it outlives it
     QScopedPointer<PlayerWindow> player(new PlayerWindow);
     QQmlApplicationEngine engine;
 
     // Add our custom image provider for the cover
     engine.addImageProvider("cover", new CoverProvider);
 
-    // Register the singleton type provider with QML by calling this
-    // function in an initialization function.
+    // Register the singleton type provider with QML by calling this function in an initialization function.
     qmlRegisterSingletonInstance("PlayerWindow", 1, 0, "Player", player.get());
 
+    // Load the main .qml file we have
     engine.load("qrc:/ui/player.qml");
+
+    // We want everything to have access to the ui
     Global::ui = qobject_cast<QQuickWindow*>(engine.rootObjects().first());
+    // Just so everything is synced
     Global::setUIProperty("authcodeWarning", "text", AUTHCODE_WARNING);
 
+    // Initialze seperately, because for SOME REASON the AudioPlayer constructor
+    // refuses to accept a nullptr as a parameter
     player->init(Global::args->get<string>("audioFile"));
 
     // TODO do this
@@ -65,66 +55,3 @@ int main(int argc, char* argv[]) {
     int code = app.exec();
     return code;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-static int setargs(char *args, char **argv){
-    int count = 0;
-
-    while (isspace(*args)) ++args;
-    while (*args) {
-        if (argv) argv[count] = args;
-        while (*args && !isspace(*args)) ++args;
-        if (argv && *args) *args++ = '\0';
-        while (isspace(*args)) ++args;
-        count++;
-    }
-}
-
-char **parsedargs(char *args, int *argc){
-    char **argv = NULL;
-    int    argn = 0;
-
-    if (args && *args
-        && (args = strdup(args))
-        && (argn = setargs(args,NULL))
-        && (argv = malloc((argn+1) * sizeof(char *)))) {
-          *argv++ = args;
-          argn = setargs(args,argv);
-    }
-
-    if (args && !argv) free(args);
-
-    *argc = argn;
-    return argv;
-}
-
-void freeparsedargs(char **argv){
-    if (argv) {
-        free(argv[-1]);
-        free(argv-1);
-    }
-}
-    return count;
-}
-
-int main(){
-    char **argv;
-    char *cmd;
-    int argc;
-
-    cmd = "ffmpeg -i infile outfile";
-    argv = parsedargs(cmd,&argc);
-    ffmpeg(argc, argv);
-}
-*/

@@ -5,7 +5,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/marvin/hello/C/SAP/Qml/ffmpeg/ffmpeg.c" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.o"
+  "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/cmdutils.c" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.o"
+  "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg.c" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.o"
+  "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_filter.c" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.o"
+  "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_hw.c" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.o"
+  "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_opt.c" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.o"
   "/home/marvin/hello/C/SAP/Qml/src/sonic.c" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/src/sonic.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
@@ -30,7 +34,9 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../"
   "sap_autogen/include"
   "../lib"
+  "../include"
   "../ffmpeg"
+  "/usr/include/ffmpeg"
   "/usr/include/qt5"
   "/usr/include/qt5/QtCore"
   "/usr/lib64/qt5/mkspecs/linux-g++"
@@ -43,12 +49,15 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/qt5/QtWidgets"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg-main.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.o"
   "/home/marvin/hello/C/SAP/Qml/build/qrc_main.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/qrc_main.cpp.o"
   "/home/marvin/hello/C/SAP/Qml/build/sap_autogen/mocs_compilation.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/sap_autogen/mocs_compilation.cpp.o"
   "/home/marvin/hello/C/SAP/Qml/src/AudioPlayer.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/src/AudioPlayer.cpp.o"
   "/home/marvin/hello/C/SAP/Qml/src/Book.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/src/Book.cpp.o"
   "/home/marvin/hello/C/SAP/Qml/src/CoverProvider.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/src/CoverProvider.cpp.o"
+  "/home/marvin/hello/C/SAP/Qml/src/Global.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/src/Global.cpp.o"
   "/home/marvin/hello/C/SAP/Qml/src/PlayerWindow.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/src/PlayerWindow.cpp.o"
+  "/home/marvin/hello/C/SAP/Qml/src/ffmpegLiason.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/src/ffmpegLiason.cpp.o"
   "/home/marvin/hello/C/SAP/Qml/src/main.cpp" "/home/marvin/hello/C/SAP/Qml/build/CMakeFiles/sap.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -73,7 +82,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../"
   "sap_autogen/include"
   "../lib"
+  "../include"
   "../ffmpeg"
+  "/usr/include/ffmpeg"
   "/usr/include/qt5"
   "/usr/include/qt5/QtCore"
   "/usr/lib64/qt5/mkspecs/linux-g++"

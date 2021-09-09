@@ -1,18 +1,13 @@
 #include "PlayerWindow.hpp"
-#include "CoverProvider.hpp"
-#include "src/AudioPlayer.hpp"
+
 #include <QMessageBox>
-// #include <QDialog>
-#include <QQmlContext>
-#include <QStringList>
 #include <QInputDialog>
-#include <QQuickItem>
-#include <qlabel.h>
-#include <qobject.h>
-#include <qqmlcontext.h>
 
+#include "CoverProvider.hpp"
+#include "messages.hpp"
+#include "src/AudioPlayer.hpp"
 
-PlayerWindow::PlayerWindow(QWidget *parent): _book(nullptr), _player(nullptr), QObject(parent){ }
+PlayerWindow::PlayerWindow(QWidget* parent): _book(nullptr), _player(nullptr), QObject(parent){ }
 
 void PlayerWindow::init(string filepath){
     if (not filepath.empty()){
@@ -23,14 +18,13 @@ void PlayerWindow::init(string filepath){
     if (_book){
         Global::setUIProperty("titleLabel", "text", _book->title());
         Global::setUIProperty("introLabel", "text", _book->getIntro());
-        // ui->progressBar->setValue(book->getPosition() / book->duration);
+        Global::setUIProperty("progressBar", "position", qulonglong(_player->pos()));
     }
 }
 
 PlayerWindow::~PlayerWindow(){
     delete _book;
     delete _player;
-    // delete ui;
 }
 
 void PlayerWindow::updateVolumeBar(){
@@ -52,19 +46,15 @@ void PlayerWindow::setBook(Book* to){
     else
         _player->updateBook(_book);
 
-    // Global::setUIProperty("cover", something, QPixmap)
     Global::setUIProperty("titleLabel", "text", _book->title());
     Global::setUIProperty("introLabel", "text", _book->getIntro());
-
-    // ui->progressBar->setValue(book->getPosition() / book->duration);
+    Global::setUIProperty("progressBar", "position", qulonglong(_player->pos()));
 }
 
 void PlayerWindow::open(QString filepath){
     if (filepath.startsWith("file://"))
         filepath = filepath.right(filepath.length() - 7);
     Book* b = new Book(filepath.toStdString());
-    //
-    // CoverProvider::filepath = filepath.toStdString();
     setBook(b);
 }
 
@@ -75,6 +65,7 @@ void PlayerWindow::about(){
 }
 
 void PlayerWindow::loadChapters(){
+    todo("chapters");
     QStringList chaps;
     if (_book and not _book->chapters().empty())
         for (auto chap: _book->chapters())
@@ -101,12 +92,11 @@ void PlayerWindow::openSettings(){
 
 void PlayerWindow::getAuthcode(){
     bool ok;
-    // auto text = QInputDialog::getText(this, tr("Enter Authcode"), tr("Authcode:"), QLineEdit::Normal, "", &ok);
     auto text = QInputDialog::getText(nullptr, tr("Enter Authcode"), tr("Authcode:"), QLineEdit::Normal, "", &ok);
     if (ok and !text.isEmpty()){
         _debug(text.toStdString())
         Global::authcode = text.toStdString();
     }
     else
-        note(failed)
+        Global::log("Failed to get file");
 }

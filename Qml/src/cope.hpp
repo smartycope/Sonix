@@ -1,26 +1,16 @@
 #pragma once
 
-
 #ifndef __COPE__
 #define __COPE__
 
 
-#ifdef __cplusplus
-    #include <stddef.h>
-    #include <stdint.h>
-    #include <string.h>
-    #include <iostream>
-    #include <string>
-    #include <sstream>
-    #include <vector>
-#else // #ifdef __cplusplus
-    #include <stdio.h>
-    #include <stdarg.h>
-    #include <stdlib.h>
-    #include <string.h>
-    // #include <cstddef>
-#endif // #ifdef __cplusplus
-
+#include <stddef.h>
+#include <stdint.h>
+// #include <string.h>
+#include <iostream>
+#include <string>
+// #include <sstream>
+#include <vector>
 #include <stdarg.h>
 
 //* I'm not sure why this doesn't work...
@@ -83,14 +73,8 @@ static unsigned long debugCount = 0;
 #define UNPACK(...) __VA_ARGS__
 #define COMMA ,
 
-#define pass
-
-//! Depricated
-// static char* color(char*, char*);
-// static char* _fmt(char*, ...);
-
 static void  _printMetaData(int, char*, char*);
-static void  printDebugCount();
+static void printDebugCount();
 static void printfclr(const char*, const char*, ...);
 static void printclr(const char*, const char*);
 static void printfclrsl(const char*, const char*, ...);
@@ -104,189 +88,13 @@ static std::string color(std::string, std::string);
 static std::string fmt(std::string, ...);
 
 
-
-#ifdef __cplusplus
-    #include <fstream>
-
-    #define print(thing)   { std::cout << thing, nl(); }
-    #define printsl(thing) std::cout << thing;
-
-    #define _typename(x) (char*)typeid(x).name()
-#else // #ifdef __cplusplus
-    // I LIKE these.
-    #define true  1
-    #define false 0
-    #define byte  unsigned char
-
-    #define not !
-    #define or  ||
-    #define and &&
-    #define nor && !
-
-    #define fmt(str, ...) _fmt((char*)str, __VA_ARGS__)
-
-    #define __LIST_OF_TYPES__ \
-        void *:                   "void*",                   \
-        _Bool:                    "bool",                    \
-        _Bool *:                  "bool*",                   \
-        char:                     "char",                    \
-        char *:                   "char*",                   \
-        signed char:              "signed char",             \
-        signed char *:            "signed char*",            \
-        unsigned char:            "unsigned char",           \
-        unsigned char *:          "unsigned char*",          \
-        short int:                "short",                   \
-        short int *:              "short*",                  \
-        unsigned short int:       "unsigned short",          \
-        unsigned short int *:     "unsigned short*",         \
-        int:                      "int",                     \
-        int *:                    "int*",                    \
-        unsigned int:             "unsigned int",            \
-        unsigned int *:           "unsigned int*",           \
-        long int:                 "long int",                \
-        long int *:               "long int*",               \
-        unsigned long int:        "unsigned long int",       \
-        unsigned long int *:      "unsigned long int*",      \
-        long long int:            "long long int",           \
-        long long int *:          "long long int*",          \
-        unsigned long long int:   "unsigned long long int",  \
-        unsigned long long int *: "unsigned long long int*", \
-        float:                    "float",                   \
-        float*:                   "float*",                  \
-        double:                   "double",                  \
-        double*:                  "double*",                 \
-        long double:              "long double",             \
-        long double*:             "long double*",            \
-                                                            \
-        const void *:                   "const void*",                   \
-        const _Bool:                    "const bool",                    \
-        const _Bool *:                  "const bool*",                   \
-        const char:                     "const char",                    \
-        const char *:                   "const char*",                   \
-        const signed char:              "const signed char",             \
-        const signed char *:            "const signed char*",            \
-        const unsigned char:            "const unsigned char",           \
-        const unsigned char *:          "const unsigned char*",          \
-        const short int:                "const short",                   \
-        const short int *:              "const short*",                  \
-        const unsigned short int:       "const unsigned short",          \
-        const unsigned short int *:     "const unsigned short*",         \
-        const int:                      "const int",                     \
-        const int *:                    "const int*",                    \
-        const unsigned int:             "const unsigned int",            \
-        const unsigned int *:           "const unsigned int*",           \
-        const long int:                 "const long int",                \
-        const long int *:               "const long int*",               \
-        const unsigned long int:        "const unsigned long int",       \
-        const unsigned long int *:      "const unsigned long int*",      \
-        const long long int:            "const long long int",           \
-        const long long int *:          "const long long int*",          \
-        const unsigned long long int:   "const unsigned long long int",  \
-        const unsigned long long int *: "const unsigned long long int*", \
-        const float:                    "const float",                   \
-        const float*:                   "const float*",                  \
-        const double:                   "const double",                  \
-        const double*:                  "const double*",                 \
-        const long double:              "const long double",             \
-        const long double*:             "const long double*",            \
-                                                                                        \
-        const volatile void *:                   "const volatile void*",                   \
-        const volatile _Bool:                    "const volatile bool",                    \
-        const volatile _Bool *:                  "const volatile bool*",                   \
-        const volatile char:                     "const volatile char",                    \
-        const volatile char *:                   "const volatile char*",                   \
-        const volatile signed char:              "const volatile signed char",             \
-        const volatile signed char *:            "const volatile signed char*",            \
-        const volatile unsigned char:            "const volatile unsigned char",           \
-        const volatile unsigned char *:          "const volatile unsigned char*",          \
-        const volatile short int:                "const volatile short",                   \
-        const volatile short int *:              "const volatile short*",                  \
-        const volatile unsigned short int:       "const volatile unsigned short",          \
-        const volatile unsigned short int *:     "const volatile unsigned short*",         \
-        const volatile int:                      "const volatile int",                     \
-        const volatile int *:                    "const volatile int*",                    \
-        const volatile unsigned int:             "const volatile unsigned int",            \
-        const volatile unsigned int *:           "const volatile unsigned int*",           \
-        const volatile long int:                 "const volatile long int",                \
-        const volatile long int *:               "const volatile long int*",               \
-        const volatile unsigned long int:        "const volatile unsigned long int",       \
-        const volatile unsigned long int *:      "const volatile unsigned long int*",      \
-        const volatile long long int:            "const volatile long long int",           \
-        const volatile long long int *:          "const volatile long long int*",          \
-        const volatile unsigned long long int:   "const volatile unsigned long long int",  \
-        const volatile unsigned long long int *: "const volatile unsigned long long int*", \
-        const volatile float:                    "const volatile float",                   \
-        const volatile float*:                   "const volatile float*",                  \
-        const volatile double:                   "const volatile double",                  \
-        const volatile double*:                  "const volatile double*",                 \
-        const volatile long double:              "const volatile long double",             \
-        const volatile long double*:             "const volatile long double*",            \
-                                                                            \
-        volatile void *:                   "volatile void*",                   \
-        volatile _Bool:                    "volatile bool",                    \
-        volatile _Bool *:                  "volatile bool*",                   \
-        volatile char:                     "volatile char",                    \
-        volatile char *:                   "volatile char*",                   \
-        volatile signed char:              "volatile signed char",             \
-        volatile signed char *:            "volatile signed char*",            \
-        volatile unsigned char:            "volatile unsigned char",           \
-        volatile unsigned char *:          "volatile unsigned char*",          \
-        volatile short int:                "volatile short",                   \
-        volatile short int *:              "volatile short*",                  \
-        volatile unsigned short int:       "volatile unsigned short",          \
-        volatile unsigned short int *:     "volatile unsigned short*",         \
-        volatile int:                      "volatile int",                     \
-        volatile int *:                    "volatile int*",                    \
-        volatile unsigned int:             "volatile unsigned int",            \
-        volatile unsigned int *:           "volatile unsigned int*",           \
-        volatile long int:                 "volatile long int",                \
-        volatile long int *:               "volatile long int*",               \
-        volatile unsigned long int:        "volatile unsigned long int",       \
-        volatile unsigned long int *:      "volatile unsigned long int*",      \
-        volatile long long int:            "volatile long long int",           \
-        volatile long long int *:          "volatile long long int*",          \
-        volatile unsigned long long int:   "volatile unsigned long long int",  \
-        volatile unsigned long long int *: "volatile unsigned long long int*", \
-        volatile float:                    "volatile float",                   \
-        volatile float*:                   "volatile float*",                  \
-        volatile double:                   "volatile double",                  \
-        volatile double*:                  "volatile double*",                 \
-        volatile long double:              "volatile long double",             \
-        volatile long double*:             "volatile long double*",            \
-        \
-        default: "unknown"
-    //
-
-    #define _typename(x) _Generic((x), __LIST_OF_TYPES__)
-
-    #define printf_dec_format(x) _Generic((x), \
-        char: "%c", \
-        signed char: "%hhd", \
-        unsigned char: "%hhu", \
-        signed short: "%hd", \
-        unsigned short: "%hu", \
-        signed int: "%d", \
-        unsigned int: "%u", \
-        long int: "%ld", \
-        unsigned long int: "%lu", \
-        long long int: "%lld", \
-        unsigned long long int: "%llu", \
-        float: "%f", \
-        double: "%f", \
-        long double: "%Lf", \
-        char *: "%s", \
-        void *: "%p")
-    //
-
-    #define print(x)   printf(printf_dec_format(x), x), nl();
-    #define printsl(x) printf(printf_dec_format(x), x);
-
-#endif // #ifdef __cplusplus
-
+#define print(thing)   { std::cout << thing, nl(); }
+#define printsl(thing) std::cout << thing;
 
 #define nl() puts((char*)"");
 
-// File "/home/rebecca/hello/C++/SAP/src/deleteme.py", line 1, in <module>
+#define _typename(x) (char*)typeid(x).name()
+
 
 #ifdef PRINT_FULL_LINK
     #define _printVscodeLink(file, line, func) printsl(color((char*)"\n\t",     LINK_COLOR)); \
@@ -307,7 +115,7 @@ static std::string fmt(std::string, ...);
 
         #define printVscodeLink() _printVscodeLink(__FILE__, __LINE__, __FUNC__)
     #else
-        #define printVscodeLink() pass
+        #define printVscodeLink()
     #endif
 #endif
 // printsl(color(fmt(__STRING(File __STRING(__FILE__)[,] line __LINE__[,] in __func__)), LINK_COLOR))
@@ -339,17 +147,8 @@ static std::string fmt(std::string, ...);
                     )
 //
 
-
 #define todo(feature) { printDebugCount(); printMetaData(); printclrsl(TODO_COLOR, "Todo: "); printclr(REGULAR_DEBUG_COLOR, feature); printVscodeLink(); }
 
-
-// #ifndef __COPE___
-// #define __COPE__
-
-
-// #ifdef __cplusplus
-//     extern "C"{
-// #endif
 
 static void _printMetaData(int line, char* func, char* file){
     printsl(METADATA_COLOR);
@@ -390,23 +189,16 @@ static void _printMetaData(int line, char* func, char* file){
     printsl(COLOR_RESET);
 }
 
+
+template<typename T> static bool isBetween(T val, T start, T end, bool beginInclusive = false, bool endInclusive = false){
+    return (beginInclusive ? val >= start: val > start) and (endInclusive ? val <= end: val < end);
+}
+
 static void printDebugCount(){
     ++debugCount;
     printfclrsl(DEBUG_COUNT_COLOR, "%lu: ", debugCount);
 }
 
-/*
-static char* color(char* str, char* color){
-    char* tmp = (char*)malloc(MAX_STR_LEN);
-    strcat(tmp, color);
-    strcat(tmp, str);
-    strcat(tmp, COLOR_RESET);
-    strcat(tmp, "\0");
-
-    return tmp;
-    // return strcat(strcat(color, str), COLOR_RESET);
-}
-*/
 
 static char* _fmt(char* str, ...){
     // char* tmp;
@@ -479,6 +271,28 @@ static void leave(int status){
     leave(status, "");
 }
 
+static void debugArgv(int argc, char* argv[]){
+    _debug(argc);
+    for(int i=0;i<argc;i++){
+        //* Just kidding, we WANT it to break
+        // do{ // Poor man's try statement
+            // if (not argv[i])
+                // continue;
+        print(std::string(argv[i]));
+        // }while(0);
+    }
+}
+
+
+static std::string cStr(std::string str){
+    return str + '\0';
+}
+
+static std::string cStr(char* str){
+    return std::string(str) + '\0';
+}
+
+
 inline std::vector<char> getCmdOutV(const std::string command, bool verbose, bool exitOnFail){
     FILE* pipe;
     const char* cmd = command.c_str();
@@ -534,13 +348,6 @@ static std::string getCmdOutS(const std::string command, bool verbose, bool exit
     return out;
 }
 
-// #ifdef __cplusplus
-//     }
-// #endif
-
-// #endif
-
-
 
 #endif // __COPE__
 
@@ -556,104 +363,6 @@ static std::string getCmdOutS(const std::string command, bool verbose, bool exit
 
 
 
-
-
-
-
-
-
-//* Old code:
-
-/*
-typedef struct{
-    int line;
-    char* file;
-    char* func;
-}MetaData;
-
-
-#define getMetaData() metaDataConstructor(__LINE__, (char*)__FILE__, (char*)__FUNC__)
-
-
-MetaData metaDataConstructor(int line, char* file, char* func){
-    MetaData data;
-    data.line = line;
-    data.file = file;
-    data.func = func;
-    return data;
-}
-
-
-void printMetaData(MetaData metadata){
-    #if defined PRINT_FILE || defined PRINT_FUNC || defined PRINT_LINE
-    print(METADATA_COLOR);
-    printsl("[");
-    #endif
-    #ifdef PRINT_FILE
-    printsl(metadata.file);
-    printsl("->");
-    #endif
-    #ifdef PRINT_FUNC
-    printsl(metadata.func);
-    printsl("->");
-    #endif
-    #ifdef PRINT_LINE
-    printsl(metadata.line);
-    #endif
-    #if defined PRINT_FILE || defined PRINT_FUNC || defined PRINT_LINE
-    printsl("] ");
-    print(COLOR_RESET);
-    #endif
-}
-*/
-
-
-
-
-
-// char* fmt(const char *f, ...){
-//     // int error;
-//     va_list ap;
-//     char* strp;
-
-//     va_start(ap, f);
-//     // error = vasprintf(strp, fmt, ap);
-//     // va_list ap1;
-//     size_t size;
-//     // char *buffer;
-
-//     // va_copy(ap1, ap);
-//     char* buffer = (char*)malloc(1);
-//     // size = vsnprintf(buffer, MAX_STR_LEN, f, ap) + 1;
-//     va_end(ap);
-
-//     if (!buffer)
-//         return NULL;
-
-//     strp = buffer;
-//     vsnprintf(buffer, size, f, ap);
-
-//     return strp;
-// }
-
-
-
-#if 0
-
-    namespace COPE{
-    static unsigned long debugCount = 0;
-    }
-
-
-
-
-template<typename T> static T __debugged(T var, char* name, char* type){
-    printDebugCount();
-    printMetaData();
-    printf("%s %s = ", type, name);
-    printv(var);
-    return var;
-}
 
 
 
@@ -748,5 +457,4 @@ extern FILE    *db_getfileptr(void);
 
 
 
-#endif
 #endif

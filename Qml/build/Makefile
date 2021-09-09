@@ -155,32 +155,167 @@ sap_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap_autogen.dir/build.make CMakeFiles/sap_autogen.dir/build
 .PHONY : sap_autogen/fast
 
-ffmpeg/ffmpeg.o: ffmpeg/ffmpeg.c.o
+ffmpeg/fftools/cmdutils.o: ffmpeg/fftools/cmdutils.c.o
 
-.PHONY : ffmpeg/ffmpeg.o
+.PHONY : ffmpeg/fftools/cmdutils.o
 
 # target to build an object file
-ffmpeg/ffmpeg.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.o
-.PHONY : ffmpeg/ffmpeg.c.o
+ffmpeg/fftools/cmdutils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.o
+.PHONY : ffmpeg/fftools/cmdutils.c.o
 
-ffmpeg/ffmpeg.i: ffmpeg/ffmpeg.c.i
+ffmpeg/fftools/cmdutils.i: ffmpeg/fftools/cmdutils.c.i
 
-.PHONY : ffmpeg/ffmpeg.i
+.PHONY : ffmpeg/fftools/cmdutils.i
 
 # target to preprocess a source file
-ffmpeg/ffmpeg.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.i
-.PHONY : ffmpeg/ffmpeg.c.i
+ffmpeg/fftools/cmdutils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.i
+.PHONY : ffmpeg/fftools/cmdutils.c.i
 
-ffmpeg/ffmpeg.s: ffmpeg/ffmpeg.c.s
+ffmpeg/fftools/cmdutils.s: ffmpeg/fftools/cmdutils.c.s
 
-.PHONY : ffmpeg/ffmpeg.s
+.PHONY : ffmpeg/fftools/cmdutils.s
 
 # target to generate assembly for a file
-ffmpeg/ffmpeg.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.s
-.PHONY : ffmpeg/ffmpeg.c.s
+ffmpeg/fftools/cmdutils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.s
+.PHONY : ffmpeg/fftools/cmdutils.c.s
+
+ffmpeg/fftools/ffmpeg-main.o: ffmpeg/fftools/ffmpeg-main.cpp.o
+
+.PHONY : ffmpeg/fftools/ffmpeg-main.o
+
+# target to build an object file
+ffmpeg/fftools/ffmpeg-main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.o
+.PHONY : ffmpeg/fftools/ffmpeg-main.cpp.o
+
+ffmpeg/fftools/ffmpeg-main.i: ffmpeg/fftools/ffmpeg-main.cpp.i
+
+.PHONY : ffmpeg/fftools/ffmpeg-main.i
+
+# target to preprocess a source file
+ffmpeg/fftools/ffmpeg-main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.i
+.PHONY : ffmpeg/fftools/ffmpeg-main.cpp.i
+
+ffmpeg/fftools/ffmpeg-main.s: ffmpeg/fftools/ffmpeg-main.cpp.s
+
+.PHONY : ffmpeg/fftools/ffmpeg-main.s
+
+# target to generate assembly for a file
+ffmpeg/fftools/ffmpeg-main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.s
+.PHONY : ffmpeg/fftools/ffmpeg-main.cpp.s
+
+ffmpeg/fftools/ffmpeg.o: ffmpeg/fftools/ffmpeg.c.o
+
+.PHONY : ffmpeg/fftools/ffmpeg.o
+
+# target to build an object file
+ffmpeg/fftools/ffmpeg.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.o
+.PHONY : ffmpeg/fftools/ffmpeg.c.o
+
+ffmpeg/fftools/ffmpeg.i: ffmpeg/fftools/ffmpeg.c.i
+
+.PHONY : ffmpeg/fftools/ffmpeg.i
+
+# target to preprocess a source file
+ffmpeg/fftools/ffmpeg.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.i
+.PHONY : ffmpeg/fftools/ffmpeg.c.i
+
+ffmpeg/fftools/ffmpeg.s: ffmpeg/fftools/ffmpeg.c.s
+
+.PHONY : ffmpeg/fftools/ffmpeg.s
+
+# target to generate assembly for a file
+ffmpeg/fftools/ffmpeg.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.s
+.PHONY : ffmpeg/fftools/ffmpeg.c.s
+
+ffmpeg/fftools/ffmpeg_filter.o: ffmpeg/fftools/ffmpeg_filter.c.o
+
+.PHONY : ffmpeg/fftools/ffmpeg_filter.o
+
+# target to build an object file
+ffmpeg/fftools/ffmpeg_filter.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.o
+.PHONY : ffmpeg/fftools/ffmpeg_filter.c.o
+
+ffmpeg/fftools/ffmpeg_filter.i: ffmpeg/fftools/ffmpeg_filter.c.i
+
+.PHONY : ffmpeg/fftools/ffmpeg_filter.i
+
+# target to preprocess a source file
+ffmpeg/fftools/ffmpeg_filter.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.i
+.PHONY : ffmpeg/fftools/ffmpeg_filter.c.i
+
+ffmpeg/fftools/ffmpeg_filter.s: ffmpeg/fftools/ffmpeg_filter.c.s
+
+.PHONY : ffmpeg/fftools/ffmpeg_filter.s
+
+# target to generate assembly for a file
+ffmpeg/fftools/ffmpeg_filter.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.s
+.PHONY : ffmpeg/fftools/ffmpeg_filter.c.s
+
+ffmpeg/fftools/ffmpeg_hw.o: ffmpeg/fftools/ffmpeg_hw.c.o
+
+.PHONY : ffmpeg/fftools/ffmpeg_hw.o
+
+# target to build an object file
+ffmpeg/fftools/ffmpeg_hw.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.o
+.PHONY : ffmpeg/fftools/ffmpeg_hw.c.o
+
+ffmpeg/fftools/ffmpeg_hw.i: ffmpeg/fftools/ffmpeg_hw.c.i
+
+.PHONY : ffmpeg/fftools/ffmpeg_hw.i
+
+# target to preprocess a source file
+ffmpeg/fftools/ffmpeg_hw.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.i
+.PHONY : ffmpeg/fftools/ffmpeg_hw.c.i
+
+ffmpeg/fftools/ffmpeg_hw.s: ffmpeg/fftools/ffmpeg_hw.c.s
+
+.PHONY : ffmpeg/fftools/ffmpeg_hw.s
+
+# target to generate assembly for a file
+ffmpeg/fftools/ffmpeg_hw.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.s
+.PHONY : ffmpeg/fftools/ffmpeg_hw.c.s
+
+ffmpeg/fftools/ffmpeg_opt.o: ffmpeg/fftools/ffmpeg_opt.c.o
+
+.PHONY : ffmpeg/fftools/ffmpeg_opt.o
+
+# target to build an object file
+ffmpeg/fftools/ffmpeg_opt.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.o
+.PHONY : ffmpeg/fftools/ffmpeg_opt.c.o
+
+ffmpeg/fftools/ffmpeg_opt.i: ffmpeg/fftools/ffmpeg_opt.c.i
+
+.PHONY : ffmpeg/fftools/ffmpeg_opt.i
+
+# target to preprocess a source file
+ffmpeg/fftools/ffmpeg_opt.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.i
+.PHONY : ffmpeg/fftools/ffmpeg_opt.c.i
+
+ffmpeg/fftools/ffmpeg_opt.s: ffmpeg/fftools/ffmpeg_opt.c.s
+
+.PHONY : ffmpeg/fftools/ffmpeg_opt.s
+
+# target to generate assembly for a file
+ffmpeg/fftools/ffmpeg_opt.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.s
+.PHONY : ffmpeg/fftools/ffmpeg_opt.c.s
 
 qrc_main.o: qrc_main.cpp.o
 
@@ -317,6 +452,33 @@ src/CoverProvider.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/CoverProvider.cpp.s
 .PHONY : src/CoverProvider.cpp.s
 
+src/Global.o: src/Global.cpp.o
+
+.PHONY : src/Global.o
+
+# target to build an object file
+src/Global.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/Global.cpp.o
+.PHONY : src/Global.cpp.o
+
+src/Global.i: src/Global.cpp.i
+
+.PHONY : src/Global.i
+
+# target to preprocess a source file
+src/Global.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/Global.cpp.i
+.PHONY : src/Global.cpp.i
+
+src/Global.s: src/Global.cpp.s
+
+.PHONY : src/Global.s
+
+# target to generate assembly for a file
+src/Global.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/Global.cpp.s
+.PHONY : src/Global.cpp.s
+
 src/PlayerWindow.o: src/PlayerWindow.cpp.o
 
 .PHONY : src/PlayerWindow.o
@@ -343,6 +505,33 @@ src/PlayerWindow.s: src/PlayerWindow.cpp.s
 src/PlayerWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/PlayerWindow.cpp.s
 .PHONY : src/PlayerWindow.cpp.s
+
+src/ffmpegLiason.o: src/ffmpegLiason.cpp.o
+
+.PHONY : src/ffmpegLiason.o
+
+# target to build an object file
+src/ffmpegLiason.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/ffmpegLiason.cpp.o
+.PHONY : src/ffmpegLiason.cpp.o
+
+src/ffmpegLiason.i: src/ffmpegLiason.cpp.i
+
+.PHONY : src/ffmpegLiason.i
+
+# target to preprocess a source file
+src/ffmpegLiason.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/ffmpegLiason.cpp.i
+.PHONY : src/ffmpegLiason.cpp.i
+
+src/ffmpegLiason.s: src/ffmpegLiason.cpp.s
+
+.PHONY : src/ffmpegLiason.s
+
+# target to generate assembly for a file
+src/ffmpegLiason.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sap.dir/build.make CMakeFiles/sap.dir/src/ffmpegLiason.cpp.s
+.PHONY : src/ffmpegLiason.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -408,9 +597,24 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... sap_autogen"
 	@echo "... sap"
-	@echo "... ffmpeg/ffmpeg.o"
-	@echo "... ffmpeg/ffmpeg.i"
-	@echo "... ffmpeg/ffmpeg.s"
+	@echo "... ffmpeg/fftools/cmdutils.o"
+	@echo "... ffmpeg/fftools/cmdutils.i"
+	@echo "... ffmpeg/fftools/cmdutils.s"
+	@echo "... ffmpeg/fftools/ffmpeg-main.o"
+	@echo "... ffmpeg/fftools/ffmpeg-main.i"
+	@echo "... ffmpeg/fftools/ffmpeg-main.s"
+	@echo "... ffmpeg/fftools/ffmpeg.o"
+	@echo "... ffmpeg/fftools/ffmpeg.i"
+	@echo "... ffmpeg/fftools/ffmpeg.s"
+	@echo "... ffmpeg/fftools/ffmpeg_filter.o"
+	@echo "... ffmpeg/fftools/ffmpeg_filter.i"
+	@echo "... ffmpeg/fftools/ffmpeg_filter.s"
+	@echo "... ffmpeg/fftools/ffmpeg_hw.o"
+	@echo "... ffmpeg/fftools/ffmpeg_hw.i"
+	@echo "... ffmpeg/fftools/ffmpeg_hw.s"
+	@echo "... ffmpeg/fftools/ffmpeg_opt.o"
+	@echo "... ffmpeg/fftools/ffmpeg_opt.i"
+	@echo "... ffmpeg/fftools/ffmpeg_opt.s"
 	@echo "... qrc_main.o"
 	@echo "... qrc_main.i"
 	@echo "... qrc_main.s"
@@ -426,9 +630,15 @@ help:
 	@echo "... src/CoverProvider.o"
 	@echo "... src/CoverProvider.i"
 	@echo "... src/CoverProvider.s"
+	@echo "... src/Global.o"
+	@echo "... src/Global.i"
+	@echo "... src/Global.s"
 	@echo "... src/PlayerWindow.o"
 	@echo "... src/PlayerWindow.i"
 	@echo "... src/PlayerWindow.s"
+	@echo "... src/ffmpegLiason.o"
+	@echo "... src/ffmpegLiason.i"
+	@echo "... src/ffmpegLiason.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

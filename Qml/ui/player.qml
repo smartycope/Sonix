@@ -247,10 +247,10 @@ Window {
 
         onValueModified: Player.player.updateSpeed()
 
-        Connections {
-            target: speedControl
-            onClicked: Player.player.updateSpeed()
-        }
+        // Connections {
+        //     target: speedControl
+        //     onClicked: Player.player.updateSpeed()
+        // }
 //        onClicked: Player.player.updateSpeed()
     }
 

@@ -1,15 +1,13 @@
 #ifndef AUDIOOUTPUT_H
 #define AUDIOOUTPUT_H
 
-// #include <math.h>
-// #include <QIODevice>
 #include <QObject>
 #include <QAudioOutput>
 #include <QTimer>
 #include <QScopedPointer>
 #include <QFile>
-#include <qobjectdefs.h>
-#include <qqml.h>
+// #include <qqml.h>
+// #include <qobjectdefs.h>
 
 #include "Book.hpp"
 #include "sonic.h"
@@ -37,12 +35,15 @@ class AudioPlayer: public QObject{
     AudioPlayer(Book* book);
     ~AudioPlayer();
 
+    static double _speed;
     static int    _samplerate;
     static int    _channels;
 
     static int   linVolume;
-    static ulong bytesRead;
     static const int updateMS;
+
+    // In seconds
+    ulong pos();
 
   public slots:
     int    samplerate()             { return _samplerate; }
@@ -59,8 +60,12 @@ class AudioPlayer: public QObject{
 
     void updateBook(Book* book);
     int  getVolume();
-    void setSamplerate(int to);
-    void setChannels(int to);
+
+    void setSamplerate(int to)        { _samplerate = to; }
+    void setChannels(int to)          { _channels = to; }
+    void setSpeedIncrement(float to)  { _speedIncrement = to; }
+    void setVolumeIncrement(float to) { _volumeIncrement = to; }
+    void setSkipSeconds(int to)       { _skipSeconds = to; }
     void togglePause(bool dummyparam = false);
     void setSpeed(double to);
     void setPitch(float to);
@@ -68,13 +73,11 @@ class AudioPlayer: public QObject{
     void setEmulateChordPitch(bool to);
     void setHighQuality(bool to);
     void setEnableNonlinearSpeedup(bool to);
-    void setSpeedIncrement(float to);
-    void setVolumeIncrement(float to);
-    void setSkipSeconds(int to);
     void setVolume(int to);
 
+    // amount is in samples
     void skip(int amount);
-    void jump(int chapters);
+    void jump(Chapter to);
     void updateChapter();
     void updateSpeed();
     void incrementSpeed();
@@ -103,7 +106,6 @@ class AudioPlayer: public QObject{
     void skipSecondsChanged();
 
   private:
-    static double _speed;
     static float  _pitch;
     static float  _rate;
     static bool   _emulateChordPitch;
@@ -114,18 +116,23 @@ class AudioPlayer: public QObject{
     static int    _skipSeconds;
 
     QScopedPointer<QAudioOutput> audioOut;
-    QScopedPointer<QFile> pipe;
+    // pipe isn't nessicarily a "pipe", it's just whatever file ffmpeg is putting stuff, and we're reading from
+    // QScopedPointer<QFile> pipe;
     sonicStream sStream;
     QTimer* callbackTimer;
     QIODevice* io;
 
     qreal logVolume;
 
+    // The only reason we keep this around is to access it's chapters
+    Book* b;
+
     void flushStream();
     void finished();
     const static std::string printQAudioError(QAudio::Error err);
     const static std::string printQAudioState(QAudio::State state);
 
+    //* This is the main callback function. This does all the heavy lifting
     void workhorseFunc();
 };
 

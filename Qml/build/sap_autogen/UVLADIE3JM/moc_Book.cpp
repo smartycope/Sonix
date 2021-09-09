@@ -66,8 +66,8 @@ QT_INIT_METAOBJECT const QMetaObject Chapter::staticMetaObject = { {
 } };
 
 struct qt_meta_stringdata_Book_t {
-    QByteArrayData data[33];
-    char stringdata0[325];
+    QByteArrayData data[31];
+    char stringdata0[304];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -104,11 +104,9 @@ QT_MOC_LITERAL(24, 221, 14), // "setReleaseDate"
 QT_MOC_LITERAL(25, 236, 8), // "setTitle"
 QT_MOC_LITERAL(26, 245, 11), // "setNarrator"
 QT_MOC_LITERAL(27, 257, 12), // "setPublisher"
-QT_MOC_LITERAL(28, 270, 11), // "getPosition"
-QT_MOC_LITERAL(29, 282, 11), // "setPosition"
-QT_MOC_LITERAL(30, 294, 4), // "secs"
-QT_MOC_LITERAL(31, 299, 17), // "getCurrentChapter"
-QT_MOC_LITERAL(32, 317, 7) // "Chapter"
+QT_MOC_LITERAL(28, 270, 17), // "getCurrentChapter"
+QT_MOC_LITERAL(29, 288, 7), // "Chapter"
+QT_MOC_LITERAL(30, 296, 7) // "posSecs"
 
     },
     "Book\0QML.Element\0auto\0file\0\0chapters\0"
@@ -118,8 +116,8 @@ QT_MOC_LITERAL(32, 317, 7) // "Chapter"
     "setChapters\0setMetaStartSec\0setDuration\0"
     "setSize\0setDescription\0setAuthor\0"
     "setReleaseDate\0setTitle\0setNarrator\0"
-    "setPublisher\0getPosition\0setPosition\0"
-    "secs\0getCurrentChapter\0Chapter"
+    "setPublisher\0getCurrentChapter\0Chapter\0"
+    "posSecs"
 };
 #undef QT_MOC_LITERAL
 
@@ -129,8 +127,8 @@ static const uint qt_meta_data_Book[] = {
        8,       // revision
        0,       // classname
        1,   14, // classinfo
-      25,   16, // methods
-      11,  190, // properties
+      23,   16, // methods
+      11,  178, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -140,31 +138,29 @@ static const uint qt_meta_data_Book[] = {
        1,    2,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,  141,    4, 0x0a /* Public */,
-       5,    0,  142,    4, 0x0a /* Public */,
-       7,    0,  143,    4, 0x0a /* Public */,
-       8,    0,  144,    4, 0x0a /* Public */,
-       9,    0,  145,    4, 0x0a /* Public */,
-      10,    0,  146,    4, 0x0a /* Public */,
-      11,    0,  147,    4, 0x0a /* Public */,
-      12,    0,  148,    4, 0x0a /* Public */,
-      13,    0,  149,    4, 0x0a /* Public */,
-      14,    0,  150,    4, 0x0a /* Public */,
-      15,    0,  151,    4, 0x0a /* Public */,
-      16,    1,  152,    4, 0x0a /* Public */,
-      18,    1,  155,    4, 0x0a /* Public */,
-      19,    1,  158,    4, 0x0a /* Public */,
-      20,    1,  161,    4, 0x0a /* Public */,
-      21,    1,  164,    4, 0x0a /* Public */,
-      22,    1,  167,    4, 0x0a /* Public */,
-      23,    1,  170,    4, 0x0a /* Public */,
-      24,    1,  173,    4, 0x0a /* Public */,
-      25,    1,  176,    4, 0x0a /* Public */,
-      26,    1,  179,    4, 0x0a /* Public */,
-      27,    1,  182,    4, 0x0a /* Public */,
-      28,    0,  185,    4, 0x0a /* Public */,
-      29,    1,  186,    4, 0x0a /* Public */,
-      31,    0,  189,    4, 0x0a /* Public */,
+       3,    0,  131,    4, 0x0a /* Public */,
+       5,    0,  132,    4, 0x0a /* Public */,
+       7,    0,  133,    4, 0x0a /* Public */,
+       8,    0,  134,    4, 0x0a /* Public */,
+       9,    0,  135,    4, 0x0a /* Public */,
+      10,    0,  136,    4, 0x0a /* Public */,
+      11,    0,  137,    4, 0x0a /* Public */,
+      12,    0,  138,    4, 0x0a /* Public */,
+      13,    0,  139,    4, 0x0a /* Public */,
+      14,    0,  140,    4, 0x0a /* Public */,
+      15,    0,  141,    4, 0x0a /* Public */,
+      16,    1,  142,    4, 0x0a /* Public */,
+      18,    1,  145,    4, 0x0a /* Public */,
+      19,    1,  148,    4, 0x0a /* Public */,
+      20,    1,  151,    4, 0x0a /* Public */,
+      21,    1,  154,    4, 0x0a /* Public */,
+      22,    1,  157,    4, 0x0a /* Public */,
+      23,    1,  160,    4, 0x0a /* Public */,
+      24,    1,  163,    4, 0x0a /* Public */,
+      25,    1,  166,    4, 0x0a /* Public */,
+      26,    1,  169,    4, 0x0a /* Public */,
+      27,    1,  172,    4, 0x0a /* Public */,
+      28,    1,  175,    4, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::QString,
@@ -189,9 +185,7 @@ static const uint qt_meta_data_Book[] = {
     QMetaType::Void, QMetaType::QString,   17,
     QMetaType::Void, QMetaType::QString,   17,
     QMetaType::Void, QMetaType::QString,   17,
-    QMetaType::ULong,
-    QMetaType::Void, QMetaType::Int,   30,
-    0x80000000 | 32,
+    0x80000000 | 29, QMetaType::Int,   30,
 
  // properties: name, type, flags
        3, QMetaType::QString, 0x00095001,
@@ -248,10 +242,7 @@ void Book::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 19: _t->setTitle((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 20: _t->setNarrator((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 21: _t->setPublisher((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 22: { ulong _r = _t->getPosition();
-            if (_a[0]) *reinterpret_cast< ulong*>(_a[0]) = std::move(_r); }  break;
-        case 23: _t->setPosition((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 24: { Chapter _r = _t->getCurrentChapter();
+        case 22: { Chapter _r = _t->getCurrentChapter((*reinterpret_cast< int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< Chapter*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -310,13 +301,13 @@ int Book::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 25)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 25;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 25)
+        if (_id < 23)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 25;
+        _id -= 23;
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty

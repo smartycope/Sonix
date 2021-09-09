@@ -1,29 +1,15 @@
 #pragma once
 
-#include <qobject.h>
-#include <qobjectdefs.h>
-#include <qquickitem.h>
-#include <qvariant.h>
+#include <QObject>
 #include <string>
-#include <cassert>
-// #include <functional>
-#include <iostream>
-
-#include <qqml.h>
-// #include <QMainWindow>
-#include <QQuickWindow>
-// #include <qtimer.h>
-#include <QFileDialog>
-#include <QTimer>
-// #include "./ui_PlayerWindow.h"
-// #include <qlocale.h>
-// #include <qwindowdefs.h>
+#include <QVariant>
 
 #include "Book.hpp"
-#include "cope.hpp"
 #include "AudioPlayer.hpp"
 #include "Global.hpp"
+#include "cope.hpp"
 
+using std::string;
 
 class PlayerWindow: public QObject{
     Q_OBJECT

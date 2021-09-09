@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-    </qresource>
-    <qresource prefix="/assets/">
-        <file>assets/defaultBookCover.png</file>
-    </qresource>
-</RCC>

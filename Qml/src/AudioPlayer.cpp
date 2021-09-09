@@ -1,14 +1,12 @@
 #include "AudioPlayer.hpp"
 
-#include <QAudioDeviceInfo>
-#include <QAudioOutput>
+// #include <QAudioDeviceInfo>
+// #include <QAudioOutput>
 #include <QByteArray>
-#include <QDebug>
-#include <qaudiooutput.h>
 #include "Global.hpp"
-#include "sonic.h"
 
 
+// Initializing the static members
 int AudioPlayer::_samplerate = 44100;
 int AudioPlayer::_channels = 2;
 
@@ -23,10 +21,10 @@ float AudioPlayer::_speedIncrement = 0.25f;
 float AudioPlayer::_volumeIncrement = 5;
 int   AudioPlayer::_skipSeconds = 15;
 
-ulong AudioPlayer::bytesRead = 0;
 const int AudioPlayer::updateMS = 5;
 
 
+// These are all static
 const std::string AudioPlayer::printQAudioError(QAudio::Error err){
     switch(err){
         case QAudio::NoError:
@@ -83,6 +81,10 @@ int AudioPlayer::getVolume(){
 
 
 AudioPlayer::AudioPlayer(Book* book): callbackTimer(new QTimer(this)){
+    // This *shouldn't* be nessicary, but if I don't do it here, other bad things happen elsewhere
+    assert(book);
+    b = book;
+
     //* These are book-independant. Set these even if no filepath was provided
     linVolume = Global::args->get<int>("--volume");
     _speed = Global::args->get<float>("--speed");
@@ -94,6 +96,7 @@ AudioPlayer::AudioPlayer(Book* book): callbackTimer(new QTimer(this)){
     _samplerate = Global::args->get<int>("--samplerate");
     _channels = Global::args->get<int>("--channels");
 
+    // Set up the format we're using (pcm, 8 bit, unsigned)
     const QAudioDeviceInfo deviceInfo = QAudioDeviceInfo::defaultOutputDevice();
     QAudioFormat format;
     format.setSampleRate(_samplerate);
@@ -103,17 +106,19 @@ AudioPlayer::AudioPlayer(Book* book): callbackTimer(new QTimer(this)){
     format.setByteOrder(QAudioFormat::LittleEndian);
     format.setSampleType(QAudioFormat::UnSignedInt);
 
+    // Make sure that format is actually supported (It better be...)
     if (!deviceInfo.isFormatSupported(format)) {
         if (Global::verbose)
             Global::log("Default audio format not supported - trying to use nearest");
         format = deviceInfo.nearestFormat(format);
     }
 
+    // Initialize audioOut
     audioOut.reset(new QAudioOutput(deviceInfo, format));
-    pipe.reset(new QFile);
 
     setVolume(linVolume);
 
+    // Set up sonic
     sStream = sonicCreateStream(_samplerate, _channels);
     assert(sStream);
     sonicSetSpeed(sStream, _speed);
@@ -123,12 +128,13 @@ AudioPlayer::AudioPlayer(Book* book): callbackTimer(new QTimer(this)){
     sonicSetChordPitch(sStream, _emulateChordPitch);
     sonicSetQuality(sStream, _highQuality);
 
-    if (book)
-        pipe->open(book->open(), QIODevice::ReadOnly);
+    b->open();
 
+    // This starts the audio playback
     io = audioOut->start();
 
-    if (not book)
+    // Maybe I should change this?...
+    if (not b)
         audioOut->stop();
 
     // Alright, so let me expalin.
@@ -138,10 +144,10 @@ AudioPlayer::AudioPlayer(Book* book): callbackTimer(new QTimer(this)){
     // connect(&(*audioOut), &QAudioOutput::stateChanged, this, &AudioPlayer::audioStateChanged);
     connect(&(*audioOut), SIGNAL(stateChanged(QAudio::State)), this, SLOT(audioStateChanged(QAudio::State)));
 
-
+    // Check for new data every so often (workhorseFunc doesn't do anything if we don't need more data)
     connect(callbackTimer, &QTimer::timeout, this, &AudioPlayer::workhorseFunc);
 
-    if (book)
+    if (b)
         callbackTimer->start(updateMS);
 }
 
@@ -150,7 +156,12 @@ AudioPlayer::~AudioPlayer(){
     sonicDestroyStream(sStream);
 }
 
-//* This is the main callback function. This does all the heavy lifting
+// Essentially what's happening here, is we're manually reading pipe (the QFile where ffmpeg is stuffing data
+// in another thread), giving that data to sonic, and then reading data from sonic.
+// However, samples into sonic != samples out of sonic (unless speed is at 1x), because we're speeding up the audio,
+// and some of those samples are no longer needed. So what this is doing is just reading from the file and passing
+// through sonic in a while loop, until we have enough samples. This is WAY easier (and faster) than trying to
+// calculate the pitch and calculate the equation given in sonic.h. (Which is kinda sad, that's a cool equation)
 void AudioPlayer::workhorseFunc(){
     if (audioOut->state() == QAudio::StoppedState)
         return;
@@ -163,14 +174,12 @@ void AudioPlayer::workhorseFunc(){
         // reads and readp are in bytes
         int reads = 0;
         do{
-            int readp = pipe->read(pipeBuffer.data(), audioOut->periodSize() - reads);
-            AudioPlayer::bytesRead += readp;
+            int readp = b->ffmpegFile.read(pipeBuffer.data(), audioOut->periodSize() - reads);
 
             //* Remember, sonic takes the count in samples, not bytes
             assert(sonicWriteCharToStream(sStream, pipeBuffer.data(), readp / _channels));
             reads += sonicReadCharFromStream(sStream, sonicBuffer.data() + reads, (audioOut->periodSize() - reads) / _channels) * _channels;
         } while(reads < audioOut->periodSize());
-        // _debug(reads)
         io->write(sonicBuffer.data(), audioOut->periodSize());
         --chunks;
     }
@@ -178,25 +187,25 @@ void AudioPlayer::workhorseFunc(){
 
 void AudioPlayer::updateBook(Book* book){
     assert(book);
+    b = book;
 
-    pipe.reset(new QFile);
-    pipe->open(book->open(), QIODevice::ReadOnly);
+    b->open();
     callbackTimer->start(updateMS);
     audioOut->resume();
 }
 
-void AudioPlayer::finished(){
-    pass
+ulong AudioPlayer::pos(){
+    return (b->ffmpegFile.pos() / _channels) / _samplerate;
 }
+
+void AudioPlayer::finished(){ }
 
 void AudioPlayer::togglePause(bool dummyparam){
     if (audioOut->state() == QAudio::SuspendedState or audioOut->state() == QAudio::StoppedState) {
         audioOut->resume();
     } else if (audioOut->state() == QAudio::ActiveState) {
         audioOut->suspend();
-    } else if (audioOut->state() == QAudio::IdleState) {
-        pass
-    }
+    } else if (audioOut->state() == QAudio::IdleState) { }
 }
 
 void AudioPlayer::audioStateChanged(QAudio::State state){
@@ -218,25 +227,6 @@ void AudioPlayer::audioStateChanged(QAudio::State state){
     }
 }
 
-void AudioPlayer::setSamplerate(int to){
-    _samplerate = to;
-}
-
-void AudioPlayer::setChannels(int to){
-    _channels = to;
-}
-
-void AudioPlayer::setSpeedIncrement(float to){
-    _speedIncrement = to;
-}
-
-void AudioPlayer::setVolumeIncrement(float to){
-    _volumeIncrement = to;
-}
-
-void AudioPlayer::setSkipSeconds(int to){
-    _skipSeconds = to;
-}
 
 void AudioPlayer::setSpeed(double to){
     _speed = to;
@@ -265,31 +255,20 @@ void AudioPlayer::setHighQuality(bool to){
 
 void AudioPlayer::setEnableNonlinearSpeedup(bool to){
     _enableNonlinearSpeedup = to;
-    if (Global::verbose)
-        todo("enableNonlinearSpeedup");
+    todo("enableNonlinearSpeedup");
 }
 
 void AudioPlayer::flushStream(){
-    if (Global::verbose)
-        todo("Flush audio player");
+    todo("Flush audio player");
 }
 
+// amount is in samples
 void AudioPlayer::skip(int amount){
-    todo("skip");
-    // if (outputPosition + (amount * CHANNELS) < 0)
-    //     outputPosition = 0;
-    // else if (outputPosition + (amount * CHANNELS) > book->frames)
-    //     outputPosition = book->frames;
-    // else
-    //     outputPosition += amount * CHANNELS;
-
-    // // book->pos = (int)(outputPosition / CHANNELS);
-    // book->sampleProvider.pos += amount;
-    // flushStream();
+    b->ffmpegFile.skip(amount);
 }
 
-void AudioPlayer::jump(int chapters){
-    todo("jump");
+void AudioPlayer::jump(Chapter to){
+    b->ffmpegFile.seek(to.startTime * _channels * _samplerate);
 }
 
 void AudioPlayer::updateSpeed(){
@@ -297,11 +276,10 @@ void AudioPlayer::updateSpeed(){
 }
 
 void AudioPlayer::updateChapter(){
-    noteCall();
+    todo("updateChapter");
 }
 
 void AudioPlayer::incrementSpeed(){
-    notecall()
     setSpeed(_speed + _speedIncrement);
 }
 
@@ -318,21 +296,21 @@ void AudioPlayer::decrementVolume(){
 }
 
 void AudioPlayer::skipForward(){
-    notecall()
     skip(_skipSeconds);
 }
 
 void AudioPlayer::skipBackward(){
-    notecall()
     skip(-_skipSeconds);
 }
 
 void AudioPlayer::jumpForward(){
-    notecall()
-    jump(1);
+    int currentChapter = b->getCurrentChapter(pos()).num;
+    if (currentChapter < b->chapters().size())
+        jump(b->chapters()[currentChapter + 1]);
 }
 
 void AudioPlayer::jumpBackward(){
-    notecall()
-    jump(-1);
+    int currentChapter = b->getCurrentChapter(pos()).num;
+    if (currentChapter > 0)
+        jump(b->chapters()[currentChapter - 1]);
 }

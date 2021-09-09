@@ -1,33 +1,23 @@
 #pragma once
 
-#include <stdio.h>
 #include <stdint.h>
-#include <stdlib.h>
 #include <string>
-#include <vector>
 
-// #include <qpixmap.h>
-#include <QPixmap>
-#include <qobjectdefs.h>
-#include <qqml.h>
 #include <QVector>
 #include <QString>
+#include <QObject>
+#include <QFile>
+#include <qqml.h>
 
-// #define ARGPARSE_LONG_VERSION_ARG_ONLY
-// #include "argparse.hpp"
+#include "messages.hpp"
 
-#include "Global.hpp"
 
 using std::string;
 using std::stringstream;
-using std::vector;
-
-#define BAD_BOOK_WARNING "No Authcode Provided (or invalid file path)"
 
 struct Chapter{
-private:
     Q_GADGET
-public:
+  public:
     int    num;
     string title;
     ulong  start;
@@ -39,7 +29,6 @@ public:
 
 class Book: public QObject{
     Q_OBJECT
-    // Q_PROPERTY(QPixmap cover             READ cover)
     Q_PROPERTY(QString file              READ file)
     Q_PROPERTY(QVector<Chapter> chapters READ chapters)
     Q_PROPERTY(float  metaStartSec       READ metaStartSec)
@@ -52,18 +41,18 @@ class Book: public QObject{
     Q_PROPERTY(QString narrator          READ narrator)
     Q_PROPERTY(QString publisher         READ publisher)
     QML_ELEMENT
-public:
+  public:
     Book(string filepath);
     ~Book();
 
     float actualStartSec;
+    QFile ffmpegFile;
 
     QString getIntro();
-    FILE* open();
+    void open();
     void close(int signum = 0);
 
-public slots:
-    // QPixmap  cover()            { return _cover; }
+  public slots:
     QString  file()             { return _file; }
     QVector<Chapter> chapters() { return _chapters; }
     float    metaStartSec()     { return _metaStartSec; }
@@ -76,7 +65,6 @@ public slots:
     QString  narrator()         { return _narrator; }
     QString  publisher()        { return _publisher; }
 
-    // void setCover(QPixmap to)             { _cover = to; }
     void setFile(QString to)              { _file = to; }
     void setChapters(QVector<Chapter> to) { _chapters = to; }
     void setMetaStartSec(float to)        { _metaStartSec = to; }
@@ -89,13 +77,10 @@ public slots:
     void setNarrator(QString to)          { _narrator = to; }
     void setPublisher(QString to)         { _publisher = to; }
 
-    ulong getPosition();
-    void  setPosition(int secs);
-    Chapter getCurrentChapter();
+    Chapter getCurrentChapter(int posSecs);
 
 
-private:
-    // QPixmap _cover;
+  private:
     QString _file;
     QVector<Chapter> _chapters;
 
@@ -111,17 +96,16 @@ private:
     QString _publisher;
 
     const char* defaultMetaStartSecValue = "0.0";
-    const char* defaultDurationValue = "0.0";
-    const char* defaultSizeValue = "-1";
-    const char* defaultDescriptionValue = "No Description Provided";
-    const char* defaultAuthorValue = "A. N. Author";
-    const char* defaultReleaseDateValue = "0000";
-    const char* defaultTitleValue = "Title";
-    const char* defaultNarratorValue = "A. Narrator";
+    const char* defaultDurationValue     = "0.0";
+    const char* defaultSizeValue         = "-1";
+    const char* defaultDescriptionValue  = "No Description Provided";
+    const char* defaultAuthorValue       = "A. N. Author";
+    const char* defaultReleaseDateValue  = "0000";
+    const char* defaultTitleValue        = "Title";
+    const char* defaultNarratorValue     = "A. Narrator";
     const char* defaultPublisherValue;
 
-
-    FILE* ffmpeg;
+    FILE* ffmpegInternal;
     int sleepTimer;
     bool cli;
     // If the book isn't given a valid filepath, or is given a .aax file without an authcode, this is false

@@ -14,6 +14,39 @@
 # EXTERNAL cache entries
 ########################
 
+//Path to a file.
+AVCODEC_INCLUDE_DIR:PATH=/usr/include/ffmpeg
+
+//Path to a library.
+AVCODEC_LIBRARY:FILEPATH=/usr/lib64/libavcodec.so
+
+//Path to a file.
+AVFORMAT_INCLUDE_DIR:PATH=/usr/include/ffmpeg
+
+//Path to a library.
+AVFORMAT_LIBRARY:FILEPATH=/usr/lib64/libavformat.so
+
+//Path to a file.
+AVUTIL_INCLUDE_DIR:PATH=/usr/include/ffmpeg
+
+//Path to a library.
+AVUTIL_LIBRARY:FILEPATH=/usr/lib64/libavutil.so
+
+//Path to a file.
+BZIP2_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+BZIP2_LIBRARY_DEBUG:FILEPATH=BZIP2_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+BZIP2_LIBRARY_RELEASE:FILEPATH=/usr/lib64/libbz2.so
+
+//Path to a file.
+CAIRO_INCLUDE_DIRS:PATH=/usr/include/cairo
+
+//Path to a library.
+CAIRO_LIBRARIES:FILEPATH=/usr/lib64/libcairo.so
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -209,6 +242,33 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a file.
+FREETYPE_INCLUDE_DIR_freetype2:PATH=/usr/include/freetype2
+
+//Path to a file.
+FREETYPE_INCLUDE_DIR_ft2build:PATH=/usr/include/freetype2
+
+//Path to a library.
+FREETYPE_LIBRARY_DEBUG:FILEPATH=FREETYPE_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+FREETYPE_LIBRARY_RELEASE:FILEPATH=/usr/lib64/libfreetype.so
+
+//Path to a file.
+OGG_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+OGG_LIBRARY:FILEPATH=/usr/lib64/libogg.so
+
+//Path to a file.
+OPUS_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+OPUS_LIBRARY:FILEPATH=/usr/lib64/libopus.so
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/bin/pkg-config
+
 //Qt Creator 4.1 extra qml import paths
 QML_IMPORT_PATH:STRING=/home/marvin/hello/C/SAP/Qml/ui
 
@@ -242,8 +302,62 @@ Qt5Widgets_DIR:PATH=/lib64/cmake/Qt5Widgets
 //The directory containing a CMake configuration file for Qt5.
 Qt5_DIR:PATH=/lib64/cmake/Qt5
 
+//Path to a file.
+SWSCALE_INCLUDE_DIR:PATH=/usr/include/ffmpeg
+
+//Path to a library.
+SWSCALE_LIBRARY:FILEPATH=/usr/lib64/libswscale.so
+
+//Path to a file.
+X264_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+X264_LIBRARY:FILEPATH=/usr/lib64/libx264.so
+
 //The directory containing a CMake configuration file for nlohmann_json.
 nlohmann_json_DIR:PATH=/usr/local/lib64/cmake/nlohmann_json
+
+//Path to a library.
+pkgcfg_lib_PC_CAIRO_cairo:FILEPATH=/usr/lib64/libcairo.so
+
+//Path to a library.
+pkgcfg_lib_PC_FFMPEG_avcodec:FILEPATH=/usr/lib64/libavcodec.so
+
+//Path to a library.
+pkgcfg_lib_PC_FFMPEG_avformat:FILEPATH=/usr/lib64/libavformat.so
+
+//Path to a library.
+pkgcfg_lib_PC_FFMPEG_avutil:FILEPATH=/usr/lib64/libavutil.so
+
+//Path to a library.
+pkgcfg_lib_PC_FFMPEG_swscale:FILEPATH=/usr/lib64/libswscale.so
+
+//Path to a library.
+pkgcfg_lib_PC_OGG_ogg:FILEPATH=/usr/lib64/libogg.so
+
+//Path to a library.
+pkgcfg_lib_PC_OPUS_opus:FILEPATH=/usr/lib64/libopus.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_IMG_SDL2:FILEPATH=/usr/lib64/libSDL2.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_IMG_SDL2_image:FILEPATH=/usr/lib64/libSDL2_image.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_MIX_SDL2:FILEPATH=/usr/lib64/libSDL2.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_MIX_SDL2_mixer:FILEPATH=/usr/lib64/libSDL2_mixer.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_SDL2:FILEPATH=/usr/lib64/libSDL2.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_TTF_SDL2:FILEPATH=/usr/lib64/libSDL2.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_TTF_SDL2_ttf:FILEPATH=/usr/lib64/libSDL2_ttf.so
 
 //Value Computed by CMake
 sap_BINARY_DIR:STATIC=/home/marvin/hello/C/SAP/Qml/build
@@ -256,6 +370,26 @@ sap_SOURCE_DIR:STATIC=/home/marvin/hello/C/SAP/Qml
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: AVCODEC_INCLUDE_DIR
+AVCODEC_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: AVCODEC_LIBRARY
+AVCODEC_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: AVFORMAT_INCLUDE_DIR
+AVFORMAT_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: AVFORMAT_LIBRARY
+AVFORMAT_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: AVUTIL_INCLUDE_DIR
+AVUTIL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: AVUTIL_LIBRARY
+AVUTIL_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BZIP2_INCLUDE_DIR
+BZIP2_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BZIP2_LIBRARY_DEBUG
+BZIP2_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BZIP2_LIBRARY_RELEASE
+BZIP2_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//Have symbol BZ2_bzCompressInit
+BZIP2_NEED_PREFIX:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -401,6 +535,387 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding AVCodec
+FIND_PACKAGE_MESSAGE_DETAILS_AVCodec:INTERNAL=[/usr/lib64/libavcodec.so][/usr/include/ffmpeg][v()]
+//Details about finding AVFormat
+FIND_PACKAGE_MESSAGE_DETAILS_AVFormat:INTERNAL=[/usr/lib64/libavformat.so][/usr/include/ffmpeg][v()]
+//Details about finding AVUtil
+FIND_PACKAGE_MESSAGE_DETAILS_AVUtil:INTERNAL=[/usr/lib64/libavutil.so][/usr/include/ffmpeg][v()]
+//Details about finding BZip2
+FIND_PACKAGE_MESSAGE_DETAILS_BZip2:INTERNAL=[/usr/lib64/libbz2.so][/usr/include][v1.0.8()]
+//Details about finding Cairo
+FIND_PACKAGE_MESSAGE_DETAILS_Cairo:INTERNAL=[/usr/include/cairo][/usr/lib64/libcairo.so][TRUE][v()]
+//Details about finding Freetype
+FIND_PACKAGE_MESSAGE_DETAILS_Freetype:INTERNAL=[/usr/lib64/libfreetype.so][/usr/include/freetype2][v2.10.4()]
+//Details about finding Opus
+FIND_PACKAGE_MESSAGE_DETAILS_Opus:INTERNAL=[/usr/lib64/libopus.so][/usr/include][TRUE][v1.3.1()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/bin/pkg-config][v1.7.3()]
+//Details about finding SWScale
+FIND_PACKAGE_MESSAGE_DETAILS_SWScale:INTERNAL=[/usr/lib64/libswscale.so][/usr/include/ffmpeg][v()]
 //Details about finding nlohmann_json
 FIND_PACKAGE_MESSAGE_DETAILS_nlohmann_json:INTERNAL=[/usr/local/lib64/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.9.1()]
+//ADVANCED property for variable: FREETYPE_INCLUDE_DIR_freetype2
+FREETYPE_INCLUDE_DIR_freetype2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: FREETYPE_INCLUDE_DIR_ft2build
+FREETYPE_INCLUDE_DIR_ft2build-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: FREETYPE_LIBRARY_DEBUG
+FREETYPE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: FREETYPE_LIBRARY_RELEASE
+FREETYPE_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OGG_INCLUDE_DIR
+OGG_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OGG_LIBRARY
+OGG_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPUS_INCLUDE_DIR
+OPUS_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPUS_LIBRARY
+OPUS_LIBRARY-ADVANCED:INTERNAL=1
+PC_CAIRO_CFLAGS:INTERNAL=-I/usr/include/cairo;-I/usr/include/glib-2.0;-I/usr/lib64/glib-2.0/include;-I/usr/include/pixman-1;-I/usr/include/freetype2;-I/usr/include/libpng16;-I/usr/include/libxml2
+PC_CAIRO_CFLAGS_I:INTERNAL=
+PC_CAIRO_CFLAGS_OTHER:INTERNAL=
+PC_CAIRO_FOUND:INTERNAL=1
+PC_CAIRO_INCLUDEDIR:INTERNAL=/usr/include
+PC_CAIRO_INCLUDE_DIRS:INTERNAL=/usr/include/cairo;/usr/include/glib-2.0;/usr/lib64/glib-2.0/include;/usr/include/pixman-1;/usr/include/freetype2;/usr/include/libpng16;/usr/include/libxml2
+PC_CAIRO_LDFLAGS:INTERNAL=-lcairo
+PC_CAIRO_LDFLAGS_OTHER:INTERNAL=
+PC_CAIRO_LIBDIR:INTERNAL=/usr/lib64
+PC_CAIRO_LIBRARIES:INTERNAL=cairo
+PC_CAIRO_LIBRARY_DIRS:INTERNAL=
+PC_CAIRO_LIBS:INTERNAL=
+PC_CAIRO_LIBS_L:INTERNAL=
+PC_CAIRO_LIBS_OTHER:INTERNAL=
+PC_CAIRO_LIBS_PATHS:INTERNAL=
+PC_CAIRO_MODULE_NAME:INTERNAL=cairo
+PC_CAIRO_PREFIX:INTERNAL=/usr
+PC_CAIRO_STATIC_CFLAGS:INTERNAL=-I/usr/include/cairo;-I/usr/include/glib-2.0;-I/usr/lib64/glib-2.0/include;-I/usr/include/pixman-1;-I/usr/include/freetype2;-I/usr/include/libpng16;-I/usr/include/libxml2
+PC_CAIRO_STATIC_CFLAGS_I:INTERNAL=
+PC_CAIRO_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_CAIRO_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/cairo;/usr/include/glib-2.0;/usr/lib64/glib-2.0/include;/usr/include/pixman-1;/usr/include/freetype2;/usr/include/libpng16;/usr/include/libxml2
+PC_CAIRO_STATIC_LDFLAGS:INTERNAL=-lcairo;-lz;-lz;-lz;-lgobject-2.0;-pthread;-lpcre;-pthread;-lffi;-lglib-2.0;-pthread;-lpcre;-pthread;-lpixman-1;-lm;-pthread;-lfontconfig;-lz;-lm;-lm;-lz;-lbrotlicommon;-lxml2;-lz;-llzma;-lm;-lfreetype;-lz;-lbz2;-lm;-lm;-lz;-lbrotlidec;-lbrotlicommon;-lpng16;-lm;-lm;-lz;-lxcb-shm;-lXau;-lxcb;-lXau;-lxcb-render;-lxcb;-lXau;-lXrender;-lX11;-lpthread;-lxcb;-lXau;-lpthread;-lxcb;-lXau;-lX11;-lpthread;-lxcb;-lXau;-lXext;-lX11;-lpthread;-lxcb;-lXau
+PC_CAIRO_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread;-pthread;-pthread;-pthread;-pthread
+PC_CAIRO_STATIC_LIBDIR:INTERNAL=
+PC_CAIRO_STATIC_LIBRARIES:INTERNAL=cairo;z;z;z;gobject-2.0;pcre;ffi;glib-2.0;pcre;pixman-1;m;fontconfig;z;m;m;z;brotlicommon;xml2;z;lzma;m;freetype;z;bz2;m;m;z;brotlidec;brotlicommon;png16;m;m;z;xcb-shm;Xau;xcb;Xau;xcb-render;xcb;Xau;Xrender;X11;pthread;xcb;Xau;pthread;xcb;Xau;X11;pthread;xcb;Xau;Xext;X11;pthread;xcb;Xau
+PC_CAIRO_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_CAIRO_STATIC_LIBS:INTERNAL=
+PC_CAIRO_STATIC_LIBS_L:INTERNAL=
+PC_CAIRO_STATIC_LIBS_OTHER:INTERNAL=
+PC_CAIRO_STATIC_LIBS_PATHS:INTERNAL=
+PC_CAIRO_VERSION:INTERNAL=1.16.0
+PC_CAIRO_cairo_INCLUDEDIR:INTERNAL=
+PC_CAIRO_cairo_LIBDIR:INTERNAL=
+PC_CAIRO_cairo_PREFIX:INTERNAL=
+PC_CAIRO_cairo_VERSION:INTERNAL=
+PC_FFMPEG_CFLAGS:INTERNAL=-I/usr/include/ffmpeg
+PC_FFMPEG_CFLAGS_I:INTERNAL=
+PC_FFMPEG_CFLAGS_OTHER:INTERNAL=
+PC_FFMPEG_FOUND:INTERNAL=1
+PC_FFMPEG_INCLUDEDIR:INTERNAL=
+PC_FFMPEG_INCLUDE_DIRS:INTERNAL=/usr/include/ffmpeg
+PC_FFMPEG_LDFLAGS:INTERNAL=-lavformat;-lavcodec;-lavutil;-lswscale
+PC_FFMPEG_LDFLAGS_OTHER:INTERNAL=
+PC_FFMPEG_LIBDIR:INTERNAL=
+PC_FFMPEG_LIBRARIES:INTERNAL=avformat;avcodec;avutil;swscale
+PC_FFMPEG_LIBRARY_DIRS:INTERNAL=
+PC_FFMPEG_LIBS:INTERNAL=
+PC_FFMPEG_LIBS_L:INTERNAL=
+PC_FFMPEG_LIBS_OTHER:INTERNAL=
+PC_FFMPEG_LIBS_PATHS:INTERNAL=
+PC_FFMPEG_MODULE_NAME:INTERNAL=
+PC_FFMPEG_PREFIX:INTERNAL=
+PC_FFMPEG_STATIC_CFLAGS:INTERNAL=-I/usr/include/ffmpeg
+PC_FFMPEG_STATIC_CFLAGS_I:INTERNAL=
+PC_FFMPEG_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_FFMPEG_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/ffmpeg
+PC_FFMPEG_STATIC_LDFLAGS:INTERNAL=-lavformat;-lm;-lxml2;-lbz2;-lmodplug;-lopenmpt;-lstdc++;-lbluray;-lgcrypt;-ldl;-lgpg-error;-lz;-lgnutls;-lssh;-lsmbclient;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-pthread;-lm;-llzma;-ldav1d;-lopencore-amrwb;-lrsvg-2;-lm;-lgio-2.0;-lgdk_pixbuf-2.0;-lgobject-2.0;-lglib-2.0;-lcairo;-lzvbi;-lpthread;-lm;-lpng;-lz;-lz;-laom;-lgsm;-lmp3lame;-lm;-lopencore-amrnb;-lopenjp2;-lopus;-lrav1e;-lspeex;-ltheoraenc;-ltheoradec;-logg;-lvo-amrwbenc;-lvorbis;-lvorbisenc;-lx264;-lx265;-lxvidcore;-lva;-ldl;-lm;-lsoxr;-pthread;-lva-drm;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lvulkan;-ldl;-lavutil;-pthread;-lva-drm;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lvulkan;-ldl;-lswresample;-lm;-lsoxr;-pthread;-lva-drm;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lvulkan;-ldl;-lavutil;-pthread;-lva-drm;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lvulkan;-ldl;-lavcodec;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-pthread;-lm;-llzma;-ldav1d;-lopencore-amrwb;-lrsvg-2;-lm;-lgio-2.0;-lgdk_pixbuf-2.0;-lgobject-2.0;-lglib-2.0;-lcairo;-lzvbi;-lpthread;-lm;-lpng;-lz;-lz;-laom;-lgsm;-lmp3lame;-lm;-lopencore-amrnb;-lopenjp2;-lopus;-lrav1e;-lspeex;-ltheoraenc;-ltheoradec;-logg;-lvo-amrwbenc;-lvorbis;-lvorbisenc;-lx264;-lx265;-lxvidcore;-lva;-ldl;-lswresample;-lm;-lsoxr;-pthread;-lva-drm;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lvulkan;-ldl;-pthread;-lva-drm;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lvulkan;-ldl;-lavutil;-pthread;-lva-drm;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lvulkan;-ldl;-lswscale;-lm;-lavutil;-pthread;-lva-drm;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lvulkan;-ldl
+PC_FFMPEG_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread
+PC_FFMPEG_STATIC_LIBDIR:INTERNAL=
+PC_FFMPEG_STATIC_LIBRARIES:INTERNAL=avformat;m;xml2;bz2;modplug;openmpt;stdc++;bluray;gcrypt;dl;gpg-error;z;gnutls;ssh;smbclient;vpx;m;vpx;m;vpx;m;vpx;m;m;lzma;dav1d;opencore-amrwb;rsvg-2;m;gio-2.0;gdk_pixbuf-2.0;gobject-2.0;glib-2.0;cairo;zvbi;pthread;m;png;z;z;aom;gsm;mp3lame;m;opencore-amrnb;openjp2;opus;rav1e;speex;theoraenc;theoradec;ogg;vo-amrwbenc;vorbis;vorbisenc;x264;x265;xvidcore;va;dl;m;soxr;va-drm;va;vdpau;X11;m;drm;OpenCL;va;vulkan;dl;avutil;va-drm;va;vdpau;X11;m;drm;OpenCL;va;vulkan;dl;swresample;m;soxr;va-drm;va;vdpau;X11;m;drm;OpenCL;va;vulkan;dl;avutil;va-drm;va;vdpau;X11;m;drm;OpenCL;va;vulkan;dl;avcodec;vpx;m;vpx;m;vpx;m;vpx;m;m;lzma;dav1d;opencore-amrwb;rsvg-2;m;gio-2.0;gdk_pixbuf-2.0;gobject-2.0;glib-2.0;cairo;zvbi;pthread;m;png;z;z;aom;gsm;mp3lame;m;opencore-amrnb;openjp2;opus;rav1e;speex;theoraenc;theoradec;ogg;vo-amrwbenc;vorbis;vorbisenc;x264;x265;xvidcore;va;dl;swresample;m;soxr;va-drm;va;vdpau;X11;m;drm;OpenCL;va;vulkan;dl;va-drm;va;vdpau;X11;m;drm;OpenCL;va;vulkan;dl;avutil;va-drm;va;vdpau;X11;m;drm;OpenCL;va;vulkan;dl;swscale;m;avutil;va-drm;va;vdpau;X11;m;drm;OpenCL;va;vulkan;dl
+PC_FFMPEG_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_FFMPEG_STATIC_LIBS:INTERNAL=
+PC_FFMPEG_STATIC_LIBS_L:INTERNAL=
+PC_FFMPEG_STATIC_LIBS_OTHER:INTERNAL=
+PC_FFMPEG_STATIC_LIBS_PATHS:INTERNAL=
+PC_FFMPEG_VERSION:INTERNAL=
+PC_FFMPEG_libavcodec_INCLUDEDIR:INTERNAL=/usr/include/ffmpeg
+PC_FFMPEG_libavcodec_LIBDIR:INTERNAL=/usr/lib64
+PC_FFMPEG_libavcodec_MODULE_NAME:INTERNAL=libavcodec
+PC_FFMPEG_libavcodec_PREFIX:INTERNAL=/usr
+PC_FFMPEG_libavcodec_VERSION:INTERNAL=58.91.100
+PC_FFMPEG_libavformat_INCLUDEDIR:INTERNAL=/usr/include/ffmpeg
+PC_FFMPEG_libavformat_LIBDIR:INTERNAL=/usr/lib64
+PC_FFMPEG_libavformat_MODULE_NAME:INTERNAL=libavformat
+PC_FFMPEG_libavformat_PREFIX:INTERNAL=/usr
+PC_FFMPEG_libavformat_VERSION:INTERNAL=58.45.100
+PC_FFMPEG_libavutil_INCLUDEDIR:INTERNAL=/usr/include/ffmpeg
+PC_FFMPEG_libavutil_LIBDIR:INTERNAL=/usr/lib64
+PC_FFMPEG_libavutil_MODULE_NAME:INTERNAL=libavutil
+PC_FFMPEG_libavutil_PREFIX:INTERNAL=/usr
+PC_FFMPEG_libavutil_VERSION:INTERNAL=56.51.100
+PC_FFMPEG_libswscale_INCLUDEDIR:INTERNAL=/usr/include/ffmpeg
+PC_FFMPEG_libswscale_LIBDIR:INTERNAL=/usr/lib64
+PC_FFMPEG_libswscale_MODULE_NAME:INTERNAL=libswscale
+PC_FFMPEG_libswscale_PREFIX:INTERNAL=/usr
+PC_FFMPEG_libswscale_VERSION:INTERNAL=5.7.100
+PC_OGG_CFLAGS:INTERNAL=
+PC_OGG_CFLAGS_I:INTERNAL=
+PC_OGG_CFLAGS_OTHER:INTERNAL=
+PC_OGG_FOUND:INTERNAL=1
+PC_OGG_INCLUDEDIR:INTERNAL=/usr/include
+PC_OGG_INCLUDE_DIRS:INTERNAL=
+PC_OGG_LDFLAGS:INTERNAL=-logg
+PC_OGG_LDFLAGS_OTHER:INTERNAL=
+PC_OGG_LIBDIR:INTERNAL=/usr/lib64
+PC_OGG_LIBRARIES:INTERNAL=ogg
+PC_OGG_LIBRARY_DIRS:INTERNAL=
+PC_OGG_LIBS:INTERNAL=
+PC_OGG_LIBS_L:INTERNAL=
+PC_OGG_LIBS_OTHER:INTERNAL=
+PC_OGG_LIBS_PATHS:INTERNAL=
+PC_OGG_MODULE_NAME:INTERNAL=ogg
+PC_OGG_PREFIX:INTERNAL=/usr
+PC_OGG_STATIC_CFLAGS:INTERNAL=
+PC_OGG_STATIC_CFLAGS_I:INTERNAL=
+PC_OGG_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_OGG_STATIC_INCLUDE_DIRS:INTERNAL=
+PC_OGG_STATIC_LDFLAGS:INTERNAL=-logg
+PC_OGG_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_OGG_STATIC_LIBDIR:INTERNAL=
+PC_OGG_STATIC_LIBRARIES:INTERNAL=ogg
+PC_OGG_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_OGG_STATIC_LIBS:INTERNAL=
+PC_OGG_STATIC_LIBS_L:INTERNAL=
+PC_OGG_STATIC_LIBS_OTHER:INTERNAL=
+PC_OGG_STATIC_LIBS_PATHS:INTERNAL=
+PC_OGG_VERSION:INTERNAL=1.3.4
+PC_OGG_ogg_INCLUDEDIR:INTERNAL=
+PC_OGG_ogg_LIBDIR:INTERNAL=
+PC_OGG_ogg_PREFIX:INTERNAL=
+PC_OGG_ogg_VERSION:INTERNAL=
+PC_OPUS_CFLAGS:INTERNAL=-I/usr/include/opus
+PC_OPUS_CFLAGS_I:INTERNAL=
+PC_OPUS_CFLAGS_OTHER:INTERNAL=
+PC_OPUS_FOUND:INTERNAL=1
+PC_OPUS_INCLUDEDIR:INTERNAL=/usr/include
+PC_OPUS_INCLUDE_DIRS:INTERNAL=/usr/include/opus
+PC_OPUS_LDFLAGS:INTERNAL=-lopus
+PC_OPUS_LDFLAGS_OTHER:INTERNAL=
+PC_OPUS_LIBDIR:INTERNAL=/usr/lib64
+PC_OPUS_LIBRARIES:INTERNAL=opus
+PC_OPUS_LIBRARY_DIRS:INTERNAL=
+PC_OPUS_LIBS:INTERNAL=
+PC_OPUS_LIBS_L:INTERNAL=
+PC_OPUS_LIBS_OTHER:INTERNAL=
+PC_OPUS_LIBS_PATHS:INTERNAL=
+PC_OPUS_MODULE_NAME:INTERNAL=opus
+PC_OPUS_PREFIX:INTERNAL=/usr
+PC_OPUS_STATIC_CFLAGS:INTERNAL=-I/usr/include/opus
+PC_OPUS_STATIC_CFLAGS_I:INTERNAL=
+PC_OPUS_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_OPUS_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/opus
+PC_OPUS_STATIC_LDFLAGS:INTERNAL=-lopus;-lm
+PC_OPUS_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_OPUS_STATIC_LIBDIR:INTERNAL=
+PC_OPUS_STATIC_LIBRARIES:INTERNAL=opus;m
+PC_OPUS_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_OPUS_STATIC_LIBS:INTERNAL=
+PC_OPUS_STATIC_LIBS_L:INTERNAL=
+PC_OPUS_STATIC_LIBS_OTHER:INTERNAL=
+PC_OPUS_STATIC_LIBS_PATHS:INTERNAL=
+PC_OPUS_VERSION:INTERNAL=1.3.1
+PC_OPUS_opus_INCLUDEDIR:INTERNAL=
+PC_OPUS_opus_LIBDIR:INTERNAL=
+PC_OPUS_opus_PREFIX:INTERNAL=
+PC_OPUS_opus_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+SDL2_CFLAGS:INTERNAL=-I/usr/include/SDL2;-D_REENTRANT
+SDL2_CFLAGS_I:INTERNAL=
+SDL2_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_FOUND:INTERNAL=1
+SDL2_IMG_CFLAGS:INTERNAL=-I/usr/include/SDL2;-D_REENTRANT
+SDL2_IMG_CFLAGS_I:INTERNAL=
+SDL2_IMG_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_IMG_FOUND:INTERNAL=1
+SDL2_IMG_INCLUDEDIR:INTERNAL=/usr/include
+SDL2_IMG_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2_IMG_LDFLAGS:INTERNAL=-lSDL2_image;-lSDL2
+SDL2_IMG_LDFLAGS_OTHER:INTERNAL=
+SDL2_IMG_LIBDIR:INTERNAL=/usr/lib64
+SDL2_IMG_LIBRARIES:INTERNAL=SDL2_image;SDL2
+SDL2_IMG_LIBRARY_DIRS:INTERNAL=
+SDL2_IMG_LIBS:INTERNAL=
+SDL2_IMG_LIBS_L:INTERNAL=
+SDL2_IMG_LIBS_OTHER:INTERNAL=
+SDL2_IMG_LIBS_PATHS:INTERNAL=
+SDL2_IMG_MODULE_NAME:INTERNAL=SDL2_image
+SDL2_IMG_PREFIX:INTERNAL=/usr
+SDL2_IMG_SDL2_image_INCLUDEDIR:INTERNAL=
+SDL2_IMG_SDL2_image_LIBDIR:INTERNAL=
+SDL2_IMG_SDL2_image_PREFIX:INTERNAL=
+SDL2_IMG_SDL2_image_VERSION:INTERNAL=
+SDL2_IMG_STATIC_CFLAGS:INTERNAL=-I/usr/include/SDL2;-D_REENTRANT
+SDL2_IMG_STATIC_CFLAGS_I:INTERNAL=
+SDL2_IMG_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_IMG_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2_IMG_STATIC_LDFLAGS:INTERNAL=-lSDL2_image;-lSDL2;-Wl,--no-undefined;-lm;-ldl;-lpthread;-lrt
+SDL2_IMG_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,--no-undefined
+SDL2_IMG_STATIC_LIBDIR:INTERNAL=
+SDL2_IMG_STATIC_LIBRARIES:INTERNAL=SDL2_image;SDL2;m;dl;pthread;rt
+SDL2_IMG_STATIC_LIBRARY_DIRS:INTERNAL=
+SDL2_IMG_STATIC_LIBS:INTERNAL=
+SDL2_IMG_STATIC_LIBS_L:INTERNAL=
+SDL2_IMG_STATIC_LIBS_OTHER:INTERNAL=
+SDL2_IMG_STATIC_LIBS_PATHS:INTERNAL=
+SDL2_IMG_VERSION:INTERNAL=2.0.5
+SDL2_INCLUDEDIR:INTERNAL=/usr/include
+SDL2_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2_LDFLAGS:INTERNAL=-lSDL2
+SDL2_LDFLAGS_OTHER:INTERNAL=
+SDL2_LIBDIR:INTERNAL=/usr/lib64
+SDL2_LIBRARIES:INTERNAL=SDL2
+SDL2_LIBRARY_DIRS:INTERNAL=
+SDL2_LIBS:INTERNAL=
+SDL2_LIBS_L:INTERNAL=
+SDL2_LIBS_OTHER:INTERNAL=
+SDL2_LIBS_PATHS:INTERNAL=
+SDL2_MIX_CFLAGS:INTERNAL=-I/usr/include/SDL2;-D_REENTRANT
+SDL2_MIX_CFLAGS_I:INTERNAL=
+SDL2_MIX_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_MIX_FOUND:INTERNAL=1
+SDL2_MIX_INCLUDEDIR:INTERNAL=/usr/include
+SDL2_MIX_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2_MIX_LDFLAGS:INTERNAL=-lSDL2_mixer;-lSDL2
+SDL2_MIX_LDFLAGS_OTHER:INTERNAL=
+SDL2_MIX_LIBDIR:INTERNAL=/usr/lib64
+SDL2_MIX_LIBRARIES:INTERNAL=SDL2_mixer;SDL2
+SDL2_MIX_LIBRARY_DIRS:INTERNAL=
+SDL2_MIX_LIBS:INTERNAL=
+SDL2_MIX_LIBS_L:INTERNAL=
+SDL2_MIX_LIBS_OTHER:INTERNAL=
+SDL2_MIX_LIBS_PATHS:INTERNAL=
+SDL2_MIX_MODULE_NAME:INTERNAL=SDL2_mixer
+SDL2_MIX_PREFIX:INTERNAL=/usr
+SDL2_MIX_SDL2_mixer_INCLUDEDIR:INTERNAL=
+SDL2_MIX_SDL2_mixer_LIBDIR:INTERNAL=
+SDL2_MIX_SDL2_mixer_PREFIX:INTERNAL=
+SDL2_MIX_SDL2_mixer_VERSION:INTERNAL=
+SDL2_MIX_STATIC_CFLAGS:INTERNAL=-I/usr/include/SDL2;-D_REENTRANT
+SDL2_MIX_STATIC_CFLAGS_I:INTERNAL=
+SDL2_MIX_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_MIX_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2_MIX_STATIC_LDFLAGS:INTERNAL=-lSDL2_mixer;-lSDL2;-Wl,--no-undefined;-lm;-ldl;-lpthread;-lrt
+SDL2_MIX_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,--no-undefined
+SDL2_MIX_STATIC_LIBDIR:INTERNAL=
+SDL2_MIX_STATIC_LIBRARIES:INTERNAL=SDL2_mixer;SDL2;m;dl;pthread;rt
+SDL2_MIX_STATIC_LIBRARY_DIRS:INTERNAL=
+SDL2_MIX_STATIC_LIBS:INTERNAL=
+SDL2_MIX_STATIC_LIBS_L:INTERNAL=
+SDL2_MIX_STATIC_LIBS_OTHER:INTERNAL=
+SDL2_MIX_STATIC_LIBS_PATHS:INTERNAL=
+SDL2_MIX_VERSION:INTERNAL=2.0.4
+SDL2_MODULE_NAME:INTERNAL=sdl2
+SDL2_PREFIX:INTERNAL=/usr
+SDL2_STATIC_CFLAGS:INTERNAL=-I/usr/include/SDL2;-D_REENTRANT
+SDL2_STATIC_CFLAGS_I:INTERNAL=
+SDL2_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2_STATIC_LDFLAGS:INTERNAL=-lSDL2;-Wl,--no-undefined;-lm;-ldl;-lpthread;-lrt
+SDL2_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,--no-undefined
+SDL2_STATIC_LIBDIR:INTERNAL=
+SDL2_STATIC_LIBRARIES:INTERNAL=SDL2;m;dl;pthread;rt
+SDL2_STATIC_LIBRARY_DIRS:INTERNAL=
+SDL2_STATIC_LIBS:INTERNAL=
+SDL2_STATIC_LIBS_L:INTERNAL=
+SDL2_STATIC_LIBS_OTHER:INTERNAL=
+SDL2_STATIC_LIBS_PATHS:INTERNAL=
+SDL2_TTF_CFLAGS:INTERNAL=-I/usr/include/SDL2;-D_REENTRANT
+SDL2_TTF_CFLAGS_I:INTERNAL=
+SDL2_TTF_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_TTF_FOUND:INTERNAL=1
+SDL2_TTF_INCLUDEDIR:INTERNAL=/usr/include
+SDL2_TTF_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2_TTF_LDFLAGS:INTERNAL=-lSDL2_ttf;-lSDL2
+SDL2_TTF_LDFLAGS_OTHER:INTERNAL=
+SDL2_TTF_LIBDIR:INTERNAL=/usr/lib64
+SDL2_TTF_LIBRARIES:INTERNAL=SDL2_ttf;SDL2
+SDL2_TTF_LIBRARY_DIRS:INTERNAL=
+SDL2_TTF_LIBS:INTERNAL=
+SDL2_TTF_LIBS_L:INTERNAL=
+SDL2_TTF_LIBS_OTHER:INTERNAL=
+SDL2_TTF_LIBS_PATHS:INTERNAL=
+SDL2_TTF_MODULE_NAME:INTERNAL=SDL2_ttf
+SDL2_TTF_PREFIX:INTERNAL=/usr
+SDL2_TTF_SDL2_ttf_INCLUDEDIR:INTERNAL=
+SDL2_TTF_SDL2_ttf_LIBDIR:INTERNAL=
+SDL2_TTF_SDL2_ttf_PREFIX:INTERNAL=
+SDL2_TTF_SDL2_ttf_VERSION:INTERNAL=
+SDL2_TTF_STATIC_CFLAGS:INTERNAL=-I/usr/include/SDL2;-D_REENTRANT
+SDL2_TTF_STATIC_CFLAGS_I:INTERNAL=
+SDL2_TTF_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_TTF_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2_TTF_STATIC_LDFLAGS:INTERNAL=-lSDL2_ttf;-lSDL2;-Wl,--no-undefined;-lm;-ldl;-lpthread;-lrt
+SDL2_TTF_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,--no-undefined
+SDL2_TTF_STATIC_LIBDIR:INTERNAL=
+SDL2_TTF_STATIC_LIBRARIES:INTERNAL=SDL2_ttf;SDL2;m;dl;pthread;rt
+SDL2_TTF_STATIC_LIBRARY_DIRS:INTERNAL=
+SDL2_TTF_STATIC_LIBS:INTERNAL=
+SDL2_TTF_STATIC_LIBS_L:INTERNAL=
+SDL2_TTF_STATIC_LIBS_OTHER:INTERNAL=
+SDL2_TTF_STATIC_LIBS_PATHS:INTERNAL=
+SDL2_TTF_VERSION:INTERNAL=2.0.15
+SDL2_VERSION:INTERNAL=2.0.14
+SDL2_sdl2_INCLUDEDIR:INTERNAL=
+SDL2_sdl2_LIBDIR:INTERNAL=
+SDL2_sdl2_PREFIX:INTERNAL=
+SDL2_sdl2_VERSION:INTERNAL=
+//ADVANCED property for variable: SWSCALE_INCLUDE_DIR
+SWSCALE_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SWSCALE_LIBRARY
+SWSCALE_LIBRARY-ADVANCED:INTERNAL=1
+__pkg_config_arguments_PC_CAIRO:INTERNAL=cairo
+__pkg_config_arguments_PC_FFMPEG:INTERNAL=libavformat;libavcodec;libavutil;libswscale
+__pkg_config_arguments_PC_OGG:INTERNAL=QUIET;ogg>=1.3.0
+__pkg_config_arguments_PC_OPUS:INTERNAL=QUIET;opus>=1.1
+__pkg_config_arguments_SDL2:INTERNAL=REQUIRED;sdl2
+__pkg_config_arguments_SDL2_IMG:INTERNAL=REQUIRED;SDL2_image
+__pkg_config_arguments_SDL2_MIX:INTERNAL=REQUIRED;SDL2_mixer
+__pkg_config_arguments_SDL2_TTF:INTERNAL=REQUIRED;SDL2_ttf
+__pkg_config_checked_PC_CAIRO:INTERNAL=1
+__pkg_config_checked_PC_FFMPEG:INTERNAL=1
+__pkg_config_checked_PC_OGG:INTERNAL=1
+__pkg_config_checked_PC_OPUS:INTERNAL=1
+__pkg_config_checked_SDL2:INTERNAL=1
+__pkg_config_checked_SDL2_IMG:INTERNAL=1
+__pkg_config_checked_SDL2_MIX:INTERNAL=1
+__pkg_config_checked_SDL2_TTF:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_CAIRO_cairo
+pkgcfg_lib_PC_CAIRO_cairo-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_FFMPEG_avcodec
+pkgcfg_lib_PC_FFMPEG_avcodec-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_FFMPEG_avformat
+pkgcfg_lib_PC_FFMPEG_avformat-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_FFMPEG_avutil
+pkgcfg_lib_PC_FFMPEG_avutil-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_FFMPEG_swscale
+pkgcfg_lib_PC_FFMPEG_swscale-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_OGG_ogg
+pkgcfg_lib_PC_OGG_ogg-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_OPUS_opus
+pkgcfg_lib_PC_OPUS_opus-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_IMG_SDL2
+pkgcfg_lib_SDL2_IMG_SDL2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_IMG_SDL2_image
+pkgcfg_lib_SDL2_IMG_SDL2_image-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_MIX_SDL2
+pkgcfg_lib_SDL2_MIX_SDL2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_MIX_SDL2_mixer
+pkgcfg_lib_SDL2_MIX_SDL2_mixer-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_SDL2
+pkgcfg_lib_SDL2_SDL2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_TTF_SDL2
+pkgcfg_lib_SDL2_TTF_SDL2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_TTF_SDL2_ttf
+pkgcfg_lib_SDL2_TTF_SDL2_ttf-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib64
 

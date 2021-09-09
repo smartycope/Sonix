@@ -1,22 +1,25 @@
-#include <csignal>
-#include <sstream>
-#include <iostream>
+#include "Book.hpp"
 
-// #include <QErrorMessage>
+#include <sstream>
+#include <regex>
+
 #include <QMessageBox>
+
 #include <nlohmann/json.hpp>
 
-#include "Book.hpp"
 #include "cope.hpp"
 #include "AudioPlayer.hpp"
+#include "Global.hpp"
+#include "messages.hpp"
+#include "ffmpegLiason.hpp"
 
 using json = nlohmann::json;
 
 Book::Book(string filepath): _file(filepath.c_str()), sleepTimer(0), actualStartSec(0.0f),
-                                             cli(false), /* _cover(QPixmap()), */ _chapters(QVector<Chapter>()),
-                                             _metaStartSec(-1), _duration(-1), _size(-1), _author(""),
-                                             _releaseDate("0000"), _title(""), _narrator(""),
-                                             _publisher(""), ffmpeg(nullptr), amValid(true){
+                            cli(false), _chapters(QVector<Chapter>()),
+                            _metaStartSec(-1), _duration(-1), _size(-1), _author(""),
+                            _releaseDate("0000"), _title(""), _narrator(""),
+                            _publisher(""), ffmpegFile(QFile()), amValid(true){
     // This isn't initialized at the initialization list (not quite sure how that works, linters are amazing)
     _description = defaultDescriptionValue;
 
@@ -129,7 +132,6 @@ string Book::addAuthcode(){
         Global::log("The file ends in .aax, using activation bytes: \"" + Global::authcode + '"');
         return " -activation_bytes " + Global::authcode;
     }
-
     return "";
 }
 
@@ -199,9 +201,15 @@ QVector<Chapter> Book::loadChapters(){
     return vec;
 }
 
-Chapter Book::getCurrentChapter(){
-    todo("chapters");
-    return Chapter();
+Chapter Book::getCurrentChapter(int posSecs){
+    Chapter c = _chapters[0];
+    for (auto chap: _chapters){
+        if (isBetween<int>(posSecs, chap.startTime, chap.endTime, true)){
+            c = chap;
+            break;
+        }
+    }
+    return c;
 }
 
 QString Book::getIntro(){
@@ -264,77 +272,46 @@ void Book::printReleaseDateAndExit(){
     exit(0);
 }
 
-FILE* Book::open(){
+void Book::open(){
     Global::log("Opening ffmpeg pipe...");
 
     validate();
     if (not amValid)
-        return nullptr;
+        return;
 
     std::stringstream command;
-    command << "ffmpeg -hide_banner -loglevel "
-            << string(Global::verbose ? "error": "quiet")
-            << " -ss " << actualStartSec
+    command << " -ss " << actualStartSec
+            << " -readrate " << AudioPlayer::_speed + 1
             << addAuthcode()
-            <<" -i \"" << _file.toStdString() << "\" -codec pcm_u8 -vn -f u8"
+            // Replace all the spaces with something that won't be in the filepath,
+            // so we can put it back later after we split the string by spaces
+            <<" -i " << std::regex_replace(_file.toStdString(), std::regex(" "), REPLACEMENT_CHAR)
+            << " -codec pcm_u8 -vn -f u8"
             << " -ac " << AudioPlayer::_channels
             << " -ar " << AudioPlayer::_samplerate;
 
     if (Book::sleepTimer)
         command << " -t " << Book::sleepTimer;
 
-    command << " -";
+    ffmpegInternal = runFFmpeg(command.str());
 
-    //* Open the file
-    if (Global::verbose)
-        printf("Executing command: \"%s\"\n", command.str().c_str());
-
-    ffmpeg = popen(command.str().c_str(), "r");
-    if (ffmpeg == NULL) {
-        debugs("Error: Failed to open pipe");
-        exit(5);
+    if (ffmpegInternal == NULL){
+        Global::log("Error: Failed to open pipe");
+        return;
     }
 
-    // signal(SIGINT, close);
-    return ffmpeg;
+    ffmpegFile.open(ffmpegInternal, QIODevice::ReadOnly);
 }
 
 void Book::close(int signum){
     int rtn = 0;
-    if (ffmpeg)
-        rtn = pclose(ffmpeg);
+    if (ffmpegInternal)
+        rtn = pclose(ffmpegInternal);
     if (rtn) {
-        if (Global::verbose)
-            printf("ffmpeg pipe returned: %d\n", rtn);
+        Global::log("ffmpeg pipe returned: " + std::to_string(rtn));
         if (signum)
             exit(rtn);
     }
     if (signum)
-        exit(1);
-}
-
-ulong Book::getPosition(){
-    validate();
-    if (not amValid)
-        return -1;
-    ulong samples = AudioPlayer::_samplerate * _duration;
-    ulong totalBytes = samples * AudioPlayer::_channels;
-    ulong posRatio = AudioPlayer::bytesRead / totalBytes;
-    return floor(_duration * posRatio);
-
-}
-
-void Book::setPosition(int secs){
-    if (Global::verbose)
-        todo("Set position");
-    return;
-    // stringstream command;
-    // command << "ffmpeg -hide_banner -y -loglevel "
-    //         << string(Global::verbose ? "error": "quiet");
-    // if (not addAuthcode(command)) return;
-    // command << " -i \"" << _file.toStdString() << '"'
-    //         << " -metadata start_time=" << std::to_string(secs)
-    //         << " \"" << _file.toStdString() << '"';
-
-    // std::cout << getCmdOutS(command.str(), Global::verbose) << '\n';
+        exit(signum);
 }

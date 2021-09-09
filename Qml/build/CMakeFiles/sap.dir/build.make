@@ -161,22 +161,113 @@ CMakeFiles/sap.dir/src/CoverProvider.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sap.dir/src/CoverProvider.cpp.s"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marvin/hello/C/SAP/Qml/src/CoverProvider.cpp -o CMakeFiles/sap.dir/src/CoverProvider.cpp.s
 
-CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.o: CMakeFiles/sap.dir/flags.make
-CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.o: ../ffmpeg/ffmpeg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.o"
-	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.o -c /home/marvin/hello/C/SAP/Qml/ffmpeg/ffmpeg.c
+CMakeFiles/sap.dir/src/ffmpegLiason.cpp.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/src/ffmpegLiason.cpp.o: ../src/ffmpegLiason.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/sap.dir/src/ffmpegLiason.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sap.dir/src/ffmpegLiason.cpp.o -c /home/marvin/hello/C/SAP/Qml/src/ffmpegLiason.cpp
 
-CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.i"
-	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Qml/ffmpeg/ffmpeg.c > CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.i
+CMakeFiles/sap.dir/src/ffmpegLiason.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sap.dir/src/ffmpegLiason.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marvin/hello/C/SAP/Qml/src/ffmpegLiason.cpp > CMakeFiles/sap.dir/src/ffmpegLiason.cpp.i
 
-CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.s"
-	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Qml/ffmpeg/ffmpeg.c -o CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.s
+CMakeFiles/sap.dir/src/ffmpegLiason.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sap.dir/src/ffmpegLiason.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marvin/hello/C/SAP/Qml/src/ffmpegLiason.cpp -o CMakeFiles/sap.dir/src/ffmpegLiason.cpp.s
+
+CMakeFiles/sap.dir/src/Global.cpp.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/src/Global.cpp.o: ../src/Global.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/sap.dir/src/Global.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sap.dir/src/Global.cpp.o -c /home/marvin/hello/C/SAP/Qml/src/Global.cpp
+
+CMakeFiles/sap.dir/src/Global.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sap.dir/src/Global.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marvin/hello/C/SAP/Qml/src/Global.cpp > CMakeFiles/sap.dir/src/Global.cpp.i
+
+CMakeFiles/sap.dir/src/Global.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sap.dir/src/Global.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marvin/hello/C/SAP/Qml/src/Global.cpp -o CMakeFiles/sap.dir/src/Global.cpp.s
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.o: ../ffmpeg/fftools/ffmpeg-main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.o -c /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg-main.cpp
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg-main.cpp > CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.i
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg-main.cpp -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.s
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.o: ../ffmpeg/fftools/ffmpeg.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.o"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.o -c /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg.c
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.i"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg.c > CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.i
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.s"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg.c -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.s
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.o: ../ffmpeg/fftools/ffmpeg_opt.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.o"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.o -c /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_opt.c
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.i"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_opt.c > CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.i
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.s"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_opt.c -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.s
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.o: ../ffmpeg/fftools/ffmpeg_filter.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.o"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.o -c /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_filter.c
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.i"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_filter.c > CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.i
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.s"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_filter.c -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.s
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.o: ../ffmpeg/fftools/ffmpeg_hw.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.o"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.o -c /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_hw.c
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.i"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_hw.c > CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.i
+
+CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.s"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/ffmpeg_hw.c -o CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.s
+
+CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.o: CMakeFiles/sap.dir/flags.make
+CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.o: ../ffmpeg/fftools/cmdutils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.o"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.o -c /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/cmdutils.c
+
+CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.i"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/cmdutils.c > CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.i
+
+CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.s"
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marvin/hello/C/SAP/Qml/ffmpeg/fftools/cmdutils.c -o CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.s
 
 CMakeFiles/sap.dir/src/main.cpp.o: CMakeFiles/sap.dir/flags.make
 CMakeFiles/sap.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/sap.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/sap.dir/src/main.cpp.o"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sap.dir/src/main.cpp.o -c /home/marvin/hello/C/SAP/Qml/src/main.cpp
 
 CMakeFiles/sap.dir/src/main.cpp.i: cmake_force
@@ -189,7 +280,7 @@ CMakeFiles/sap.dir/src/main.cpp.s: cmake_force
 
 CMakeFiles/sap.dir/qrc_main.cpp.o: CMakeFiles/sap.dir/flags.make
 CMakeFiles/sap.dir/qrc_main.cpp.o: qrc_main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/sap.dir/qrc_main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/sap.dir/qrc_main.cpp.o"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sap.dir/qrc_main.cpp.o -c /home/marvin/hello/C/SAP/Qml/build/qrc_main.cpp
 
 CMakeFiles/sap.dir/qrc_main.cpp.i: cmake_force
@@ -208,7 +299,14 @@ sap_OBJECTS = \
 "CMakeFiles/sap.dir/src/AudioPlayer.cpp.o" \
 "CMakeFiles/sap.dir/src/PlayerWindow.cpp.o" \
 "CMakeFiles/sap.dir/src/CoverProvider.cpp.o" \
-"CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.o" \
+"CMakeFiles/sap.dir/src/ffmpegLiason.cpp.o" \
+"CMakeFiles/sap.dir/src/Global.cpp.o" \
+"CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.o" \
+"CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.o" \
+"CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.o" \
+"CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.o" \
+"CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.o" \
+"CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.o" \
 "CMakeFiles/sap.dir/src/main.cpp.o" \
 "CMakeFiles/sap.dir/qrc_main.cpp.o"
 
@@ -221,10 +319,21 @@ sap_EXTERNAL_OBJECTS =
 ../sap: CMakeFiles/sap.dir/src/AudioPlayer.cpp.o
 ../sap: CMakeFiles/sap.dir/src/PlayerWindow.cpp.o
 ../sap: CMakeFiles/sap.dir/src/CoverProvider.cpp.o
-../sap: CMakeFiles/sap.dir/ffmpeg/ffmpeg.c.o
+../sap: CMakeFiles/sap.dir/src/ffmpegLiason.cpp.o
+../sap: CMakeFiles/sap.dir/src/Global.cpp.o
+../sap: CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg-main.cpp.o
+../sap: CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg.c.o
+../sap: CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_opt.c.o
+../sap: CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_filter.c.o
+../sap: CMakeFiles/sap.dir/ffmpeg/fftools/ffmpeg_hw.c.o
+../sap: CMakeFiles/sap.dir/ffmpeg/fftools/cmdutils.c.o
 ../sap: CMakeFiles/sap.dir/src/main.cpp.o
 ../sap: CMakeFiles/sap.dir/qrc_main.cpp.o
 ../sap: CMakeFiles/sap.dir/build.make
+../sap: /usr/lib64/libavformat.so
+../sap: /usr/lib64/libavcodec.so
+../sap: /usr/lib64/libavutil.so
+../sap: /usr/lib64/libswscale.so
 ../sap: /usr/lib64/libQt5Quick.so.5.15.2
 ../sap: /usr/lib64/libQt5Multimedia.so.5.15.2
 ../sap: /usr/lib64/libQt5Widgets.so.5.15.2
@@ -234,7 +343,7 @@ sap_EXTERNAL_OBJECTS =
 ../sap: /usr/lib64/libQt5Gui.so.5.15.2
 ../sap: /usr/lib64/libQt5Core.so.5.15.2
 ../sap: CMakeFiles/sap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable ../sap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/marvin/hello/C/SAP/Qml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable ../sap"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

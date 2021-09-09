@@ -406,6 +406,10 @@ static char* color(char* str, char* color){
 }
 */
 
+template<typename T> static bool isBetween(T val, T start, T end, bool beginInclusive = false, bool endInclusive = false){
+    return (beginInclusive ? val >= start: val > start) and (endInclusive ? val <= end: val < end);
+}
+
 static char* _fmt(char* str, ...){
     // char* tmp;
     char* tmp = (char*)malloc(MAX_STR_LEN);

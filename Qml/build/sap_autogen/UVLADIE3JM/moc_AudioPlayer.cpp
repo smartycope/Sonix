@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_AudioPlayer_t {
     QByteArrayData data[62];
-    char stringdata0[809];
+    char stringdata0[808];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -65,35 +65,35 @@ QT_MOC_LITERAL(29, 395, 9), // "getVolume"
 QT_MOC_LITERAL(30, 405, 13), // "setSamplerate"
 QT_MOC_LITERAL(31, 419, 2), // "to"
 QT_MOC_LITERAL(32, 422, 11), // "setChannels"
-QT_MOC_LITERAL(33, 434, 11), // "togglePause"
-QT_MOC_LITERAL(34, 446, 10), // "dummyparam"
-QT_MOC_LITERAL(35, 457, 8), // "setSpeed"
-QT_MOC_LITERAL(36, 466, 8), // "setPitch"
-QT_MOC_LITERAL(37, 475, 7), // "setRate"
-QT_MOC_LITERAL(38, 483, 20), // "setEmulateChordPitch"
-QT_MOC_LITERAL(39, 504, 14), // "setHighQuality"
-QT_MOC_LITERAL(40, 519, 25), // "setEnableNonlinearSpeedup"
-QT_MOC_LITERAL(41, 545, 17), // "setSpeedIncrement"
-QT_MOC_LITERAL(42, 563, 18), // "setVolumeIncrement"
-QT_MOC_LITERAL(43, 582, 14), // "setSkipSeconds"
+QT_MOC_LITERAL(33, 434, 17), // "setSpeedIncrement"
+QT_MOC_LITERAL(34, 452, 18), // "setVolumeIncrement"
+QT_MOC_LITERAL(35, 471, 14), // "setSkipSeconds"
+QT_MOC_LITERAL(36, 486, 11), // "togglePause"
+QT_MOC_LITERAL(37, 498, 10), // "dummyparam"
+QT_MOC_LITERAL(38, 509, 8), // "setSpeed"
+QT_MOC_LITERAL(39, 518, 8), // "setPitch"
+QT_MOC_LITERAL(40, 527, 7), // "setRate"
+QT_MOC_LITERAL(41, 535, 20), // "setEmulateChordPitch"
+QT_MOC_LITERAL(42, 556, 14), // "setHighQuality"
+QT_MOC_LITERAL(43, 571, 25), // "setEnableNonlinearSpeedup"
 QT_MOC_LITERAL(44, 597, 9), // "setVolume"
 QT_MOC_LITERAL(45, 607, 4), // "skip"
 QT_MOC_LITERAL(46, 612, 6), // "amount"
 QT_MOC_LITERAL(47, 619, 4), // "jump"
-QT_MOC_LITERAL(48, 624, 8), // "chapters"
-QT_MOC_LITERAL(49, 633, 13), // "updateChapter"
-QT_MOC_LITERAL(50, 647, 11), // "updateSpeed"
-QT_MOC_LITERAL(51, 659, 14), // "incrementSpeed"
-QT_MOC_LITERAL(52, 674, 15), // "incrementVolume"
-QT_MOC_LITERAL(53, 690, 14), // "decrementSpeed"
-QT_MOC_LITERAL(54, 705, 15), // "decrementVolume"
-QT_MOC_LITERAL(55, 721, 11), // "skipForward"
-QT_MOC_LITERAL(56, 733, 12), // "skipBackward"
-QT_MOC_LITERAL(57, 746, 11), // "jumpForward"
-QT_MOC_LITERAL(58, 758, 12), // "jumpBackward"
-QT_MOC_LITERAL(59, 771, 17), // "audioStateChanged"
-QT_MOC_LITERAL(60, 789, 13), // "QAudio::State"
-QT_MOC_LITERAL(61, 803, 5) // "state"
+QT_MOC_LITERAL(48, 624, 7), // "Chapter"
+QT_MOC_LITERAL(49, 632, 13), // "updateChapter"
+QT_MOC_LITERAL(50, 646, 11), // "updateSpeed"
+QT_MOC_LITERAL(51, 658, 14), // "incrementSpeed"
+QT_MOC_LITERAL(52, 673, 15), // "incrementVolume"
+QT_MOC_LITERAL(53, 689, 14), // "decrementSpeed"
+QT_MOC_LITERAL(54, 704, 15), // "decrementVolume"
+QT_MOC_LITERAL(55, 720, 11), // "skipForward"
+QT_MOC_LITERAL(56, 732, 12), // "skipBackward"
+QT_MOC_LITERAL(57, 745, 11), // "jumpForward"
+QT_MOC_LITERAL(58, 757, 12), // "jumpBackward"
+QT_MOC_LITERAL(59, 770, 17), // "audioStateChanged"
+QT_MOC_LITERAL(60, 788, 13), // "QAudio::State"
+QT_MOC_LITERAL(61, 802, 5) // "state"
 
     },
     "AudioPlayer\0QML.Element\0auto\0"
@@ -108,13 +108,13 @@ QT_MOC_LITERAL(61, 803, 5) // "state"
     "highQuality\0speedIncrement\0volumeIncrement\0"
     "skipSeconds\0updateBook\0Book*\0book\0"
     "getVolume\0setSamplerate\0to\0setChannels\0"
-    "togglePause\0dummyparam\0setSpeed\0"
-    "setPitch\0setRate\0setEmulateChordPitch\0"
-    "setHighQuality\0setEnableNonlinearSpeedup\0"
     "setSpeedIncrement\0setVolumeIncrement\0"
-    "setSkipSeconds\0setVolume\0skip\0amount\0"
-    "jump\0chapters\0updateChapter\0updateSpeed\0"
-    "incrementSpeed\0incrementVolume\0"
+    "setSkipSeconds\0togglePause\0dummyparam\0"
+    "setSpeed\0setPitch\0setRate\0"
+    "setEmulateChordPitch\0setHighQuality\0"
+    "setEnableNonlinearSpeedup\0setVolume\0"
+    "skip\0amount\0jump\0Chapter\0updateChapter\0"
+    "updateSpeed\0incrementSpeed\0incrementVolume\0"
     "decrementSpeed\0decrementVolume\0"
     "skipForward\0skipBackward\0jumpForward\0"
     "jumpBackward\0audioStateChanged\0"
@@ -168,10 +168,10 @@ static const uint qt_meta_data_AudioPlayer[] = {
       30,    1,  297,    4, 0x0a /* Public */,
       32,    1,  300,    4, 0x0a /* Public */,
       33,    1,  303,    4, 0x0a /* Public */,
-      33,    0,  306,    4, 0x2a /* Public | MethodCloned */,
-      35,    1,  307,    4, 0x0a /* Public */,
-      36,    1,  310,    4, 0x0a /* Public */,
-      37,    1,  313,    4, 0x0a /* Public */,
+      34,    1,  306,    4, 0x0a /* Public */,
+      35,    1,  309,    4, 0x0a /* Public */,
+      36,    1,  312,    4, 0x0a /* Public */,
+      36,    0,  315,    4, 0x2a /* Public | MethodCloned */,
       38,    1,  316,    4, 0x0a /* Public */,
       39,    1,  319,    4, 0x0a /* Public */,
       40,    1,  322,    4, 0x0a /* Public */,
@@ -222,7 +222,10 @@ static const uint qt_meta_data_AudioPlayer[] = {
     QMetaType::Int,
     QMetaType::Void, QMetaType::Int,   31,
     QMetaType::Void, QMetaType::Int,   31,
-    QMetaType::Void, QMetaType::Bool,   34,
+    QMetaType::Void, QMetaType::Float,   31,
+    QMetaType::Void, QMetaType::Float,   31,
+    QMetaType::Void, QMetaType::Int,   31,
+    QMetaType::Void, QMetaType::Bool,   37,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Double,   31,
     QMetaType::Void, QMetaType::Float,   31,
@@ -230,12 +233,9 @@ static const uint qt_meta_data_AudioPlayer[] = {
     QMetaType::Void, QMetaType::Bool,   31,
     QMetaType::Void, QMetaType::Bool,   31,
     QMetaType::Void, QMetaType::Bool,   31,
-    QMetaType::Void, QMetaType::Float,   31,
-    QMetaType::Void, QMetaType::Float,   31,
-    QMetaType::Void, QMetaType::Int,   31,
     QMetaType::Void, QMetaType::Int,   31,
     QMetaType::Void, QMetaType::Int,   46,
-    QMetaType::Void, QMetaType::Int,   48,
+    QMetaType::Void, 0x80000000 | 48,   31,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -321,20 +321,20 @@ void AudioPlayer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 24: _t->setSamplerate((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 25: _t->setChannels((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 26: _t->togglePause((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 27: _t->togglePause(); break;
-        case 28: _t->setSpeed((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 29: _t->setPitch((*reinterpret_cast< float(*)>(_a[1]))); break;
-        case 30: _t->setRate((*reinterpret_cast< float(*)>(_a[1]))); break;
-        case 31: _t->setEmulateChordPitch((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 32: _t->setHighQuality((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 33: _t->setEnableNonlinearSpeedup((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 34: _t->setSpeedIncrement((*reinterpret_cast< float(*)>(_a[1]))); break;
-        case 35: _t->setVolumeIncrement((*reinterpret_cast< float(*)>(_a[1]))); break;
-        case 36: _t->setSkipSeconds((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 26: _t->setSpeedIncrement((*reinterpret_cast< float(*)>(_a[1]))); break;
+        case 27: _t->setVolumeIncrement((*reinterpret_cast< float(*)>(_a[1]))); break;
+        case 28: _t->setSkipSeconds((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 29: _t->togglePause((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 30: _t->togglePause(); break;
+        case 31: _t->setSpeed((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 32: _t->setPitch((*reinterpret_cast< float(*)>(_a[1]))); break;
+        case 33: _t->setRate((*reinterpret_cast< float(*)>(_a[1]))); break;
+        case 34: _t->setEmulateChordPitch((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 35: _t->setHighQuality((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 36: _t->setEnableNonlinearSpeedup((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 37: _t->setVolume((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 38: _t->skip((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 39: _t->jump((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 39: _t->jump((*reinterpret_cast< Chapter(*)>(_a[1]))); break;
         case 40: _t->updateChapter(); break;
         case 41: _t->updateSpeed(); break;
         case 42: _t->incrementSpeed(); break;

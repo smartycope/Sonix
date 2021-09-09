@@ -1,17 +1,17 @@
 /home/marvin/hello/C/SAP/Qml/build/sap_autogen/UVLADIE3JM/moc_PlayerWindow.cpp: /home/marvin/hello/C/SAP/Qml/src/PlayerWindow.hpp \
   /home/marvin/hello/C/SAP/Qml/build/sap_autogen/moc_predefs.h \
+  /home/marvin/hello/C/SAP/Qml/include/argparse.hpp \
   /home/marvin/hello/C/SAP/Qml/src/AudioPlayer.hpp \
   /home/marvin/hello/C/SAP/Qml/src/Book.hpp \
   /home/marvin/hello/C/SAP/Qml/src/Global.hpp \
-  /home/marvin/hello/C/SAP/Qml/src/argparse.hpp \
   /home/marvin/hello/C/SAP/Qml/src/cope.hpp \
+  /home/marvin/hello/C/SAP/Qml/src/messages.hpp \
   /home/marvin/hello/C/SAP/Qml/src/sonic.h \
   /usr/include/GL/gl.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm/errno.h \
   /usr/include/assert.h \
-  /usr/include/bits/byteswap.h \
   /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
@@ -24,9 +24,7 @@
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/sched.h \
-  /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
-  /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
@@ -49,7 +47,6 @@
   /usr/include/bits/types/error_t.h \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
-  /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct_itimerspec.h \
   /usr/include/bits/types/struct_sched_param.h \
@@ -60,15 +57,12 @@
   /usr/include/bits/types/timer_t.h \
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
-  /usr/include/bits/uintn-identity.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/atomic_word.h \
-  /usr/include/c++/10/aarch64-redhat-linux/bits/basic_file.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/c++allocator.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/c++config.h \
-  /usr/include/c++/10/aarch64-redhat-linux/bits/c++io.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/c++locale.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/cpu_defines.h \
   /usr/include/c++/10/aarch64-redhat-linux/bits/ctype_base.h \
@@ -97,7 +91,6 @@
   /usr/include/c++/10/bits/c++0x_warning.h \
   /usr/include/c++/10/bits/char_traits.h \
   /usr/include/c++/10/bits/charconv.h \
-  /usr/include/c++/10/bits/codecvt.h \
   /usr/include/c++/10/bits/concept_check.h \
   /usr/include/c++/10/bits/cpp_type_traits.h \
   /usr/include/c++/10/bits/cxxabi_forced.h \
@@ -107,7 +100,6 @@
   /usr/include/c++/10/bits/exception.h \
   /usr/include/c++/10/bits/exception_defines.h \
   /usr/include/c++/10/bits/exception_ptr.h \
-  /usr/include/c++/10/bits/fstream.tcc \
   /usr/include/c++/10/bits/functexcept.h \
   /usr/include/c++/10/bits/functional_hash.h \
   /usr/include/c++/10/bits/hash_bytes.h \
@@ -172,7 +164,6 @@
   /usr/include/c++/10/bits/unique_ptr.h \
   /usr/include/c++/10/bits/uses_allocator.h \
   /usr/include/c++/10/bits/vector.tcc \
-  /usr/include/c++/10/cassert \
   /usr/include/c++/10/cctype \
   /usr/include/c++/10/cerrno \
   /usr/include/c++/10/charconv \
@@ -181,7 +172,6 @@
   /usr/include/c++/10/concepts \
   /usr/include/c++/10/cstddef \
   /usr/include/c++/10/cstdint \
-  /usr/include/c++/10/cstdio \
   /usr/include/c++/10/cstdlib \
   /usr/include/c++/10/cwchar \
   /usr/include/c++/10/cwctype \
@@ -196,7 +186,6 @@
   /usr/include/c++/10/ext/numeric_traits.h \
   /usr/include/c++/10/ext/string_conversions.h \
   /usr/include/c++/10/ext/type_traits.h \
-  /usr/include/c++/10/fstream \
   /usr/include/c++/10/functional \
   /usr/include/c++/10/initializer_list \
   /usr/include/c++/10/ios \
@@ -223,6 +212,7 @@
   /usr/include/c++/10/streambuf \
   /usr/include/c++/10/string \
   /usr/include/c++/10/string_view \
+  /usr/include/c++/10/thread \
   /usr/include/c++/10/tuple \
   /usr/include/c++/10/type_traits \
   /usr/include/c++/10/typeinfo \
@@ -231,7 +221,6 @@
   /usr/include/c++/10/variant \
   /usr/include/c++/10/vector \
   /usr/include/ctype.h \
-  /usr/include/endian.h \
   /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/gnu/stubs-lp64.h \
@@ -242,7 +231,6 @@
   /usr/include/pthread.h \
   /usr/include/qt5/QtCore/QEvent \
   /usr/include/qt5/QtCore/QFile \
-  /usr/include/qt5/QtCore/QList \
   /usr/include/qt5/QtCore/QMargins \
   /usr/include/qt5/QtCore/QObject \
   /usr/include/qt5/QtCore/QRect \
@@ -250,6 +238,7 @@
   /usr/include/qt5/QtCore/QScopedPointer \
   /usr/include/qt5/QtCore/QString \
   /usr/include/qt5/QtCore/QTimer \
+  /usr/include/qt5/QtCore/QVariant \
   /usr/include/qt5/QtCore/QVector \
   /usr/include/qt5/QtCore/qalgorithms.h \
   /usr/include/qt5/QtCore/qarraydata.h \
@@ -265,15 +254,11 @@
   /usr/include/qt5/QtCore/qcontainerfwd.h \
   /usr/include/qt5/QtCore/qcontainertools_impl.h \
   /usr/include/qt5/QtCore/qcontiguouscache.h \
-  /usr/include/qt5/QtCore/qcoreapplication.h \
   /usr/include/qt5/QtCore/qcoreevent.h \
   /usr/include/qt5/QtCore/qdatastream.h \
   /usr/include/qt5/QtCore/qdebug.h \
-  /usr/include/qt5/QtCore/qdir.h \
-  /usr/include/qt5/QtCore/qeventloop.h \
   /usr/include/qt5/QtCore/qfile.h \
   /usr/include/qt5/QtCore/qfiledevice.h \
-  /usr/include/qt5/QtCore/qfileinfo.h \
   /usr/include/qt5/QtCore/qflags.h \
   /usr/include/qt5/QtCore/qgenericatomic.h \
   /usr/include/qt5/QtCore/qglobal.h \
@@ -327,15 +312,9 @@
   /usr/include/qt5/QtCore/qvector.h \
   /usr/include/qt5/QtCore/qversiontagging.h \
   /usr/include/qt5/QtGui/QMatrix4x4 \
-  /usr/include/qt5/QtGui/QPixmap \
-  /usr/include/qt5/QtGui/qaccessible.h \
-  /usr/include/qt5/QtGui/qbrush.h \
   /usr/include/qt5/QtGui/qcolor.h \
   /usr/include/qt5/QtGui/qcursor.h \
   /usr/include/qt5/QtGui/qevent.h \
-  /usr/include/qt5/QtGui/qfont.h \
-  /usr/include/qt5/QtGui/qfontinfo.h \
-  /usr/include/qt5/QtGui/qfontmetrics.h \
   /usr/include/qt5/QtGui/qgenericmatrix.h \
   /usr/include/qt5/QtGui/qicon.h \
   /usr/include/qt5/QtGui/qimage.h \
@@ -345,7 +324,6 @@
   /usr/include/qt5/QtGui/qopengl.h \
   /usr/include/qt5/QtGui/qopenglext.h \
   /usr/include/qt5/QtGui/qpaintdevice.h \
-  /usr/include/qt5/QtGui/qpalette.h \
   /usr/include/qt5/QtGui/qpixelformat.h \
   /usr/include/qt5/QtGui/qpixmap.h \
   /usr/include/qt5/QtGui/qpolygon.h \
@@ -374,11 +352,8 @@
   /usr/include/qt5/QtMultimedia/qtmultimediaglobal.h \
   /usr/include/qt5/QtNetwork/qtnetwork-config.h \
   /usr/include/qt5/QtNetwork/qtnetworkglobal.h \
-  /usr/include/qt5/QtQml/qjsvalue.h \
   /usr/include/qt5/QtQml/qqml.h \
-  /usr/include/qt5/QtQml/qqmlcomponent.h \
   /usr/include/qt5/QtQml/qqmldebug.h \
-  /usr/include/qt5/QtQml/qqmlerror.h \
   /usr/include/qt5/QtQml/qqmllist.h \
   /usr/include/qt5/QtQml/qqmlparserstatus.h \
   /usr/include/qt5/QtQml/qqmlprivate.h \
@@ -386,28 +361,18 @@
   /usr/include/qt5/QtQml/qtqml-config.h \
   /usr/include/qt5/QtQml/qtqmlglobal.h \
   /usr/include/qt5/QtQuick/QQuickWindow \
-  /usr/include/qt5/QtQuick/qquickitem.h \
   /usr/include/qt5/QtQuick/qquickwindow.h \
   /usr/include/qt5/QtQuick/qsggeometry.h \
   /usr/include/qt5/QtQuick/qsgnode.h \
   /usr/include/qt5/QtQuick/qsgrendererinterface.h \
   /usr/include/qt5/QtQuick/qtquick-config.h \
   /usr/include/qt5/QtQuick/qtquickglobal.h \
-  /usr/include/qt5/QtWidgets/QFileDialog \
-  /usr/include/qt5/QtWidgets/qdialog.h \
-  /usr/include/qt5/QtWidgets/qfiledialog.h \
-  /usr/include/qt5/QtWidgets/qsizepolicy.h \
-  /usr/include/qt5/QtWidgets/qtwidgets-config.h \
-  /usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-  /usr/include/qt5/QtWidgets/qwidget.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/string.h \
   /usr/include/strings.h \
   /usr/include/sys/cdefs.h \
-  /usr/include/sys/select.h \
-  /usr/include/sys/types.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
