@@ -11,7 +11,7 @@ Then cd into one of the project directories, make a build directory, run cmake, 
 Linux example:
 
 #Make and install nlohmann/json
-git clone https://github.com/nlohmann/json
+git clone https://github.com/nlohmann/json \n
 cd json
 mkdir build
 cd build
