@@ -19,9 +19,9 @@ Linux example:
         make -j$(nproc)
         sudo make install
 
+
     # Install dependancies
         sudo dnf install ffmpeg-devel ffmpeg-libs
-        sudo apt-get install <I have no idea, apt sucks>
 
 
     # Now build the Qml version
