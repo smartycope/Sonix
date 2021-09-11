@@ -101,7 +101,7 @@ set(QML_IMPORT_PATH ${QML_IMPORT_PATH} CACHE STRING "Qt Creator 4.1 extra qml im
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Gui Multimedia Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Gui Multimedia Widgets REQUIRED)
 find_package(nlohmann_json REQUIRED)
-find_package(FFmpeg REQUIRED)
+find_package(FFmpeg)
 
 
 ######################### Specify the stuff we need to build ################################
@@ -140,7 +140,7 @@ set(QT_LIBS
 
 # Define linked libraries
 set(LIB_LIST
-    avfilter
+    # avfilter
     # avdevice swscale avformat avcodec swresample avutil
     ${FFMPEG_LIBRARIES}
 
@@ -170,8 +170,26 @@ set(QT_RESOURCES
     "defaultBookCover.png"
 )
 
+# Specify the .qrc files
+set(QRC_FILES
+    main.qrc
+)
+
+
+if(NOT ${FFMPEG_FOUND})
+    list(APPEND LIB_LIST
+        ${CMAKE_SOURCE_DIR}/lib/libavcodec.so
+        ${CMAKE_SOURCE_DIR}/lib/libavdevice.so
+        ${CMAKE_SOURCE_DIR}/lib/libavfilter.so
+        ${CMAKE_SOURCE_DIR}/lib/libavformat.so
+        ${CMAKE_SOURCE_DIR}/lib/libavresample.so
+        ${CMAKE_SOURCE_DIR}/lib/libavutil.so
+    )
+endif()
+
 
 ######################### Actually build stuff ###############################
+# Don't actually touch any of this stuff, unless you're removing QT from the project
 
 # Ignore specific warnings
 add_compile_options(${IGNORED_COMPILER_WARNINGS})
@@ -180,7 +198,7 @@ add_compile_options(${IGNORED_COMPILER_WARNINGS})
 include_directories(${INC_DIRS})
 
 # Add the QT .qrc resources file
-qt_add_resources(SRC_LIST main.qrc)
+qt_add_resources(SRC_LIST ${QRC_FILES})
 
 # Build the executable
 if(ANDROID)

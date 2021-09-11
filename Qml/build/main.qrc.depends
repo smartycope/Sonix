@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>ui/player.qml</file>
-    </qresource>
-    <qresource prefix="/">
-        <file alias="defaultCover">assets/defaultBookCover.png</file>
-    </qresource>
-</RCC>
