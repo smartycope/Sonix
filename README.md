@@ -1,4 +1,4 @@
-# SuperSonic-Audiobook-Player
+# Sonix
 A fully functional audiobook player, focusing on increasing playback speed smoothly
 
 # About
@@ -29,7 +29,7 @@ Linux example:
 
 
     # Now build the Qml version
-        git clone https://github.com/smartycope/SuperSonic-Audiobook-Player.git
+        git clone https://github.com/smartycope/Sonix.git
         cd Qml
         mkdir build
         cd build
