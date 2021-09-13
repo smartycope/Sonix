@@ -3,6 +3,9 @@ A fully functional audiobook player, focusing on increasing playback speed smoot
 
 # About
 There are several subprojects within this repo.
+I've noticed that there aren't any good open source (or closed source!) audiobook players out there that play regular audiofiles, and none that go over 2x speed without sounding like crap. (The one exception being BookPlayer, which is fantastic: https://github.com/TortugaPower/BookPlayer. It is, however, iOS only, sadly)
+Sonix is meant to fill that void. It also does something else, however. It also lets you listen to audiobooks faster than 3.5x speed without just playing the audio faster. Nothing I have ever found can do that. 
+But wait, there's more! It also lets you play audible .aax files directly, provided you have the authcode bound to your account. Nothing else does that either! This is completely legal, provided they're your audiobooks you've paid for.
 
 
 # Installation
