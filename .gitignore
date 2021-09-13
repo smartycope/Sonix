@@ -11,6 +11,9 @@ Qml/build
 Qml/CMakeFiles
 Qml/sap
 Qml/CMakeLists.txt.user
+Qml/ffmpeg
+Qml/ffmpeg.bak
+Qml/lib
 
 Desktop/.cache
 Desktop/build
