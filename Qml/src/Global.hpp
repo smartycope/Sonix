@@ -7,7 +7,6 @@
 
 #define ARGPARSE_LONG_VERSION_ARG_ONLY
 #include "argparse.hpp"
-
 #include "cope.hpp"
 
 // They have a bug in their QDialog and QWarning QML types

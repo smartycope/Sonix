@@ -13,7 +13,7 @@ Window {
     color: "#989696"
     width: 400
     height: 520
-    title: qsTr("SuperSonic Audiobook Player")
+    title: qsTr("Sonix")
 
     // fileDialog
     FileDialog {
@@ -30,39 +30,41 @@ Window {
         }
     }
 
+    /*
     // authcodeWarning
-    // MessageDialog {
-    //     id: authcodeWarning
-    //     objectName: "authcodeWarning"
-    //     icon: StandardIcon.Warning
-    //     title: "Error: No Authcode Provided"
-    //     text: "Text Not Set"
-    //     standardButtons: StandardButton.Ok
-    //     onAccepted: visible = false
-    //     // Component.onCompleted: visible = true
-    // }
+    MessageDialog {
+        id: authcodeWarning
+        objectName: "authcodeWarning"
+        icon: StandardIcon.Warning
+        title: "Error: No Authcode Provided"
+        text: "Text Not Set"
+        standardButtons: StandardButton.Ok
+        onAccepted: visible = false
+        // Component.onCompleted: visible = true
+    }
 
     // authcodeWarning
-    //Dialog {
-    //    id: authcodeWarning
-    //    objectName: "authcodeWarning"
-    //    // visible: true
-    //    title: "Error: No Authcode Provided"
-    //
-    //    contentItem: Rectangle {
-    //        color: "white"
-    //        implicitWidth: 400
-    //        implicitHeight: 100
-    //        Text {
-    //            text: "Hello blue sky!"
-    //            color: "black"
-    //            anchors.centerIn: parent
-    //        }
-    //    }
-    //    standardButtons: StandardButton.Ok
-    //    onAccepted: visible = false
-    //    // Component.onCompleted: visible = true
-    //}
+    Dialog {
+        id: authcodeWarning
+        objectName: "authcodeWarning"
+        // visible: true
+        title: "Error: No Authcode Provided
+        contentItem: Rectangle {
+            color: "white"
+            implicitWidth: 400
+            implicitHeight: 100
+            Text {
+                text: "Hello blue sky!"
+                color: "black"
+                anchors.centerIn: parent
+            }
+        }
+        standardButtons: StandardButton.Ok
+        onAccepted: visible = false
+        // Component.onCompleted: visible = true
+    }
+    */
+
 
     // pauseButton
     RoundButton {
@@ -71,13 +73,14 @@ Window {
         x: 280
         width: 80
         height: 80
-        text: "||"
+        ////text: "||"
         anchors.top: cover.bottom
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         hoverEnabled: false
         onClicked: Player.player.togglePause()
     }
+
 
     // skipBackwardButton
     RoundButton {
@@ -93,6 +96,7 @@ Window {
         anchors.rightMargin: 10
         onClicked: Player.player.skipBackward()
     }
+
 
     // skipForwardButton
     RoundButton {
@@ -215,10 +219,10 @@ Window {
     SpinBox {
         id: speedControl
         objectName: "speedControl"
-//        x: 516
-//        y: 432
-//        width: 124
-//        height: 32
+        //x: 516
+        //y: 432
+        //width: 124
+        //height: 32
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.rightMargin: 10
@@ -251,7 +255,7 @@ Window {
         //     target: speedControl
         //     onClicked: Player.player.updateSpeed()
         // }
-//        onClicked: Player.player.updateSpeed()
+        //onClicked: Player.player.updateSpeed()
     }
 
     // openButton
@@ -269,9 +273,3 @@ Window {
         onClicked: fileDialog.open()
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.8999999761581421}
-}
-##^##*/

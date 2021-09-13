@@ -42,7 +42,7 @@ class Book: public QObject{
     Q_PROPERTY(QString publisher         READ publisher)
     QML_ELEMENT
   public:
-    Book(string filepath);
+    Book(string filepath = "");
     ~Book();
 
     float actualStartSec;

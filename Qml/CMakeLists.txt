@@ -58,9 +58,12 @@ set(CMAKE_BINARY_DIR ${PROJECT_SOURCE_DIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_DEBUG_OUTPUT_DIRECTORY   ${CMAKE_BINARY_DIR})
 
+# Allow us to be able to use the ExternalProject_Add function, which lets us download and build external projects
+include(ExternalProject)
+
 # To make everything fully multithreaded compliant
 set(CMAKE_THREAD_LIBS_INIT "-lpthread")
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 set(CMAKE_HAVE_THREADS_LIBRARY 1)
 set(CMAKE_USE_WIN32_THREADS_INIT 0)
 set(CMAKE_USE_PTHREADS_INIT 1)
@@ -94,6 +97,7 @@ list(REMOVE_DUPLICATES QML_IMPORT_PATH)
 # change it there immediately. Also, add a comment to the cache file.
 set(QML_IMPORT_PATH ${QML_IMPORT_PATH} CACHE STRING "Qt Creator 4.1 extra qml import paths" FORCE)
 
+message(STATUS "Finding dependancies...")
 
 ############################### Find dependancies ######################################
 
@@ -101,7 +105,27 @@ set(QML_IMPORT_PATH ${QML_IMPORT_PATH} CACHE STRING "Qt Creator 4.1 extra qml im
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Gui Multimedia Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Gui Multimedia Widgets REQUIRED)
 find_package(nlohmann_json REQUIRED)
-find_package(FFmpeg)
+# find_package(FFmpeg)
+
+# libdav1d.so.4, needed by ../lib/libavcodec.so.58.91.100, not found (try using -rpath or -rpath-link)
+# libaom.so.2, needed by ../lib/libavcodec.so.58.91.100, not found (try using -rpath or -rpath-link)
+# libx264.so.160, needed by ../lib/libavcodec.so.58.91.100, not found (try using -rpath or -rpath-link)
+# libx265.so.192, needed by ../lib/libavcodec.so.58.91.100, not found (try using -rpath or -rpath-link)
+# libvmaf.so.0, needed by ../lib/libavfilter.so.7.85.100, not found (try using -rpath or -rpath-link)
+
+
+# target_precompile_headers(${CMAKE_PROJECT_NAME} PUBLIC ${PROJECT_HEADERS})
+
+message(STATUS "Building external projects...")
+include(FFmpeg)
+
+# # Find dependencies
+# #find_package(SDL2 REQUIRED)
+# #if(NOT SDL2_FOUND)
+# include(SDL2)
+# #    message(FATAL_ERROR "Package SDL2 is required, but not found!")
+# #endif(NOT SDL2_FOUND)
+
 
 
 ######################### Specify the stuff we need to build ################################
@@ -116,12 +140,12 @@ set(SRC_LIST
     ${CMAKE_SOURCE_DIR}/src/CoverProvider.cpp
     ${CMAKE_SOURCE_DIR}/src/ffmpegLiason.cpp
     ${CMAKE_SOURCE_DIR}/src/Global.cpp
-    ${CMAKE_SOURCE_DIR}/ffmpeg/fftools/ffmpeg-main.cpp
-    ${CMAKE_SOURCE_DIR}/ffmpeg/fftools/ffmpeg.c
-    ${CMAKE_SOURCE_DIR}/ffmpeg/fftools/ffmpeg_opt.c
-    ${CMAKE_SOURCE_DIR}/ffmpeg/fftools/ffmpeg_filter.c
-    ${CMAKE_SOURCE_DIR}/ffmpeg/fftools/ffmpeg_hw.c
-    ${CMAKE_SOURCE_DIR}/ffmpeg/fftools/cmdutils.c
+    ${CMAKE_SOURCE_DIR}/src/ffmpeg-main.cpp
+    ${CMAKE_SOURCE_DIR}/src/ffmpeg.c
+    ${CMAKE_SOURCE_DIR}/src/ffmpeg_opt.c
+    ${CMAKE_SOURCE_DIR}/src/ffmpeg_filter.c
+    ${CMAKE_SOURCE_DIR}/src/ffmpeg_hw.c
+    ${CMAKE_SOURCE_DIR}/src/cmdutils.c
 
     ${CMAKE_SOURCE_DIR}/src/main.cpp
 )
@@ -176,18 +200,7 @@ set(QRC_FILES
 )
 
 
-if(NOT ${FFMPEG_FOUND})
-    list(APPEND LIB_LIST
-        ${CMAKE_SOURCE_DIR}/lib/libavcodec.so
-        ${CMAKE_SOURCE_DIR}/lib/libavdevice.so
-        ${CMAKE_SOURCE_DIR}/lib/libavfilter.so
-        ${CMAKE_SOURCE_DIR}/lib/libavformat.so
-        ${CMAKE_SOURCE_DIR}/lib/libavresample.so
-        ${CMAKE_SOURCE_DIR}/lib/libavutil.so
-    )
-endif()
-
-
+message(STATUS "Building executable...")
 ######################### Actually build stuff ###############################
 # Don't actually touch any of this stuff, unless you're removing QT from the project
 

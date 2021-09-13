@@ -45,6 +45,7 @@ const std::string AudioPlayer::printQAudioError(QAudio::Error err){
         default:
             return std::string("PROBLEM");
     }
+    note(printQAudioError)
 }
 
 const std::string AudioPlayer::printQAudioState(QAudio::State state){
@@ -67,15 +68,18 @@ const std::string AudioPlayer::printQAudioState(QAudio::State state){
         default:
             return std::string("PROBLEM");
     }
+    note(printQAudioState)
 }
 
 void AudioPlayer::setVolume(int to){
     linVolume = to;
     logVolume = QAudio::convertVolume(qreal(to) / qreal(100.0), QAudio::LogarithmicVolumeScale, QAudio::LinearVolumeScale);
     audioOut->setVolume(logVolume);
+    note(setVolume)
 }
 
 int AudioPlayer::getVolume(){
+    note(getVolume)
     return linVolume;
 }
 
@@ -149,11 +153,14 @@ AudioPlayer::AudioPlayer(Book* book): callbackTimer(new QTimer(this)){
 
     if (b)
         callbackTimer->start(updateMS);
+
+    note(audioPlayer constructed)
 }
 
 AudioPlayer::~AudioPlayer(){
     callbackTimer->stop();
     sonicDestroyStream(sStream);
+    note(audioPlayer descruted)
 }
 
 // Essentially what's happening here, is we're manually reading pipe (the QFile where ffmpeg is stuffing data
@@ -183,6 +190,7 @@ void AudioPlayer::workhorseFunc(){
         io->write(sonicBuffer.data(), audioOut->periodSize());
         --chunks;
     }
+    note()
 }
 
 void AudioPlayer::updateBook(Book* book){
@@ -192,9 +200,11 @@ void AudioPlayer::updateBook(Book* book){
     b->open();
     callbackTimer->start(updateMS);
     audioOut->resume();
+    note()
 }
 
 ulong AudioPlayer::pos(){
+    note()
     return (b->ffmpegFile.pos() / _channels) / _samplerate;
 }
 
@@ -206,6 +216,7 @@ void AudioPlayer::togglePause(bool dummyparam){
     } else if (audioOut->state() == QAudio::ActiveState) {
         audioOut->suspend();
     } else if (audioOut->state() == QAudio::IdleState) { }
+    note()
 }
 
 void AudioPlayer::audioStateChanged(QAudio::State state){
@@ -225,92 +236,112 @@ void AudioPlayer::audioStateChanged(QAudio::State state){
             exit(99);
             break;
     }
+    note()
 }
 
 
 void AudioPlayer::setSpeed(double to){
     _speed = to;
     sonicSetSpeed(sStream, to);
+    note()
 }
 
 void AudioPlayer::setPitch(float to){
     _pitch = to;
     sonicSetPitch(sStream, to);
+    note()
 }
 
 void AudioPlayer::setRate(float to){
     _rate = to;
     sonicSetRate(sStream, to);
+    note()
 }
 
 void AudioPlayer::setEmulateChordPitch(bool to){
     _emulateChordPitch = to;
     sonicSetChordPitch(sStream, to);
+    note()
 }
 
 void AudioPlayer::setHighQuality(bool to){
     _highQuality = to;
     sonicSetQuality(sStream, to);
+    note()
 }
 
 void AudioPlayer::setEnableNonlinearSpeedup(bool to){
     _enableNonlinearSpeedup = to;
     todo("enableNonlinearSpeedup");
+    note()
 }
 
 void AudioPlayer::flushStream(){
     todo("Flush audio player");
+    note()
 }
 
 // amount is in samples
 void AudioPlayer::skip(int amount){
     b->ffmpegFile.skip(amount);
+    note()
 }
 
 void AudioPlayer::jump(Chapter to){
     b->ffmpegFile.seek(to.startTime * _channels * _samplerate);
+    note()
 }
 
 void AudioPlayer::updateSpeed(){
     setSpeed(Global::getUIProperty("speedControl", "value").toDouble() / 100.0);
+    note()
 }
 
 void AudioPlayer::updateChapter(){
     todo("updateChapter");
+    note()
 }
 
 void AudioPlayer::incrementSpeed(){
     setSpeed(_speed + _speedIncrement);
+    note()
 }
 
 void AudioPlayer::incrementVolume(){
     setVolume(getVolume() + _volumeIncrement);
+    note()
 }
 
 void AudioPlayer::decrementSpeed(){
     setSpeed(_speed - _speedIncrement);
+    note()
 }
 
 void AudioPlayer::decrementVolume(){
     setVolume(getVolume() - _volumeIncrement);
+    note()
 }
 
 void AudioPlayer::skipForward(){
     skip(_skipSeconds);
+    note()
 }
 
 void AudioPlayer::skipBackward(){
     skip(-_skipSeconds);
+    note()
 }
 
 void AudioPlayer::jumpForward(){
     int currentChapter = b->getCurrentChapter(pos()).num;
     if (currentChapter < b->chapters().size())
         jump(b->chapters()[currentChapter + 1]);
+    note()
 }
 
 void AudioPlayer::jumpBackward(){
     int currentChapter = b->getCurrentChapter(pos()).num;
     if (currentChapter > 0)
         jump(b->chapters()[currentChapter - 1]);
+    note()
 }

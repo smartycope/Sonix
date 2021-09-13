@@ -23,11 +23,13 @@ void Global::exitSigHandler(int signum) {
         if (Global::ffmpegThread->joinable())
             Global::ffmpegThread->join();
     exit(signum);
+    note()
 }
 
 void Global::log(std::string msg){
     if (Global::verbose)
         std::cout << msg << '\n';
+    note()
 }
 
 PrettyTime Global::getPrettyTime(const ulong& secs){
@@ -35,6 +37,7 @@ PrettyTime Global::getPrettyTime(const ulong& secs){
     t.hour = secs / 3600;
     t.min  = (secs % 3600) / 60;
     t.sec  = (secs % 3600) % 60;
+    note()
     return t;
 }
 
@@ -47,29 +50,35 @@ std::string Global::runFFmpegCmd(const std::string& args, bool ffprobe, bool for
             << std::string(Global::verbose and not forceQuiet ? "error ": "quiet ")
             << args
             << (ffprobe ? "": " -");
+    note()
 
     return getCmdOutS(command.str(), Global::verbose, false);
 }
 
 QVariant Global::getUIProperty(std::string item, std::string property){
+    note(getProperty)
     QObject* obj = Global::ui->findChild<QObject*>(item.c_str());
     if (obj)
         return obj->property(property.c_str());
     else
         log("No property " + property + " in " + item);
+    note(end of getProperty)
+    note()
     return QVariant();
 }
 
 void Global::setUIProperty(std::string item, std::string property, QVariant to){
+    note(setProperty)
     QObject* obj = Global::ui->findChild<QObject*>(item.c_str());
     if (obj)
         obj->setProperty(property.c_str(), to);
     else
         log("No property " + property + " in " + item);
+    note(end of setProperty)
 }
 
 void Global::parseArgs(int argc, char* argv[]){
-    Global::args = new argparse::ArgumentParser("SAP", "0.1.6");
+    Global::args = new argparse::ArgumentParser("Sonix", "0.1.6");
     Global::args->add_description(ABOUT_MSG);
 
     Global::args->add_argument("audioFile")
@@ -229,4 +238,5 @@ void Global::parseArgs(int argc, char* argv[]){
         std::cout << err.what() << std::endl << Global::args;
         exit(0);
     }
+    note()
 }

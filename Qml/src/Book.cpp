@@ -23,6 +23,12 @@ Book::Book(string filepath): _file(filepath.c_str()), sleepTimer(0), actualStart
     // This isn't initialized at the initialization list (not quite sure how that works, linters are amazing)
     _description = defaultDescriptionValue;
 
+    // This book is null
+    if (filepath.empty()){
+        amValid = false;
+        return;
+    }
+
     // We only care if the authcode is invalid. Otherwise, just make sure we're okay.
     if (validate() <= -2)
         printAuthcodeError();

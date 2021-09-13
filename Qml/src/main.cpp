@@ -36,6 +36,9 @@ int main(int argc, char* argv[]) {
     // Register the singleton type provider with QML by calling this function in an initialization function.
     qmlRegisterSingletonInstance("PlayerWindow", 1, 0, "Player", player.get());
 
+
+    // _debug(player.)
+
     // Load the main .qml file we have
     engine.load("qrc:/ui/player.qml");
 
@@ -51,6 +54,9 @@ int main(int argc, char* argv[]) {
     // TODO do this
     // if (not args.get<bool>("--cli"))
     //     win.show();
+    _debug(player)
+    _debug(player.get())
+    _debug(player->player())
 
     int code = app.exec();
     return code;

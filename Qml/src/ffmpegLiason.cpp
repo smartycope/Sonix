@@ -9,10 +9,11 @@
 #include <thread>
 #include <regex>
 #include <future>
-#include "ffmpeg/fftools/ffmpeg.hpp"
+#include "ffmpeg.hpp"
 
 
 FILE* runFFmpeg(const std::string& args, bool ffprobe, bool forceQuiet){
+    note()
     std::stringstream command;
     std::vector<std::string> v;
 
@@ -66,7 +67,9 @@ FILE* runFFmpeg(const std::string& args, bool ffprobe, bool forceQuiet){
 
 
     //* Thread method
+    note()
     Global::ffmpegThread = new std::thread(ffmpeg, v);
+    note();
     Global::ffmpegThread->detach();
 
     return fdopen(fd, "wb+");
@@ -74,4 +77,5 @@ FILE* runFFmpeg(const std::string& args, bool ffprobe, bool forceQuiet){
     //* Asyncronous method
     // auto rtnCode = std::async(std::launch::async, ffmpeg, v);
     // return stdout;
+    note()
 }
