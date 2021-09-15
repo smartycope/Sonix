@@ -20,24 +20,20 @@ void PlayerWindow::init(string filepath){
     }
     else
         note(book is null!)
-    note()
-}
+    }
 
 PlayerWindow::~PlayerWindow(){
     delete _book;
     delete _player;
-    note()
-}
+    }
 
 void PlayerWindow::updateVolumeBar(){
     // ui->_volumeControl->setValue(_player->getVolume());
-    note()
-}
+    }
 
 void PlayerWindow::updateSpeedControl(){
     // ui->_speedControl->setValue(_player->speed);
-    note()
-}
+    }
 
 void PlayerWindow::setBook(Book* to){
     assert(to);
@@ -53,23 +49,20 @@ void PlayerWindow::setBook(Book* to){
     Global::setUIProperty("titleLabel", "text", _book->title());
     Global::setUIProperty("introLabel", "text", _book->getIntro());
     // Global::setUIProperty("progressBar", "position", qulonglong(_player->pos()));
-    note()
-}
+    }
 
 void PlayerWindow::open(QString filepath){
     if (filepath.startsWith("file://"))
         filepath = filepath.right(filepath.length() - 7);
     Book* b = new Book(filepath.toStdString());
     setBook(b);
-    note()
-}
+    }
 
 void PlayerWindow::about(){
     QMessageBox msgBox;
     msgBox.setText(ABOUT_MSG);
     msgBox.exec();
-    note()
-}
+    }
 
 void PlayerWindow::loadChapters(){
     todo("chapters");
@@ -83,8 +76,7 @@ void PlayerWindow::loadChapters(){
         // ui->chapterSelect->insertItem(0, "[File doesn't support chapters]");
 
     Global::setUIProperty("chapterBox", "model", chaps);
-    note()
-}
+    }
 
 void PlayerWindow::paulBlart(){
     // ui->cover->setPixmap(QPixmap(PAUL_BLART));
@@ -92,13 +84,11 @@ void PlayerWindow::paulBlart(){
     // ui->authorLabel->setText("Paul Blart");
     // ui->narratorLabel->setText("Also Paul Blart");
     // ui->speedControl->setValue(10.0);
-    note()
-}
+    }
 
 void PlayerWindow::openSettings(){
     todo("Settings");
-    note()
-}
+    }
 
 void PlayerWindow::getAuthcode(){
     bool ok;
@@ -109,5 +99,4 @@ void PlayerWindow::getAuthcode(){
     }
     else
         Global::log("Failed to get file");
-    note()
-}
+    }

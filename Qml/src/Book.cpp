@@ -83,6 +83,10 @@ Book::~Book(){
     close();
 }
 
+bool Book::isValid(){
+    return amValid;
+}
+
 int Book::validate(){
     bool endsInAax = _file.toLower().endsWith(".aax");
     bool authValid = not endsInAax or (endsInAax and not Global::authcode.empty());
@@ -92,7 +96,8 @@ int Book::validate(){
     if (not amValid){
         setTitle("");
         Global::setUIProperty("titleLabel", "text", "");
-        Global::setUIProperty("introLabel", "text", BAD_BOOK_WARNING);
+        if (not authValid and fileValid)
+            Global::setUIProperty("introLabel", "text", BAD_BOOK_WARNING);
     }
 
     if (authValid and not fileValid)
@@ -208,6 +213,9 @@ QVector<Chapter> Book::loadChapters(){
 }
 
 Chapter Book::getCurrentChapter(int posSecs){
+    if (_chapters.empty())
+        return Chapter();
+
     Chapter c = _chapters[0];
     for (auto chap: _chapters){
         if (isBetween<int>(posSecs, chap.startTime, chap.endTime, true)){

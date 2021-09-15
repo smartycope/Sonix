@@ -23,7 +23,6 @@ QPixmap CoverProvider::requestPixmap(const QString &id, QSize *size, const QSize
     *size = pixmap.size();
 
     Global::ui->setProperty("color", getAverageColor(pixmap).name());
-    note()
 
     return pixmap;
 }
@@ -44,7 +43,6 @@ QColor CoverProvider::getAverageColor(const QPixmap& pix){
             count  += 1;
         }
     }
-    note()
 
     return QColor(totalR / count, totalG / count, totalB / count);
 }

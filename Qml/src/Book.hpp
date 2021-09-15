@@ -51,6 +51,7 @@ class Book: public QObject{
     QString getIntro();
     void open();
     void close(int signum = 0);
+    bool isValid();
 
   public slots:
     QString  file()             { return _file; }

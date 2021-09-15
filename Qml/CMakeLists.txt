@@ -97,7 +97,7 @@ list(REMOVE_DUPLICATES QML_IMPORT_PATH)
 # change it there immediately. Also, add a comment to the cache file.
 set(QML_IMPORT_PATH ${QML_IMPORT_PATH} CACHE STRING "Qt Creator 4.1 extra qml import paths" FORCE)
 
-message(STATUS "Finding dependancies...")
+# message(STATUS "Finding dependancies...")
 
 ############################### Find dependancies ######################################
 
@@ -116,7 +116,7 @@ find_package(nlohmann_json REQUIRED)
 
 # target_precompile_headers(${CMAKE_PROJECT_NAME} PUBLIC ${PROJECT_HEADERS})
 
-message(STATUS "Building external projects...")
+# message(STATUS "Building external projects...")
 include(FFmpeg)
 
 # # Find dependencies
@@ -199,8 +199,13 @@ set(QRC_FILES
     main.qrc
 )
 
+# Specify what targets we need to wait for to be done before we try to build the executable
+set(DEPENDANCIES
+    FFmpeg-build
+)
 
-message(STATUS "Building executable...")
+# message(STATUS "DEPENDANCIES: ${DEPENDANCIES}")
+
 ######################### Actually build stuff ###############################
 # Don't actually touch any of this stuff, unless you're removing QT from the project
 
@@ -220,6 +225,9 @@ else()
     add_executable(${BINARY_NAME} ${SRC_LIST} ${AUTO_SRC_LIST})
 endif()
 
+# Wait for the external Project target to build before we try to build
+add_dependencies(${BINARY_NAME} ${DEPENDANCIES})
+
 # Specify that it's an executable
 set_target_properties(${BINARY_NAME} PROPERTIES WIN32_EXECUTABLE TRUE MACOSX_BUNDLE TRUE)
 
@@ -232,11 +240,3 @@ target_link_libraries(${BINARY_NAME} PUBLIC ${LIB_LIST} dl)
 # Add the QT resources
 # qt_add_resources(${BINARY_NAME} "ui" PREFIX "ui/" FILES ${QML_FILES}) # "qmake_immediate"
 # qt5_add_resources(${BINARY_NAME} "" PREFIX "" FILES ${QT_RESOURCES})
-
-
-
-# ffmpeg configure command:
-# This is wrong, I believe
-# ./configure --prefix=../ --bindir=bin --incdir=include --libdir=lib --shlibdir=../lib --arch=aarch64 --optflags='-O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fstack-protector-strong branch-protection=standard -fasynchronous-unwind-tables -fstack-clash-protection' --extra-ldflags='-Wl,-z,relro -Wl,--as-needed -Wl,-z,now' --extra-cflags=' -I/usr/include/rav1e' --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libvo-amrwbenc --enable-version3 --enable-bzlib --disable-crystalhd --enable-fontconfig --enable-frei0r --enable-gcrypt --enable-gnutls --enable-ladspa --enable-libaom --enable-libdav1d --enable-libass --enable-libbluray --enable-libcdio --enable-libdrm --enable-libjack --enable-libfreetype --enable-libfribidi --enable-libgsm --enable-liblensfun --enable-libmp3lame --enable-libmysofa --enable-nvenc --enable-openal --enable-opengl --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librsvg --enable-librav1e --enable-libsmbclient --enable-version3 --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libvorbis --enable-libv4l2 --enable-libvidstab --enable-libvpx --enable-vulkan --enable-libglslang --enable-libx264 --enable-libx265 --enable-libxvid --enable-libxml2 --enable-libzimg --enable-libzvbi --enable-lv2 --enable-avfilter --enable-libmodplug --enable-postproc --enable-pthreads --disable-static --enable-shared --enable-gpl --disable-debug --disable-stripping --shlibdir=/usr/lib64 --enable-lto --disable-nvenc --disable-logging --enable-gpl --enable-version3 --disable-ffplay --cxx=clang++ --cc=clang --disable-swresample
-# I don't know what this one is
-# ./configure --enable-gpl --enable-version3 --disable-ffplay --disable-doc --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libvo-amrwbenc --enable-version3 --enable-bzlib --disable-crystalhd --enable-fontconfig --enable-frei0r --enable-gcrypt --enable-gnutls --enable-ladspa --enable-libaom --enable-libdav1d --enable-libass --enable-libcdio --enable-libdrm --enable-libjack --enable-libfreetype --enable-libfribidi --enable-libgsm --enable-liblensfun --enable-libmp3lame --enable-libmysofa --enable-nvenc --enable-openal --enable-opencl --enable-opengl --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librsvg --enable-librav1e --enable-libsmbclient --enable-version3 --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libvorbis --enable-libv4l2 --enable-libvidstab --enable-libvpx --enable-vulkan --enable-libglslang --enable-libx264 --enable-libx265 --enable-libxvid --enable-libxml2 --enable-libzimg --enable-libzvbi --enable-lv2 --enable-avfilter --enable-libmodplug --enable-postproc --enable-pthreads --disable-static --enable-shared --enable-gpl --disable-debug --disable-stripping

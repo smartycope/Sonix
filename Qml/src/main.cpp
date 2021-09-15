@@ -54,9 +54,9 @@ int main(int argc, char* argv[]) {
     // TODO do this
     // if (not args.get<bool>("--cli"))
     //     win.show();
-    _debug(player)
-    _debug(player.get())
-    _debug(player->player())
+    // _debug(player)
+    // _debug(player.get())
+    // _debug(player->player())
 
     int code = app.exec();
     return code;

@@ -1,25 +1,26 @@
 
-set(FFMPEG_CONFIGURE_COMMAND
-    configure
-    --prefix=${CMAKE_SOURCE_DIR}/ffmpeg
-    --libdir=${CMAKE_SOURCE_DIR}/libs
-    --shlibdir=${CMAKE_SOURCE_DIR}/libs
-    --enable-gpl
-    --enable-version3
-    --disable-static
-    --enable-shared
-    --disable-programs
-    --disable-ffplay
-    --enable-avresample
-    --disable-doc
-    --cc=${CMAKE_C_COMPILER}
-    --cxx=${CMAKE_CXX_COMPILER}
-    --disable-debug
-)
-
 # set(FFMPEG_CONFIGURE_COMMAND
-#     configure --prefix=${CMAKE_SOURCE_DIR}/ffmpeg --enable-avresample --libdir=${CMAKE_SOURCE_DIR}/libs --shlibdir=${CMAKE_SOURCE_DIR}/libs --enable-gpl --enable-version3 --disable-static --enable-shared --disable-programs --disable-ffplay --disable-doc --cc=${CMAKE_C_COMPILER} --cxx=${CMAKE_CXX_COMPILER} --disable-debug
+#     configure
+#     --prefix=${CMAKE_SOURCE_DIR}/ffmpeg
+#     --libdir=${CMAKE_SOURCE_DIR}/libs
+#     --shlibdir=${CMAKE_SOURCE_DIR}/libs
+#     --enable-gpl
+#     --enable-version3
+#     --disable-static
+#     --enable-shared
+#     --disable-programs
+#     --disable-ffplay
+#     --enable-avresample
+#     --disable-doc
+#     --cc=${CMAKE_C_COMPILER}
+#     --cxx=${CMAKE_CXX_COMPILER}
+#     --disable-debug
 # )
+
+
+set(FFMPEG_CONFIGURE_COMMAND
+    configure --prefix=${CMAKE_SOURCE_DIR}/ffmpeg --libdir=${CMAKE_SOURCE_DIR}/libs --shlibdir=${CMAKE_SOURCE_DIR}/libs --enable-gpl --enable-version3 --disable-static --enable-shared --disable-programs --disable-ffplay --enable-avresample --disable-doc --cc=${CMAKE_C_COMPILER} --cxx=${CMAKE_CXX_COMPILER} --disable-debug
+)
 
 
 # --quiet
@@ -31,6 +32,7 @@ set(FFMPEG_CONFIGURE_COMMAND
 
 set(FFMPEG_BUILD_DIR ${CMAKE_BINARY_DIR}/build/ffmpegBuild)
 
+# set_property(DIRECTORY PROPERTY EP_STEP_TARGETS build)
 ExternalProject_Add(FFmpeg
     URL               "https://ffmpeg.org/releases/ffmpeg-4.4.tar.xz"
     # GIT_REPOSITORY    "https://git.ffmpeg.org/ffmpeg.git"
@@ -56,7 +58,11 @@ ExternalProject_Add(FFmpeg
     LOG_BUILD          ON
     LOG_TEST           ON
     LOG_INSTALL        ON
+
+    # DEPENDS ${BINARY_NAME}
+    STEP_TARGETS   build
 )
+# ExternalProject_Add_StepTargets(FFmpeg build)
     #   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_SOURCE_DIR}/ffmpeg  -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
 
 set(FFMPEG_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/ffmpeg")
@@ -78,6 +84,7 @@ set(FFMPEG_LIBRARIES ${FFMPEG_LIBRARY})
 include_directories(SYSTEM ${FFMPEG_INCLUDE_DIR})
 
 set(DEPENDENCIES ${DEPENDENCIES} sphinxbase)
+
 
 # set(GAME_DEPENDENCY_LIBRARIES
     # ${GAME_DEPENDENCY_LIBRARIES}

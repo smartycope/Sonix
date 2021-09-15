@@ -170,7 +170,11 @@ AudioPlayer::~AudioPlayer(){
 // through sonic in a while loop, until we have enough samples. This is WAY easier (and faster) than trying to
 // calculate the pitch and calculate the equation given in sonic.h. (Which is kinda sad, that's a cool equation)
 void AudioPlayer::workhorseFunc(){
-    if (audioOut->state() == QAudio::StoppedState)
+    if (audioOut->state() == QAudio::StoppedState or
+        !b or
+        not b->isValid() or
+        not b->ffmpegFile.exists() or
+        not b->ffmpegFile.isOpen())
         return;
 
     // Don't ask me where 32768 came from, it was part of the example when I copied it here, and I'm afraid to touch it
@@ -190,7 +194,6 @@ void AudioPlayer::workhorseFunc(){
         io->write(sonicBuffer.data(), audioOut->periodSize());
         --chunks;
     }
-    note()
 }
 
 void AudioPlayer::updateBook(Book* book){
@@ -200,15 +203,14 @@ void AudioPlayer::updateBook(Book* book){
     b->open();
     callbackTimer->start(updateMS);
     audioOut->resume();
-    note()
-}
+    }
 
 ulong AudioPlayer::pos(){
-    note()
-    return (b->ffmpegFile.pos() / _channels) / _samplerate;
+        return (b->ffmpegFile.pos() / _channels) / _samplerate;
 }
 
 void AudioPlayer::finished(){ }
+
 
 void AudioPlayer::togglePause(bool dummyparam){
     if (audioOut->state() == QAudio::SuspendedState or audioOut->state() == QAudio::StoppedState) {
@@ -216,8 +218,7 @@ void AudioPlayer::togglePause(bool dummyparam){
     } else if (audioOut->state() == QAudio::ActiveState) {
         audioOut->suspend();
     } else if (audioOut->state() == QAudio::IdleState) { }
-    note()
-}
+    }
 
 void AudioPlayer::audioStateChanged(QAudio::State state){
     if (Global::verbose){
@@ -236,112 +237,91 @@ void AudioPlayer::audioStateChanged(QAudio::State state){
             exit(99);
             break;
     }
-    note()
-}
-
+    }
 
 void AudioPlayer::setSpeed(double to){
     _speed = to;
     sonicSetSpeed(sStream, to);
-    note()
-}
+    }
 
 void AudioPlayer::setPitch(float to){
     _pitch = to;
     sonicSetPitch(sStream, to);
-    note()
-}
+    }
 
 void AudioPlayer::setRate(float to){
     _rate = to;
     sonicSetRate(sStream, to);
-    note()
-}
+    }
 
 void AudioPlayer::setEmulateChordPitch(bool to){
     _emulateChordPitch = to;
     sonicSetChordPitch(sStream, to);
-    note()
-}
+    }
 
 void AudioPlayer::setHighQuality(bool to){
     _highQuality = to;
     sonicSetQuality(sStream, to);
-    note()
-}
+    }
 
 void AudioPlayer::setEnableNonlinearSpeedup(bool to){
     _enableNonlinearSpeedup = to;
     todo("enableNonlinearSpeedup");
-    note()
-}
+    }
 
 void AudioPlayer::flushStream(){
     todo("Flush audio player");
-    note()
-}
+    }
 
 // amount is in samples
 void AudioPlayer::skip(int amount){
     b->ffmpegFile.skip(amount);
-    note()
-}
+    }
 
 void AudioPlayer::jump(Chapter to){
     b->ffmpegFile.seek(to.startTime * _channels * _samplerate);
-    note()
-}
+    }
 
 void AudioPlayer::updateSpeed(){
     setSpeed(Global::getUIProperty("speedControl", "value").toDouble() / 100.0);
-    note()
-}
+    }
 
 void AudioPlayer::updateChapter(){
     todo("updateChapter");
-    note()
-}
+    }
 
 void AudioPlayer::incrementSpeed(){
     setSpeed(_speed + _speedIncrement);
-    note()
-}
+    }
 
 void AudioPlayer::incrementVolume(){
     setVolume(getVolume() + _volumeIncrement);
-    note()
-}
+    }
 
 void AudioPlayer::decrementSpeed(){
     setSpeed(_speed - _speedIncrement);
-    note()
-}
+    }
 
 void AudioPlayer::decrementVolume(){
     setVolume(getVolume() - _volumeIncrement);
-    note()
-}
+    }
 
 void AudioPlayer::skipForward(){
     skip(_skipSeconds);
-    note()
-}
+    }
 
 void AudioPlayer::skipBackward(){
     skip(-_skipSeconds);
-    note()
-}
+    }
 
 void AudioPlayer::jumpForward(){
     int currentChapter = b->getCurrentChapter(pos()).num;
     if (currentChapter < b->chapters().size())
         jump(b->chapters()[currentChapter + 1]);
-    note()
-}
+    }
 
 void AudioPlayer::jumpBackward(){
     int currentChapter = b->getCurrentChapter(pos()).num;
     if (currentChapter > 0)
         jump(b->chapters()[currentChapter - 1]);
-    note()
-}
+    }

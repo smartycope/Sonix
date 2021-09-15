@@ -65,7 +65,6 @@ Window {
     }
     */
 
-
     // pauseButton
     RoundButton {
         id: pauseButton
@@ -73,7 +72,7 @@ Window {
         x: 280
         width: 80
         height: 80
-        ////text: "||"
+        text: "||"
         anchors.top: cover.bottom
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
